@@ -17,7 +17,7 @@ from utils import *
 CONFIG = {
     # 基础
     "method": "DC",
-    "dataset": "MODELNET40_H5",      # 这里填你新增的 h5 数据集名
+    "dataset": "MODELNET40_H5",
     "model": "PointNet",
     "device": "cuda" if torch.cuda.is_available() else "cpu",
 
@@ -52,11 +52,11 @@ CONFIG = {
     "PRINT_EVERY": 10,               # 每多少轮 print 一次训练 loss
 }
 
-
+# 逐个方法是协助读取CONFIG的，不用管
 def build_args_from_config(config_dict):
     return SimpleNamespace(**config_dict)
 
-
+# 设置随机函数
 def set_seed(seed=1999):
     random.seed(seed)
     np.random.seed(seed)
@@ -66,7 +66,9 @@ def set_seed(seed=1999):
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
 
-
+# 这东西是在构造旋转矩阵
+# 也就是给定一个轴以后，生成绕这个轴旋转的矩阵，输入是旋转角度和旋转轴的类型（x/y/z）
+# 虽然是在计算图之中，但是本身其实并不存在可以训练的参数，就是一个纯粹地计算函数
 def create_rotation_matrix(angle, rot_type="x"):
     c = torch.cos(angle)
     s = torch.sin(angle)
@@ -92,29 +94,14 @@ def create_rotation_matrix(angle, rot_type="x"):
             torch.stack([zeros, zeros, ones], dim=1)
         ], dim=2)
 
-
+# 保存为txt
 def save_pointcloud_txt_batch(pointcloud_batch, save_dir, prefix):
     os.makedirs(save_dir, exist_ok=True)
     for i, save_pc in enumerate(pointcloud_batch):
         file_name = os.path.join(save_dir, f"{prefix}_{i}.txt")
         np.savetxt(file_name, save_pc.T, delimiter=",")
 
-
-def resolve_dataset(args):
-    """
-    优先尝试：
-    1. get_dataset_dispatch
-    2. get_dataset_h5 （当 dataset 以 _H5 结尾）
-    3. 回退到 get_dataset
-    """
-    if "get_dataset_dispatch" in globals():
-        return get_dataset_dispatch(args, args.dataset)
-    elif "get_dataset_h5" in globals() and str(args.dataset).endswith("_H5"):
-        return get_dataset_h5(args, args.dataset)
-    else:
-        return get_dataset(args, args.dataset)
-
-
+# 打印进度
 def print_train_progress(it, total_it, loss_avg):
     percent = 100.0 * it / max(total_it, 1)
     print(f"[{percent:6.2f}%] Iter {it:04d}/{total_it} | loss = {loss_avg:.4f}")
@@ -123,6 +110,7 @@ def print_train_progress(it, total_it, loss_avg):
 def main():
     args = build_args_from_config(CONFIG)
 
+    # 获取配置和打印一些东西
     os.makedirs(args.mode, exist_ok=True)
     os.makedirs(args.save_path, exist_ok=True)
 
@@ -135,7 +123,6 @@ def main():
         log_filename += f"_{args.addition_setting}"
 
     logger = build_logger(".", log_filename)
-
     logger.info("Device: %s", args.device)
     logger.info("Dataset: %s", args.dataset)
     logger.info("Model: %s", args.model)
@@ -144,7 +131,7 @@ def main():
     # =========================================================
     # 数据集读取
     # =========================================================
-    npoints, coord_dim, num_classes, dst_train, _, testloader = resolve_dataset(args)
+    npoints, coord_dim, num_classes, dst_train, _, testloader = get_dataset(args, args.dataset)
 
     args.num_classes = num_classes
     model_eval_pool = get_eval_pool(args.eval_mode, args.model)
@@ -193,6 +180,7 @@ def main():
 
         # =========================================================
         # 初始化 synthetic 点云
+        # 生成数据格式为[num_classes * ppc, 3, npoints]
         # =========================================================
         pointcloud_tmp = torch.randn(
             size=(num_classes * args.ppc, coord_dim, npoints),
@@ -256,7 +244,9 @@ def main():
         # =========================================================
         # 主训练循环
         # =========================================================
+        # iteration外循环内容是每轮训练都要做的事情，主要是更新 synthetic 数据和评估 synthetic 数据
         for it in range(args.Iteration + 1):
+            
             with torch.no_grad():
                 theta_x.data = torch.remainder(theta_x.data + math.pi, 2 * math.pi) - math.pi
                 theta_y.data = torch.remainder(theta_y.data + math.pi, 2 * math.pi) - math.pi
@@ -344,25 +334,34 @@ def main():
                     if "BatchNorm" in module._get_name():
                         module.eval()
 
+            # 初始化信息
             loss = torch.tensor(0.0, device=args.device)
-
+            # 按照每个类别进行循环
             for c in range(num_classes):
+                # 取出所有的合成数据
                 pc_syn = pointcloud_syn[c * args.ppc:(c + 1) * args.ppc].reshape(
                     args.ppc, coord_dim, npoints
                 ).to(args.device)
+                # 随机取batch_real个真实数据
                 pc_real = get_pointclouds(c, args.batch_real)
 
+                #提取特征，这个net不是模型？？
                 with torch.no_grad():
                     _, _, _, _, layers_real = net(pc_real)
-
                 _, _, _, _, layers_syn = net(pc_syn)
 
+                # 这里是按照channel进行排序
+                # dim=2就是N的这个维度，数据是[B, C, N]
+                # 也就是只给每个channel的N个点进行排序，排序后还是[B, C, N]，但是每个channel的N个点已经按照数值大小排好序了
+                # 这里有点反直觉，因为我们通常会觉得点云数据是[N, 3]，但是在输入到网络之前，我们把它转置成了[3, N]，所以现在的维度是[B, C, N]，其中C=3。
                 sorted_real = torch.sort(layers_real["x_m"], dim=2, descending=True)[0].detach()
                 sorted_syn = torch.sort(layers_syn["x_m"], dim=2, descending=True)[0]
 
+                # 对这一整个batch做平均池化
                 real = sorted_real.mean(dim=0)
                 syn = sorted_syn.mean(dim=0)
 
+                # 损失计算
                 loss1 = (((real - syn) ** 2).sum(dim=0)).mean() * 0.2
                 loss1 += m3d_criterion(layers_real["x_gf"], layers_syn["x_gf"]) * 0.001
                 loss += loss1 * args.ppc
@@ -387,7 +386,7 @@ def main():
                     {"data": data_save, "accs_all_exps": accs_all_exps},
                     os.path.join(args.save_path, f"res_{args.method}_{args.dataset}_{args.model}_{args.ppc}ppc.pt")
                 )
-
+    # 下面纯打印来着
     logger.info("\n==================== Final Results ====================\n")
     for key in model_eval_pool:
         accs = accs_all_exps[key]
@@ -396,7 +395,6 @@ def main():
                 "Run %d exp | train on %s | eval %d random %s | mean=%.2f%% std=%.2f%%",
                 args.num_exp, args.model, len(accs), key, np.mean(accs) * 100, np.std(accs) * 100
             )
-
     if len(accs_all) > 0:
         print("\n==================== Final Results ====================\n")
         print(np.array(accs_all))

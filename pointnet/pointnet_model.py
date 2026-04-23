@@ -8,6 +8,10 @@ import numpy as np
 import torch.nn.functional as F
 import random
 
+# 这段代码是一个比较纯粹的PointNet模型实现，包含了输入变换、特征变换、全局特征提取等模块，以及分类网络的定义。
+# 主要的类包括STN3d、STNkd、PointNetfeat和PointNetCls，分别对应输入变换网络、特征变换网络、特征提取网络和分类网络。
+# 我们将以这个为基础模型进行后续的动作
+
 class STN3d(nn.Module):
     def __init__(self):
         super(STN3d, self).__init__()
