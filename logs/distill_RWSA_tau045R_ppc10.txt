@@ -1,0 +1,75 @@
+2026-04-25 19:13:50: Device: cuda
+2026-04-25 19:13:50: Dataset: MODELNET40_H5
+2026-04-25 19:13:50: Model: PointNet
+2026-04-25 19:13:50: TEST_ONLY: False
+The size of train data is 9841
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+The size of test data is 2468
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+2026-04-25 19:13:50: eval_it_pool: [0, 250, 500, 750, 1000, 1250, 1500]
+2026-04-25 19:13:50: 
+================== Exp 0 ==================
+
+/root/workspace/varify_sampling/start_RWSA.py:195: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:253.)
+  label_syn = torch.tensor(
+2026-04-25 19:14:06: Initialize synthetic data from random real samples
+2026-04-25 19:14:06: [2026-04-25 19:14:06] training begins
+2026-04-25 19:14:06: Evaluate at iteration 0
+[Eval] model=PointNet | round 1/10
+[2026-04-25 19:19:06] Evaluate_00: epoch = 0500 train time = 300 s train loss = 0.008779 train acc = 1.0000, test acc = 0.7443
+[Eval] model=PointNet | round 2/10
+[2026-04-25 19:24:05] Evaluate_01: epoch = 0500 train time = 298 s train loss = 0.005842 train acc = 1.0000, test acc = 0.7516
+[Eval] model=PointNet | round 3/10
+[2026-04-25 19:29:06] Evaluate_02: epoch = 0500 train time = 300 s train loss = 0.009529 train acc = 1.0000, test acc = 0.7399
+[Eval] model=PointNet | round 4/10
+[2026-04-25 19:34:03] Evaluate_03: epoch = 0500 train time = 297 s train loss = 0.008310 train acc = 1.0000, test acc = 0.7439
+[Eval] model=PointNet | round 5/10
+[2026-04-25 19:39:01] Evaluate_04: epoch = 0500 train time = 298 s train loss = 0.007276 train acc = 1.0000, test acc = 0.7415
+[Eval] model=PointNet | round 6/10
+[2026-04-25 19:44:01] Evaluate_05: epoch = 0500 train time = 299 s train loss = 0.009193 train acc = 1.0000, test acc = 0.7447
+[Eval] model=PointNet | round 7/10
+[2026-04-25 19:48:59] Evaluate_06: epoch = 0500 train time = 298 s train loss = 0.007848 train acc = 1.0000, test acc = 0.7370
+[Eval] model=PointNet | round 8/10
+[2026-04-25 19:54:21] Evaluate_07: epoch = 0500 train time = 321 s train loss = 0.011055 train acc = 0.9975, test acc = 0.7431
+[Eval] model=PointNet | round 9/10
+[2026-04-25 19:59:26] Evaluate_08: epoch = 0500 train time = 304 s train loss = 0.007394 train acc = 1.0000, test acc = 0.7455
+[Eval] model=PointNet | round 10/10
+[2026-04-25 20:04:32] Evaluate_09: epoch = 0500 train time = 306 s train loss = 0.007690 train acc = 1.0000, test acc = 0.7374
+2026-04-25 20:04:32: Model PointNet | mean acc = 0.7429 | std = 0.0041
+Traceback (most recent call last):
+  File "/root/workspace/varify_sampling/start_RWSA.py", line 468, in <module>
+    main()
+  File "/root/workspace/varify_sampling/start_RWSA.py", line 353, in main
+    _, _, _, _, layers_syn = net(pc_syn)
+                             ^^^^^^^^^^^
+  File "/root/miniconda3/envs/dd/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dd/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/workspace/varify_sampling/pointnet/pointnet_model.py", line 142, in forward
+    x_gf, trans, trans_feat, x_1, x_2, x_m = self.feat(x)
+                                             ^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dd/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dd/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/workspace/varify_sampling/pointnet/pointnet_model.py", line 119, in forward
+    x_m = self.bn3(self.conv3(x_2))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dd/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dd/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dd/lib/python3.12/site-packages/torch/nn/modules/batchnorm.py", line 194, in forward
+    return F.batch_norm(
+           ^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/dd/lib/python3.12/site-packages/torch/nn/functional.py", line 2846, in batch_norm
+    return torch.batch_norm(
+           ^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 40.00 MiB. GPU 0 has a total capacity of 31.47 GiB of which 11.94 MiB is free. Process 997801 has 12.43 GiB memory in use. Process 998319 has 12.43 GiB memory in use. Including non-PyTorch memory, this process has 6.58 GiB memory in use. Of the allocated memory 6.10 GiB is allocated by PyTorch, and 172.69 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

@@ -50,8 +50,8 @@ CONFIG = {
 
     # 训练过程输出频率
     "PRINT_EVERY": 10,               # 每多少轮 print 一次训练 loss
-    "message":"tau025", #这个变量用来给生成结果做标识的
-    "tau":0.25,
+    "message":"tau045", #这个变量用来给生成结果做标识的
+    "tau":0.45,
 }
 
 # 逐个方法是协助读取CONFIG的，不用管

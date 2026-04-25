@@ -36,7 +36,7 @@ CONFIG = {
     "init": "real",
     "feature_transform": 0,
     "mmdkernel": "gaussian",
-    "SPATIAL_ALIGN_MODE": "soft",     # "soft" 或 "hard"
+    "SPATIAL_ALIGN_MODE": "hard",     # "soft" 或 "hard"
 
     # 保存
     "save_path": "result_h5",
@@ -51,7 +51,7 @@ CONFIG = {
 
     # 训练过程输出频率
     "PRINT_EVERY": 10,               # 每多少轮 print 一次训练 loss
-    "message":"test" #这个变量用来给生成结果做标识的
+    "message":"Hard_TopK" #这个变量用来给生成结果做标识的
 }
 
 # 逐个方法是协助读取CONFIG的，不用管
