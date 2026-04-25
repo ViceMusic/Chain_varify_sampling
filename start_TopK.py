@@ -389,6 +389,8 @@ def main():
                 #
                 # 然后把这些高响应点重新映射回原始 xyz 空间 pc_real / pc_syn，
                 # 让 real 和 syn 的“关键响应区域”在空间上也尽量接近。
+
+                # 在排序之前，先进行一个均值操作，这样每个点都有了一个“总体响应分数”
                 response_real = layers_real["x_m"].detach().mean(dim=1)  # [B, N]
                 response_syn = layers_syn["x_m"].mean(dim=1)             # [B, N]
 
@@ -396,12 +398,11 @@ def main():
                     # -------------------------------------------------
                     # soft 模式：响应加权空间中心
                     # -------------------------------------------------
-                    # softmax 后，每个点都有一个权重。
-                    # 高响应点权重大，低响应点权重小。
-                    # 这相当于计算“模型关注区域”的加权中心。
+                    # softmax 后，每个点都有一个权重，softmax一下，这也就形成了一个权重向量。
                     wr = torch.softmax(response_real, dim=1).unsqueeze(1)  # [B, 1, N]
                     ws = torch.softmax(response_syn, dim=1).unsqueeze(1)   # [B, 1, N]
 
+                    # 上述权重乘到原始点上，进行加权求和。
                     # pc_real / pc_syn: [B, 3, N]
                     # 加权求和后得到每个点云的响应中心: [B, 3]
                     real_center = (pc_real * wr).sum(dim=2)  # [B, 3]
