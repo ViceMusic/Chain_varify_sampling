@@ -1,0 +1,1 @@
+nohup python -u Distill_Chain_start.py > ./logs/distill_second.txt 2>&1 &

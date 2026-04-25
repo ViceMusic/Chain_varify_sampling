@@ -33,7 +33,7 @@ CONFIG = {
     "feature_transform": 0,
 
     # AnchorChain loss
-    "anchor_k": 4,
+    "anchor_k": 64,
     "kmedoids_iters": 4,
     "sinkhorn_iters": 20,
     "sinkhorn_tau": 0.08,

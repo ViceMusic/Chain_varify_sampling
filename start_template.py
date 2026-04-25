@@ -51,6 +51,7 @@ CONFIG = {
     "save_path": "result_h5",
     "mode": "result_h5",
     "PRINT_EVERY": 10,
+    "message":"test" #这个变量用来给生成结果做标识的 
 }
 # 一个字典转对象的方法，适配CONFIG，别的不用管
 def build_args_from_config(config_dict):
@@ -229,7 +230,7 @@ def main():
 
                     save_file = os.path.join(
                         args.save_path,
-                        f"best_res_{args.method}_{args.dataset}_{args.model}_{args.ppc}ppc.pt"
+                        f"best_res_{args.method}_{args.dataset}_{args.model}_{args.ppc}ppc_{args.message}.pt"
                     )
                     torch.save(best_data_package, save_file)
 

@@ -1,0 +1,48 @@
+/root/workspace/varify_sampling/Distill_Chain_start.py:185: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:253.)
+  label_syn = torch.tensor(
+========== Basic Info ==========
+Device   : cuda
+Dataset  : MODELNET40_H5
+Model    : PointNet
+Iter     : 1
+PPC      : 10
+Anchors  : 4
+================================
+The size of train data is 9841
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+The size of test data is 2468
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+
+========== Experiment 1/1 ==========
+[2026-04-23 21:46:25] Evaluate_00: epoch = 0001 train time = 6 s train loss = 3.303412 train acc = 0.1200, test acc = 0.2111
+[2026-04-23 21:46:30] Evaluate_01: epoch = 0001 train time = 4 s train loss = 3.469565 train acc = 0.0650, test acc = 0.1771
+[2026-04-23 21:46:35] Evaluate_02: epoch = 0001 train time = 4 s train loss = 3.388475 train acc = 0.0875, test acc = 0.2002
+[2026-04-23 21:46:40] Evaluate_03: epoch = 0001 train time = 4 s train loss = 3.452458 train acc = 0.0800, test acc = 0.1868
+[2026-04-23 21:46:45] Evaluate_04: epoch = 0001 train time = 5 s train loss = 3.363447 train acc = 0.1100, test acc = 0.2281
+[2026-04-23 21:46:50] Evaluate_05: epoch = 0001 train time = 5 s train loss = 3.436208 train acc = 0.0850, test acc = 0.1787
+[2026-04-23 21:46:55] Evaluate_06: epoch = 0001 train time = 5 s train loss = 3.396196 train acc = 0.0725, test acc = 0.1876
+[2026-04-23 21:47:01] Evaluate_07: epoch = 0001 train time = 5 s train loss = 3.272673 train acc = 0.1350, test acc = 0.2585
+[2026-04-23 21:47:06] Evaluate_08: epoch = 0001 train time = 5 s train loss = 3.355650 train acc = 0.0925, test acc = 0.2022
+[2026-04-23 21:47:11] Evaluate_09: epoch = 0001 train time = 5 s train loss = 3.405582 train acc = 0.1125, test acc = 0.1677
+[2026-04-23 21:47:17] Evaluate_10: epoch = 0001 train time = 5 s train loss = 3.334074 train acc = 0.0975, test acc = 0.2168
+[Eval] Iter 0000 | best mean acc = 0.2013 | model = PointNet
+[  0.00%] Iter 0000/1 | anchor_chain_loss = 8.9053
+[2026-04-23 21:47:30] Evaluate_00: epoch = 0001 train time = 5 s train loss = 3.803117 train acc = 0.0225, test acc = 0.0648
+[2026-04-23 21:47:35] Evaluate_01: epoch = 0001 train time = 5 s train loss = 3.850292 train acc = 0.0475, test acc = 0.0482
+[2026-04-23 21:47:40] Evaluate_02: epoch = 0001 train time = 5 s train loss = 3.850197 train acc = 0.0350, test acc = 0.0413
+[2026-04-23 21:47:46] Evaluate_03: epoch = 0001 train time = 5 s train loss = 3.860860 train acc = 0.0175, test acc = 0.0774
+[2026-04-23 21:47:51] Evaluate_04: epoch = 0001 train time = 5 s train loss = 3.918563 train acc = 0.0300, test acc = 0.0669
+[2026-04-23 21:47:57] Evaluate_05: epoch = 0001 train time = 5 s train loss = 3.885867 train acc = 0.0200, test acc = 0.0438
+[2026-04-23 21:48:02] Evaluate_06: epoch = 0001 train time = 5 s train loss = 3.898078 train acc = 0.0300, test acc = 0.0551
+[2026-04-23 21:48:08] Evaluate_07: epoch = 0001 train time = 5 s train loss = 3.839855 train acc = 0.0350, test acc = 0.0535
+[2026-04-23 21:48:14] Evaluate_08: epoch = 0001 train time = 5 s train loss = 3.939055 train acc = 0.0125, test acc = 0.0332
+[2026-04-23 21:48:19] Evaluate_09: epoch = 0001 train time = 5 s train loss = 3.870831 train acc = 0.0325, test acc = 0.0454
+[2026-04-23 21:48:25] Evaluate_10: epoch = 0001 train time = 5 s train loss = 3.883603 train acc = 0.0225, test acc = 0.0478
+[Eval] Iter 0001 | best mean acc = 0.0525 | model = PointNet
+[100.00%] Iter 0001/1 | anchor_chain_loss = 18.8650
+
+========== Final Result ==========
+Best eval iter : 0
+Best eval model: PointNet
+Best mean acc  : 0.2013
+PointNet: mean=0.0525, std=0.0122, best_single=0.0774
