@@ -50,6 +50,7 @@ CONFIG = {
 
     # 训练过程输出频率
     "PRINT_EVERY": 10,               # 每多少轮 print 一次训练 loss
+    "message":"test" #这个变量用来给生成结果做标识的 
 }
 
 # 逐个方法是协助读取CONFIG的，不用管
@@ -386,7 +387,7 @@ def main():
                 ])
                 torch.save(
                     {"data": data_save, "accs_all_exps": accs_all_exps},
-                    os.path.join(args.save_path, f"res_{args.method}_{args.dataset}_{args.model}_{args.ppc}ppc.pt")
+                    os.path.join(args.save_path, f"res_{args.method}_{args.dataset}_{args.model}_{args.ppc}ppc_{args.message}.pt")
                 )
     # 下面纯打印来着
     logger.info("\n==================== Final Results ====================\n")
