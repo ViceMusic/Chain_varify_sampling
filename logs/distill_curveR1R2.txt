@@ -1,0 +1,330 @@
+2026-04-26 00:53:17: Device: cuda
+2026-04-26 00:53:17: Dataset: MODELNET40_H5
+2026-04-26 00:53:17: Model: PointNet
+2026-04-26 00:53:17: TEST_ONLY: False
+The size of train data is 9841
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+The size of test data is 2468
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+2026-04-26 00:53:17: eval_it_pool: [0, 250, 500, 750, 1000, 1250, 1500]
+2026-04-26 00:53:17: 
+================== Exp 0 ==================
+
+/root/workspace/varify_sampling/start_curve.py:194: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:253.)
+  label_syn = torch.tensor(
+2026-04-26 00:53:35: Initialize synthetic data from random real samples
+2026-04-26 00:53:35: [2026-04-26 00:53:35] training begins
+2026-04-26 00:53:35: Evaluate at iteration 0
+[Eval] model=PointNet | round 1/10
+[2026-04-26 00:57:33] Evaluate_00: epoch = 0500 train time = 238 s train loss = 0.008779 train acc = 1.0000, test acc = 0.7443
+[Eval] model=PointNet | round 2/10
+[2026-04-26 01:01:23] Evaluate_01: epoch = 0500 train time = 230 s train loss = 0.005842 train acc = 1.0000, test acc = 0.7516
+[Eval] model=PointNet | round 3/10
+[2026-04-26 01:05:11] Evaluate_02: epoch = 0500 train time = 227 s train loss = 0.009529 train acc = 1.0000, test acc = 0.7399
+[Eval] model=PointNet | round 4/10
+[2026-04-26 01:08:59] Evaluate_03: epoch = 0500 train time = 227 s train loss = 0.008310 train acc = 1.0000, test acc = 0.7439
+[Eval] model=PointNet | round 5/10
+[2026-04-26 01:12:49] Evaluate_04: epoch = 0500 train time = 230 s train loss = 0.007276 train acc = 1.0000, test acc = 0.7415
+[Eval] model=PointNet | round 6/10
+[2026-04-26 01:16:41] Evaluate_05: epoch = 0500 train time = 231 s train loss = 0.009193 train acc = 1.0000, test acc = 0.7447
+[Eval] model=PointNet | round 7/10
+[2026-04-26 01:20:31] Evaluate_06: epoch = 0500 train time = 230 s train loss = 0.007848 train acc = 1.0000, test acc = 0.7370
+[Eval] model=PointNet | round 8/10
+[2026-04-26 01:24:20] Evaluate_07: epoch = 0500 train time = 229 s train loss = 0.011055 train acc = 0.9975, test acc = 0.7431
+[Eval] model=PointNet | round 9/10
+[2026-04-26 01:28:15] Evaluate_08: epoch = 0500 train time = 234 s train loss = 0.007394 train acc = 1.0000, test acc = 0.7455
+[Eval] model=PointNet | round 10/10
+[2026-04-26 01:32:07] Evaluate_09: epoch = 0500 train time = 231 s train loss = 0.007690 train acc = 1.0000, test acc = 0.7374
+2026-04-26 01:32:07: Model PointNet | mean acc = 0.7429 | std = 0.0041
+[  0.00%] Iter 0000/1500 | loss = 0.0188
+[  0.67%] Iter 0010/1500 | loss = 0.0232
+[  1.33%] Iter 0020/1500 | loss = 0.0300
+[  2.00%] Iter 0030/1500 | loss = 0.0210
+[  2.67%] Iter 0040/1500 | loss = 0.0199
+[  3.33%] Iter 0050/1500 | loss = 0.0228
+[  4.00%] Iter 0060/1500 | loss = 0.0237
+[  4.67%] Iter 0070/1500 | loss = 0.0303
+[  5.33%] Iter 0080/1500 | loss = 0.0196
+[  6.00%] Iter 0090/1500 | loss = 0.0202
+[  6.67%] Iter 0100/1500 | loss = 0.0178
+[  7.33%] Iter 0110/1500 | loss = 0.0234
+[  8.00%] Iter 0120/1500 | loss = 0.0185
+[  8.67%] Iter 0130/1500 | loss = 0.0175
+[  9.33%] Iter 0140/1500 | loss = 0.0220
+[ 10.00%] Iter 0150/1500 | loss = 0.0220
+[ 10.67%] Iter 0160/1500 | loss = 0.0169
+[ 11.33%] Iter 0170/1500 | loss = 0.0161
+[ 12.00%] Iter 0180/1500 | loss = 0.0161
+[ 12.67%] Iter 0190/1500 | loss = 0.0166
+[ 13.33%] Iter 0200/1500 | loss = 0.0158
+[ 14.00%] Iter 0210/1500 | loss = 0.0169
+[ 14.67%] Iter 0220/1500 | loss = 0.0147
+[ 15.33%] Iter 0230/1500 | loss = 0.0182
+[ 16.00%] Iter 0240/1500 | loss = 0.0166
+2026-04-26 01:33:30: Evaluate at iteration 250
+[Eval] model=PointNet | round 1/10
+[2026-04-26 01:37:20] Evaluate_00: epoch = 0500 train time = 229 s train loss = 0.009631 train acc = 1.0000, test acc = 0.7666
+[Eval] model=PointNet | round 2/10
+[2026-04-26 01:41:10] Evaluate_01: epoch = 0500 train time = 230 s train loss = 0.010368 train acc = 1.0000, test acc = 0.7682
+[Eval] model=PointNet | round 3/10
+[2026-04-26 01:45:00] Evaluate_02: epoch = 0500 train time = 230 s train loss = 0.008272 train acc = 1.0000, test acc = 0.7747
+[Eval] model=PointNet | round 4/10
+[2026-04-26 01:48:52] Evaluate_03: epoch = 0500 train time = 231 s train loss = 0.007151 train acc = 1.0000, test acc = 0.7678
+[Eval] model=PointNet | round 5/10
+[2026-04-26 01:52:42] Evaluate_04: epoch = 0500 train time = 229 s train loss = 0.007353 train acc = 1.0000, test acc = 0.7727
+[Eval] model=PointNet | round 6/10
+[2026-04-26 01:56:32] Evaluate_05: epoch = 0500 train time = 230 s train loss = 0.007083 train acc = 1.0000, test acc = 0.7662
+[Eval] model=PointNet | round 7/10
+[2026-04-26 02:00:23] Evaluate_06: epoch = 0500 train time = 230 s train loss = 0.007203 train acc = 1.0000, test acc = 0.7711
+[Eval] model=PointNet | round 8/10
+[2026-04-26 02:04:14] Evaluate_07: epoch = 0500 train time = 231 s train loss = 0.007468 train acc = 1.0000, test acc = 0.7686
+[Eval] model=PointNet | round 9/10
+[2026-04-26 02:08:04] Evaluate_08: epoch = 0500 train time = 230 s train loss = 0.006591 train acc = 1.0000, test acc = 0.7788
+[Eval] model=PointNet | round 10/10
+[2026-04-26 02:11:59] Evaluate_09: epoch = 0500 train time = 235 s train loss = 0.007973 train acc = 1.0000, test acc = 0.7694
+2026-04-26 02:11:59: Model PointNet | mean acc = 0.7704 | std = 0.0038
+[ 16.67%] Iter 0250/1500 | loss = 0.0151
+[ 17.33%] Iter 0260/1500 | loss = 0.0197
+[ 18.00%] Iter 0270/1500 | loss = 0.0236
+[ 18.67%] Iter 0280/1500 | loss = 0.0148
+[ 19.33%] Iter 0290/1500 | loss = 0.0175
+[ 20.00%] Iter 0300/1500 | loss = 0.0198
+[ 20.67%] Iter 0310/1500 | loss = 0.0150
+[ 21.33%] Iter 0320/1500 | loss = 0.0229
+[ 22.00%] Iter 0330/1500 | loss = 0.0141
+[ 22.67%] Iter 0340/1500 | loss = 0.0142
+[ 23.33%] Iter 0350/1500 | loss = 0.0162
+[ 24.00%] Iter 0360/1500 | loss = 0.0168
+[ 24.67%] Iter 0370/1500 | loss = 0.0141
+[ 25.33%] Iter 0380/1500 | loss = 0.0199
+[ 26.00%] Iter 0390/1500 | loss = 0.0169
+[ 26.67%] Iter 0400/1500 | loss = 0.0151
+[ 27.33%] Iter 0410/1500 | loss = 0.0195
+[ 28.00%] Iter 0420/1500 | loss = 0.0153
+[ 28.67%] Iter 0430/1500 | loss = 0.0173
+[ 29.33%] Iter 0440/1500 | loss = 0.0156
+[ 30.00%] Iter 0450/1500 | loss = 0.0138
+[ 30.67%] Iter 0460/1500 | loss = 0.0185
+[ 31.33%] Iter 0470/1500 | loss = 0.0169
+[ 32.00%] Iter 0480/1500 | loss = 0.0195
+[ 32.67%] Iter 0490/1500 | loss = 0.0156
+2026-04-26 02:13:25: Evaluate at iteration 500
+[Eval] model=PointNet | round 1/10
+[2026-04-26 02:17:17] Evaluate_00: epoch = 0500 train time = 231 s train loss = 0.009879 train acc = 0.9975, test acc = 0.7776
+[Eval] model=PointNet | round 2/10
+[2026-04-26 02:21:05] Evaluate_01: epoch = 0500 train time = 228 s train loss = 0.009627 train acc = 1.0000, test acc = 0.7739
+[Eval] model=PointNet | round 3/10
+[2026-04-26 02:24:53] Evaluate_02: epoch = 0500 train time = 227 s train loss = 0.007207 train acc = 1.0000, test acc = 0.7654
+[Eval] model=PointNet | round 4/10
+[2026-04-26 02:28:42] Evaluate_03: epoch = 0500 train time = 228 s train loss = 0.007580 train acc = 1.0000, test acc = 0.7666
+[Eval] model=PointNet | round 5/10
+[2026-04-26 02:32:31] Evaluate_04: epoch = 0500 train time = 228 s train loss = 0.008386 train acc = 1.0000, test acc = 0.7690
+[Eval] model=PointNet | round 6/10
+[2026-04-26 02:36:21] Evaluate_05: epoch = 0500 train time = 230 s train loss = 0.010502 train acc = 1.0000, test acc = 0.7719
+[Eval] model=PointNet | round 7/10
+[2026-04-26 02:40:12] Evaluate_06: epoch = 0500 train time = 231 s train loss = 0.008742 train acc = 1.0000, test acc = 0.7784
+[Eval] model=PointNet | round 8/10
+[2026-04-26 02:44:03] Evaluate_07: epoch = 0500 train time = 230 s train loss = 0.008540 train acc = 1.0000, test acc = 0.7739
+[Eval] model=PointNet | round 9/10
+[2026-04-26 02:47:54] Evaluate_08: epoch = 0500 train time = 231 s train loss = 0.015646 train acc = 0.9975, test acc = 0.7715
+[Eval] model=PointNet | round 10/10
+[2026-04-26 02:51:43] Evaluate_09: epoch = 0500 train time = 229 s train loss = 0.010792 train acc = 1.0000, test acc = 0.7788
+2026-04-26 02:51:43: Model PointNet | mean acc = 0.7727 | std = 0.0045
+[ 33.33%] Iter 0500/1500 | loss = 0.0169
+[ 34.00%] Iter 0510/1500 | loss = 0.0152
+[ 34.67%] Iter 0520/1500 | loss = 0.0213
+[ 35.33%] Iter 0530/1500 | loss = 0.0159
+[ 36.00%] Iter 0540/1500 | loss = 0.0166
+[ 36.67%] Iter 0550/1500 | loss = 0.0174
+[ 37.33%] Iter 0560/1500 | loss = 0.0187
+[ 38.00%] Iter 0570/1500 | loss = 0.0195
+[ 38.67%] Iter 0580/1500 | loss = 0.0149
+[ 39.33%] Iter 0590/1500 | loss = 0.0143
+[ 40.00%] Iter 0600/1500 | loss = 0.0169
+[ 40.67%] Iter 0610/1500 | loss = 0.0221
+[ 41.33%] Iter 0620/1500 | loss = 0.0181
+[ 42.00%] Iter 0630/1500 | loss = 0.0162
+[ 42.67%] Iter 0640/1500 | loss = 0.0196
+[ 43.33%] Iter 0650/1500 | loss = 0.0204
+[ 44.00%] Iter 0660/1500 | loss = 0.0142
+[ 44.67%] Iter 0670/1500 | loss = 0.0167
+[ 45.33%] Iter 0680/1500 | loss = 0.0163
+[ 46.00%] Iter 0690/1500 | loss = 0.0146
+[ 46.67%] Iter 0700/1500 | loss = 0.0187
+[ 47.33%] Iter 0710/1500 | loss = 0.0158
+[ 48.00%] Iter 0720/1500 | loss = 0.0145
+[ 48.67%] Iter 0730/1500 | loss = 0.0197
+[ 49.33%] Iter 0740/1500 | loss = 0.0166
+2026-04-26 02:53:08: Evaluate at iteration 750
+[Eval] model=PointNet | round 1/10
+[2026-04-26 02:56:57] Evaluate_00: epoch = 0500 train time = 229 s train loss = 0.010739 train acc = 1.0000, test acc = 0.7678
+[Eval] model=PointNet | round 2/10
+[2026-04-26 03:00:48] Evaluate_01: epoch = 0500 train time = 230 s train loss = 0.009288 train acc = 1.0000, test acc = 0.7788
+[Eval] model=PointNet | round 3/10
+[2026-04-26 03:04:37] Evaluate_02: epoch = 0500 train time = 229 s train loss = 0.074761 train acc = 0.9875, test acc = 0.7670
+[Eval] model=PointNet | round 4/10
+[2026-04-26 03:08:24] Evaluate_03: epoch = 0500 train time = 227 s train loss = 0.010166 train acc = 1.0000, test acc = 0.7800
+[Eval] model=PointNet | round 5/10
+[2026-04-26 03:12:16] Evaluate_04: epoch = 0500 train time = 231 s train loss = 0.008016 train acc = 1.0000, test acc = 0.7751
+[Eval] model=PointNet | round 6/10
+[2026-04-26 03:16:02] Evaluate_05: epoch = 0500 train time = 226 s train loss = 0.007790 train acc = 1.0000, test acc = 0.7808
+[Eval] model=PointNet | round 7/10
+[2026-04-26 03:19:58] Evaluate_06: epoch = 0500 train time = 235 s train loss = 0.009535 train acc = 0.9975, test acc = 0.7759
+[Eval] model=PointNet | round 8/10
+[2026-04-26 03:23:48] Evaluate_07: epoch = 0500 train time = 229 s train loss = 0.009186 train acc = 1.0000, test acc = 0.7767
+[Eval] model=PointNet | round 9/10
+[2026-04-26 03:27:38] Evaluate_08: epoch = 0500 train time = 230 s train loss = 0.012167 train acc = 1.0000, test acc = 0.7719
+[Eval] model=PointNet | round 10/10
+[2026-04-26 03:31:28] Evaluate_09: epoch = 0500 train time = 230 s train loss = 0.011414 train acc = 1.0000, test acc = 0.7796
+2026-04-26 03:31:28: Model PointNet | mean acc = 0.7754 | std = 0.0047
+[ 50.00%] Iter 0750/1500 | loss = 0.0138
+[ 50.67%] Iter 0760/1500 | loss = 0.0162
+[ 51.33%] Iter 0770/1500 | loss = 0.0197
+[ 52.00%] Iter 0780/1500 | loss = 0.0131
+[ 52.67%] Iter 0790/1500 | loss = 0.0157
+[ 53.33%] Iter 0800/1500 | loss = 0.0186
+[ 54.00%] Iter 0810/1500 | loss = 0.0145
+[ 54.67%] Iter 0820/1500 | loss = 0.0207
+[ 55.33%] Iter 0830/1500 | loss = 0.0187
+[ 56.00%] Iter 0840/1500 | loss = 0.0165
+[ 56.67%] Iter 0850/1500 | loss = 0.0156
+[ 57.33%] Iter 0860/1500 | loss = 0.0246
+[ 58.00%] Iter 0870/1500 | loss = 0.0138
+[ 58.67%] Iter 0880/1500 | loss = 0.0193
+[ 59.33%] Iter 0890/1500 | loss = 0.0166
+[ 60.00%] Iter 0900/1500 | loss = 0.0163
+[ 60.67%] Iter 0910/1500 | loss = 0.0140
+[ 61.33%] Iter 0920/1500 | loss = 0.0147
+[ 62.00%] Iter 0930/1500 | loss = 0.0152
+[ 62.67%] Iter 0940/1500 | loss = 0.0173
+[ 63.33%] Iter 0950/1500 | loss = 0.0160
+[ 64.00%] Iter 0960/1500 | loss = 0.0171
+[ 64.67%] Iter 0970/1500 | loss = 0.0170
+[ 65.33%] Iter 0980/1500 | loss = 0.0191
+[ 66.00%] Iter 0990/1500 | loss = 0.0149
+2026-04-26 03:32:52: Evaluate at iteration 1000
+[Eval] model=PointNet | round 1/10
+[2026-04-26 03:36:44] Evaluate_00: epoch = 0500 train time = 232 s train loss = 0.011411 train acc = 1.0000, test acc = 0.7788
+[Eval] model=PointNet | round 2/10
+[2026-04-26 03:40:38] Evaluate_01: epoch = 0500 train time = 233 s train loss = 0.011966 train acc = 0.9975, test acc = 0.7711
+[Eval] model=PointNet | round 3/10
+[2026-04-26 03:44:25] Evaluate_02: epoch = 0500 train time = 226 s train loss = 0.014751 train acc = 0.9950, test acc = 0.7804
+[Eval] model=PointNet | round 4/10
+[2026-04-26 03:48:14] Evaluate_03: epoch = 0500 train time = 229 s train loss = 0.012085 train acc = 1.0000, test acc = 0.7731
+[Eval] model=PointNet | round 5/10
+[2026-04-26 03:52:05] Evaluate_04: epoch = 0500 train time = 230 s train loss = 0.008291 train acc = 1.0000, test acc = 0.7731
+[Eval] model=PointNet | round 6/10
+[2026-04-26 03:55:55] Evaluate_05: epoch = 0500 train time = 230 s train loss = 0.013243 train acc = 1.0000, test acc = 0.7642
+[Eval] model=PointNet | round 7/10
+[2026-04-26 03:59:47] Evaluate_06: epoch = 0500 train time = 231 s train loss = 0.013100 train acc = 0.9975, test acc = 0.7719
+[Eval] model=PointNet | round 8/10
+[2026-04-26 04:03:35] Evaluate_07: epoch = 0500 train time = 227 s train loss = 0.010583 train acc = 1.0000, test acc = 0.7755
+[Eval] model=PointNet | round 9/10
+[2026-04-26 04:07:25] Evaluate_08: epoch = 0500 train time = 229 s train loss = 0.011521 train acc = 1.0000, test acc = 0.7747
+[Eval] model=PointNet | round 10/10
+[2026-04-26 04:11:13] Evaluate_09: epoch = 0500 train time = 227 s train loss = 0.012838 train acc = 0.9975, test acc = 0.7800
+2026-04-26 04:11:13: Model PointNet | mean acc = 0.7743 | std = 0.0046
+[ 66.67%] Iter 1000/1500 | loss = 0.0130
+[ 67.33%] Iter 1010/1500 | loss = 0.0201
+[ 68.00%] Iter 1020/1500 | loss = 0.0206
+[ 68.67%] Iter 1030/1500 | loss = 0.0148
+[ 69.33%] Iter 1040/1500 | loss = 0.0182
+[ 70.00%] Iter 1050/1500 | loss = 0.0168
+[ 70.67%] Iter 1060/1500 | loss = 0.0165
+[ 71.33%] Iter 1070/1500 | loss = 0.0205
+[ 72.00%] Iter 1080/1500 | loss = 0.0140
+[ 72.67%] Iter 1090/1500 | loss = 0.0159
+[ 73.33%] Iter 1100/1500 | loss = 0.0166
+[ 74.00%] Iter 1110/1500 | loss = 0.0141
+[ 74.67%] Iter 1120/1500 | loss = 0.0167
+[ 75.33%] Iter 1130/1500 | loss = 0.0194
+[ 76.00%] Iter 1140/1500 | loss = 0.0163
+[ 76.67%] Iter 1150/1500 | loss = 0.0168
+[ 77.33%] Iter 1160/1500 | loss = 0.0155
+[ 78.00%] Iter 1170/1500 | loss = 0.0168
+[ 78.67%] Iter 1180/1500 | loss = 0.0135
+[ 79.33%] Iter 1190/1500 | loss = 0.0166
+[ 80.00%] Iter 1200/1500 | loss = 0.0150
+[ 80.67%] Iter 1210/1500 | loss = 0.0142
+[ 81.33%] Iter 1220/1500 | loss = 0.0157
+[ 82.00%] Iter 1230/1500 | loss = 0.0247
+[ 82.67%] Iter 1240/1500 | loss = 0.0152
+2026-04-26 04:12:35: Evaluate at iteration 1250
+[Eval] model=PointNet | round 1/10
+[2026-04-26 04:16:24] Evaluate_00: epoch = 0500 train time = 228 s train loss = 0.012028 train acc = 1.0000, test acc = 0.7759
+[Eval] model=PointNet | round 2/10
+[2026-04-26 04:20:13] Evaluate_01: epoch = 0500 train time = 229 s train loss = 0.010966 train acc = 1.0000, test acc = 0.7788
+[Eval] model=PointNet | round 3/10
+[2026-04-26 04:23:59] Evaluate_02: epoch = 0500 train time = 226 s train loss = 0.008319 train acc = 1.0000, test acc = 0.7796
+[Eval] model=PointNet | round 4/10
+[2026-04-26 04:27:47] Evaluate_03: epoch = 0500 train time = 227 s train loss = 0.010389 train acc = 1.0000, test acc = 0.7780
+[Eval] model=PointNet | round 5/10
+[2026-04-26 04:31:35] Evaluate_04: epoch = 0500 train time = 228 s train loss = 0.011013 train acc = 1.0000, test acc = 0.7800
+[Eval] model=PointNet | round 6/10
+[2026-04-26 04:35:23] Evaluate_05: epoch = 0500 train time = 227 s train loss = 0.011337 train acc = 1.0000, test acc = 0.7792
+[Eval] model=PointNet | round 7/10
+[2026-04-26 04:39:12] Evaluate_06: epoch = 0500 train time = 229 s train loss = 0.009698 train acc = 1.0000, test acc = 0.7763
+[Eval] model=PointNet | round 8/10
+[2026-04-26 04:43:02] Evaluate_07: epoch = 0500 train time = 230 s train loss = 0.009130 train acc = 1.0000, test acc = 0.7686
+[Eval] model=PointNet | round 9/10
+[2026-04-26 04:46:52] Evaluate_08: epoch = 0500 train time = 229 s train loss = 0.012166 train acc = 1.0000, test acc = 0.7630
+[Eval] model=PointNet | round 10/10
+[2026-04-26 04:50:38] Evaluate_09: epoch = 0500 train time = 226 s train loss = 0.014889 train acc = 0.9975, test acc = 0.7865
+2026-04-26 04:50:38: Model PointNet | mean acc = 0.7766 | std = 0.0062
+[ 83.33%] Iter 1250/1500 | loss = 0.0122
+[ 84.00%] Iter 1260/1500 | loss = 0.0146
+[ 84.67%] Iter 1270/1500 | loss = 0.0264
+[ 85.33%] Iter 1280/1500 | loss = 0.0137
+[ 86.00%] Iter 1290/1500 | loss = 0.0158
+[ 86.67%] Iter 1300/1500 | loss = 0.0197
+[ 87.33%] Iter 1310/1500 | loss = 0.0156
+[ 88.00%] Iter 1320/1500 | loss = 0.0175
+[ 88.67%] Iter 1330/1500 | loss = 0.0142
+[ 89.33%] Iter 1340/1500 | loss = 0.0147
+[ 90.00%] Iter 1350/1500 | loss = 0.0143
+[ 90.67%] Iter 1360/1500 | loss = 0.0194
+[ 91.33%] Iter 1370/1500 | loss = 0.0130
+[ 92.00%] Iter 1380/1500 | loss = 0.0208
+[ 92.67%] Iter 1390/1500 | loss = 0.0196
+[ 93.33%] Iter 1400/1500 | loss = 0.0172
+[ 94.00%] Iter 1410/1500 | loss = 0.0165
+[ 94.67%] Iter 1420/1500 | loss = 0.0129
+[ 95.33%] Iter 1430/1500 | loss = 0.0176
+[ 96.00%] Iter 1440/1500 | loss = 0.0176
+[ 96.67%] Iter 1450/1500 | loss = 0.0141
+[ 97.33%] Iter 1460/1500 | loss = 0.0145
+[ 98.00%] Iter 1470/1500 | loss = 0.0154
+[ 98.67%] Iter 1480/1500 | loss = 0.0270
+[ 99.33%] Iter 1490/1500 | loss = 0.0161
+2026-04-26 04:52:00: Evaluate at iteration 1500
+[Eval] model=PointNet | round 1/10
+[2026-04-26 04:55:48] Evaluate_00: epoch = 0500 train time = 227 s train loss = 0.009834 train acc = 1.0000, test acc = 0.7836
+[Eval] model=PointNet | round 2/10
+[2026-04-26 04:59:37] Evaluate_01: epoch = 0500 train time = 229 s train loss = 0.011012 train acc = 1.0000, test acc = 0.7767
+[Eval] model=PointNet | round 3/10
+[2026-04-26 05:03:24] Evaluate_02: epoch = 0500 train time = 226 s train loss = 0.012119 train acc = 1.0000, test acc = 0.7743
+[Eval] model=PointNet | round 4/10
+[2026-04-26 05:07:11] Evaluate_03: epoch = 0500 train time = 227 s train loss = 0.012522 train acc = 0.9950, test acc = 0.7853
+[Eval] model=PointNet | round 5/10
+[2026-04-26 05:11:00] Evaluate_04: epoch = 0500 train time = 229 s train loss = 0.010085 train acc = 1.0000, test acc = 0.7780
+[Eval] model=PointNet | round 6/10
+[2026-04-26 05:14:46] Evaluate_05: epoch = 0500 train time = 225 s train loss = 0.011073 train acc = 1.0000, test acc = 0.7824
+[Eval] model=PointNet | round 7/10
+[2026-04-26 05:18:37] Evaluate_06: epoch = 0500 train time = 230 s train loss = 0.012779 train acc = 1.0000, test acc = 0.7804
+[Eval] model=PointNet | round 8/10
+[2026-04-26 05:22:24] Evaluate_07: epoch = 0500 train time = 227 s train loss = 0.008697 train acc = 1.0000, test acc = 0.7824
+[Eval] model=PointNet | round 9/10
+[2026-04-26 05:26:14] Evaluate_08: epoch = 0500 train time = 229 s train loss = 0.009530 train acc = 1.0000, test acc = 0.7755
+[Eval] model=PointNet | round 10/10
+[2026-04-26 05:30:02] Evaluate_09: epoch = 0500 train time = 227 s train loss = 0.013819 train acc = 0.9975, test acc = 0.7792
+2026-04-26 05:30:02: Model PointNet | mean acc = 0.7798 | std = 0.0035
+[100.00%] Iter 1500/1500 | loss = 0.0148
+2026-04-26 05:30:02: 
+==================== Final Results ====================
+
+2026-04-26 05:30:02: Run 1 exp | train on PointNet | eval 10 random PointNet | mean=77.98% std=0.35%
+
+==================== Final Results ====================
+
+[0.74290924 0.77042139 0.77269044 0.77536467 0.77427066 0.77658023
+ 0.7797812 ]

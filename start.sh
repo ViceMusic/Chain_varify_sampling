@@ -1,1 +1,1 @@
-nohup python -u start_RWSA.py > ./logs/distill_RWSA_tau045R_ppc10.txt 2>&1 &
+nohup python -u start_curve.py > ./logs/distill_curveR1R2.txt 2>&1 &
