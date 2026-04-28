@@ -1,0 +1,197 @@
+2026-04-26 22:13:18: Device: cuda
+2026-04-26 22:13:18: Dataset: MODELNET40_H5
+2026-04-26 22:13:18: Model: PointNet
+2026-04-26 22:13:18: TEST_ONLY: False
+The size of train data is 9841
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+The size of test data is 2468
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+2026-04-26 22:13:18: eval_it_pool: [1500]
+2026-04-26 22:13:18: 
+================== Exp 0 ==================
+
+/root/workspace/varify_sampling/start_curve_NoR2.py:192: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:253.)
+  label_syn = torch.tensor(
+2026-04-26 22:13:32: Initialize synthetic data from random real samples
+2026-04-26 22:13:32: [2026-04-26 22:13:32] training begins
+[  0.00%] Iter 0000/1500 | loss = 0.0048
+[  0.67%] Iter 0010/1500 | loss = 0.0048
+[  1.33%] Iter 0020/1500 | loss = 0.0048
+[  2.00%] Iter 0030/1500 | loss = 0.0048
+[  2.67%] Iter 0040/1500 | loss = 0.0043
+[  3.33%] Iter 0050/1500 | loss = 0.0042
+[  4.00%] Iter 0060/1500 | loss = 0.0049
+[  4.67%] Iter 0070/1500 | loss = 0.0044
+[  5.33%] Iter 0080/1500 | loss = 0.0045
+[  6.00%] Iter 0090/1500 | loss = 0.0047
+[  6.67%] Iter 0100/1500 | loss = 0.0043
+[  7.33%] Iter 0110/1500 | loss = 0.0044
+[  8.00%] Iter 0120/1500 | loss = 0.0048
+[  8.67%] Iter 0130/1500 | loss = 0.0038
+[  9.33%] Iter 0140/1500 | loss = 0.0043
+[ 10.00%] Iter 0150/1500 | loss = 0.0047
+[ 10.67%] Iter 0160/1500 | loss = 0.0041
+[ 11.33%] Iter 0170/1500 | loss = 0.0043
+[ 12.00%] Iter 0180/1500 | loss = 0.0041
+[ 12.67%] Iter 0190/1500 | loss = 0.0041
+[ 13.33%] Iter 0200/1500 | loss = 0.0040
+[ 14.00%] Iter 0210/1500 | loss = 0.0043
+[ 14.67%] Iter 0220/1500 | loss = 0.0038
+[ 15.33%] Iter 0230/1500 | loss = 0.0039
+[ 16.00%] Iter 0240/1500 | loss = 0.0043
+[ 16.67%] Iter 0250/1500 | loss = 0.0040
+[ 17.33%] Iter 0260/1500 | loss = 0.0040
+[ 18.00%] Iter 0270/1500 | loss = 0.0040
+[ 18.67%] Iter 0280/1500 | loss = 0.0041
+[ 19.33%] Iter 0290/1500 | loss = 0.0042
+[ 20.00%] Iter 0300/1500 | loss = 0.0043
+[ 20.67%] Iter 0310/1500 | loss = 0.0041
+[ 21.33%] Iter 0320/1500 | loss = 0.0040
+[ 22.00%] Iter 0330/1500 | loss = 0.0040
+[ 22.67%] Iter 0340/1500 | loss = 0.0041
+[ 23.33%] Iter 0350/1500 | loss = 0.0043
+[ 24.00%] Iter 0360/1500 | loss = 0.0039
+[ 24.67%] Iter 0370/1500 | loss = 0.0040
+[ 25.33%] Iter 0380/1500 | loss = 0.0039
+[ 26.00%] Iter 0390/1500 | loss = 0.0039
+[ 26.67%] Iter 0400/1500 | loss = 0.0039
+[ 27.33%] Iter 0410/1500 | loss = 0.0047
+[ 28.00%] Iter 0420/1500 | loss = 0.0041
+[ 28.67%] Iter 0430/1500 | loss = 0.0041
+[ 29.33%] Iter 0440/1500 | loss = 0.0037
+[ 30.00%] Iter 0450/1500 | loss = 0.0038
+[ 30.67%] Iter 0460/1500 | loss = 0.0047
+[ 31.33%] Iter 0470/1500 | loss = 0.0042
+[ 32.00%] Iter 0480/1500 | loss = 0.0039
+[ 32.67%] Iter 0490/1500 | loss = 0.0041
+[ 33.33%] Iter 0500/1500 | loss = 0.0040
+[ 34.00%] Iter 0510/1500 | loss = 0.0038
+[ 34.67%] Iter 0520/1500 | loss = 0.0039
+[ 35.33%] Iter 0530/1500 | loss = 0.0042
+[ 36.00%] Iter 0540/1500 | loss = 0.0042
+[ 36.67%] Iter 0550/1500 | loss = 0.0040
+[ 37.33%] Iter 0560/1500 | loss = 0.0042
+[ 38.00%] Iter 0570/1500 | loss = 0.0039
+[ 38.67%] Iter 0580/1500 | loss = 0.0040
+[ 39.33%] Iter 0590/1500 | loss = 0.0040
+[ 40.00%] Iter 0600/1500 | loss = 0.0043
+[ 40.67%] Iter 0610/1500 | loss = 0.0041
+[ 41.33%] Iter 0620/1500 | loss = 0.0045
+[ 42.00%] Iter 0630/1500 | loss = 0.0038
+[ 42.67%] Iter 0640/1500 | loss = 0.0041
+[ 43.33%] Iter 0650/1500 | loss = 0.0043
+[ 44.00%] Iter 0660/1500 | loss = 0.0037
+[ 44.67%] Iter 0670/1500 | loss = 0.0042
+[ 45.33%] Iter 0680/1500 | loss = 0.0042
+[ 46.00%] Iter 0690/1500 | loss = 0.0037
+[ 46.67%] Iter 0700/1500 | loss = 0.0042
+[ 47.33%] Iter 0710/1500 | loss = 0.0041
+[ 48.00%] Iter 0720/1500 | loss = 0.0037
+[ 48.67%] Iter 0730/1500 | loss = 0.0041
+[ 49.33%] Iter 0740/1500 | loss = 0.0042
+[ 50.00%] Iter 0750/1500 | loss = 0.0042
+[ 50.67%] Iter 0760/1500 | loss = 0.0038
+[ 51.33%] Iter 0770/1500 | loss = 0.0037
+[ 52.00%] Iter 0780/1500 | loss = 0.0036
+[ 52.67%] Iter 0790/1500 | loss = 0.0038
+[ 53.33%] Iter 0800/1500 | loss = 0.0038
+[ 54.00%] Iter 0810/1500 | loss = 0.0041
+[ 54.67%] Iter 0820/1500 | loss = 0.0039
+[ 55.33%] Iter 0830/1500 | loss = 0.0041
+[ 56.00%] Iter 0840/1500 | loss = 0.0043
+[ 56.67%] Iter 0850/1500 | loss = 0.0040
+[ 57.33%] Iter 0860/1500 | loss = 0.0041
+[ 58.00%] Iter 0870/1500 | loss = 0.0041
+[ 58.67%] Iter 0880/1500 | loss = 0.0038
+[ 59.33%] Iter 0890/1500 | loss = 0.0037
+[ 60.00%] Iter 0900/1500 | loss = 0.0038
+[ 60.67%] Iter 0910/1500 | loss = 0.0039
+[ 61.33%] Iter 0920/1500 | loss = 0.0042
+[ 62.00%] Iter 0930/1500 | loss = 0.0038
+[ 62.67%] Iter 0940/1500 | loss = 0.0041
+[ 63.33%] Iter 0950/1500 | loss = 0.0038
+[ 64.00%] Iter 0960/1500 | loss = 0.0041
+[ 64.67%] Iter 0970/1500 | loss = 0.0040
+[ 65.33%] Iter 0980/1500 | loss = 0.0038
+[ 66.00%] Iter 0990/1500 | loss = 0.0039
+[ 66.67%] Iter 1000/1500 | loss = 0.0040
+[ 67.33%] Iter 1010/1500 | loss = 0.0041
+[ 68.00%] Iter 1020/1500 | loss = 0.0036
+[ 68.67%] Iter 1030/1500 | loss = 0.0041
+[ 69.33%] Iter 1040/1500 | loss = 0.0042
+[ 70.00%] Iter 1050/1500 | loss = 0.0039
+[ 70.67%] Iter 1060/1500 | loss = 0.0042
+[ 71.33%] Iter 1070/1500 | loss = 0.0040
+[ 72.00%] Iter 1080/1500 | loss = 0.0038
+[ 72.67%] Iter 1090/1500 | loss = 0.0040
+[ 73.33%] Iter 1100/1500 | loss = 0.0041
+[ 74.00%] Iter 1110/1500 | loss = 0.0034
+[ 74.67%] Iter 1120/1500 | loss = 0.0041
+[ 75.33%] Iter 1130/1500 | loss = 0.0039
+[ 76.00%] Iter 1140/1500 | loss = 0.0038
+[ 76.67%] Iter 1150/1500 | loss = 0.0040
+[ 77.33%] Iter 1160/1500 | loss = 0.0039
+[ 78.00%] Iter 1170/1500 | loss = 0.0038
+[ 78.67%] Iter 1180/1500 | loss = 0.0040
+[ 79.33%] Iter 1190/1500 | loss = 0.0041
+[ 80.00%] Iter 1200/1500 | loss = 0.0040
+[ 80.67%] Iter 1210/1500 | loss = 0.0036
+[ 81.33%] Iter 1220/1500 | loss = 0.0040
+[ 82.00%] Iter 1230/1500 | loss = 0.0041
+[ 82.67%] Iter 1240/1500 | loss = 0.0040
+[ 83.33%] Iter 1250/1500 | loss = 0.0034
+[ 84.00%] Iter 1260/1500 | loss = 0.0036
+[ 84.67%] Iter 1270/1500 | loss = 0.0045
+[ 85.33%] Iter 1280/1500 | loss = 0.0038
+[ 86.00%] Iter 1290/1500 | loss = 0.0038
+[ 86.67%] Iter 1300/1500 | loss = 0.0039
+[ 87.33%] Iter 1310/1500 | loss = 0.0037
+[ 88.00%] Iter 1320/1500 | loss = 0.0035
+[ 88.67%] Iter 1330/1500 | loss = 0.0037
+[ 89.33%] Iter 1340/1500 | loss = 0.0038
+[ 90.00%] Iter 1350/1500 | loss = 0.0038
+[ 90.67%] Iter 1360/1500 | loss = 0.0038
+[ 91.33%] Iter 1370/1500 | loss = 0.0038
+[ 92.00%] Iter 1380/1500 | loss = 0.0038
+[ 92.67%] Iter 1390/1500 | loss = 0.0038
+[ 93.33%] Iter 1400/1500 | loss = 0.0038
+[ 94.00%] Iter 1410/1500 | loss = 0.0040
+[ 94.67%] Iter 1420/1500 | loss = 0.0038
+[ 95.33%] Iter 1430/1500 | loss = 0.0038
+[ 96.00%] Iter 1440/1500 | loss = 0.0040
+[ 96.67%] Iter 1450/1500 | loss = 0.0037
+[ 97.33%] Iter 1460/1500 | loss = 0.0040
+[ 98.00%] Iter 1470/1500 | loss = 0.0041
+[ 98.67%] Iter 1480/1500 | loss = 0.0041
+[ 99.33%] Iter 1490/1500 | loss = 0.0040
+2026-04-26 22:21:50: Evaluate at iteration 1500
+[Eval] model=PointNet | round 1/10
+[2026-04-26 22:25:44] Evaluate_00: epoch = 0500 train time = 234 s train loss = 0.009418 train acc = 1.0000, test acc = 0.7650
+[Eval] model=PointNet | round 2/10
+[2026-04-26 22:29:36] Evaluate_01: epoch = 0500 train time = 232 s train loss = 0.008860 train acc = 1.0000, test acc = 0.7804
+[Eval] model=PointNet | round 3/10
+[2026-04-26 22:34:37] Evaluate_02: epoch = 0500 train time = 300 s train loss = 0.007749 train acc = 1.0000, test acc = 0.7812
+[Eval] model=PointNet | round 4/10
+[2026-04-26 22:39:52] Evaluate_03: epoch = 0500 train time = 315 s train loss = 0.014379 train acc = 0.9975, test acc = 0.7763
+[Eval] model=PointNet | round 5/10
+[2026-04-26 22:45:04] Evaluate_04: epoch = 0500 train time = 311 s train loss = 0.007753 train acc = 1.0000, test acc = 0.7723
+[Eval] model=PointNet | round 6/10
+[2026-04-26 22:50:13] Evaluate_05: epoch = 0500 train time = 308 s train loss = 0.008392 train acc = 1.0000, test acc = 0.7626
+[Eval] model=PointNet | round 7/10
+[2026-04-26 22:55:22] Evaluate_06: epoch = 0500 train time = 308 s train loss = 0.026476 train acc = 0.9975, test acc = 0.7763
+[Eval] model=PointNet | round 8/10
+[2026-04-26 22:59:39] Evaluate_07: epoch = 0500 train time = 257 s train loss = 0.010368 train acc = 1.0000, test acc = 0.7727
+[Eval] model=PointNet | round 9/10
+[2026-04-26 23:03:57] Evaluate_08: epoch = 0500 train time = 257 s train loss = 0.011439 train acc = 1.0000, test acc = 0.7796
+[Eval] model=PointNet | round 10/10
+[2026-04-26 23:08:21] Evaluate_09: epoch = 0500 train time = 264 s train loss = 0.007952 train acc = 1.0000, test acc = 0.7784
+2026-04-26 23:08:21: Model PointNet | mean acc = 0.7745 | std = 0.0061
+[100.00%] Iter 1500/1500 | loss = 0.0039
+2026-04-26 23:08:22: 
+==================== Final Results ====================
+
+2026-04-26 23:08:22: Run 1 exp | train on PointNet | eval 10 random PointNet | mean=77.45% std=0.61%
+
+==================== Final Results ====================
+
+[0.77447326]

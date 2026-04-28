@@ -50,7 +50,7 @@ CONFIG = {
 
     # 训练过程输出频率
     "PRINT_EVERY": 10,               # 每多少轮 print 一次训练 loss
-    "message":"SADM4000" #这个变量用来给生成结果做标识的 
+    "message":"CurveR1iter4000" #这个变量用来给生成结果做标识的 
 }
 
 # 逐个方法是协助读取CONFIG的，不用管
@@ -142,9 +142,7 @@ def main():
         eval_it_pool = [args.TEST_EVAL_IT]
     else:
         eval_it_pool = (
-            np.arange(0, args.Iteration + 1, 250).tolist()
-            if args.eval_mode in ["S", "SSS"]
-            else [args.Iteration]
+             [args.Iteration] # 只评估一次，节约时间
         )
 
     logger.info("eval_it_pool: %s", eval_it_pool)
@@ -351,22 +349,31 @@ def main():
                     _, _, _, _, layers_real = net(pc_real)
                 _, _, _, _, layers_syn = net(pc_syn)
 
-                # 这里是按照channel进行排序
-                # dim=2就是N的这个维度，数据是[B, C, N]
-                # 也就是只给每个channel的N个点进行排序，排序后还是[B, C, N]，但是每个channel的N个点已经按照数值大小排好序了
-                # 这里有点反直觉，因为我们通常会觉得点云数据是[N, 3]，但是在输入到网络之前，我们把它转置成了[3, N]，所以现在的维度是[B, C, N]，其中C是映射以后的多维度。
-                # 按照dim=2的方式进行排序的话，实际上是每个channel的N个点进行排序，排序后每个channel的N个点已经按照数值大小排好序了，这样就可以让网络更好地学习到每个channel的特征分布了。
-                # 也就是说channel之间并不是一一对应的，而是每个channel内部的特征值进行排序，这样就可以让网络更好地学习到每个channel的特征分布了。
+                # 这里是按照 channel 进行排序
+                # dim=2 是 N 这个维度，数据是 [B, C, N]
+                # 排序后，每个 channel 内部的点按响应值从大到小排列
+                # 注意：排序后已经丢失空间对应关系，只保留“响应分布曲线”
                 sorted_real = torch.sort(layers_real["x_m"], dim=2, descending=True)[0].detach()
-                sorted_syn = torch.sort(layers_syn["x_m"], dim=2, descending=True)[0]
+                sorted_syn  = torch.sort(layers_syn["x_m"], dim=2, descending=True)[0]
 
-                # 对这一整个batch做平均池化，这个其实先做池化和后做池化是一样的，这里倒是不用改
-                real = sorted_real.mean(dim=0)
-                syn = sorted_syn.mean(dim=0)
+                real = sorted_real.mean(dim=0)   # [C, N]
+                syn  = sorted_syn.mean(dim=0)    # [C, N]
 
-                # 损失计算
-                loss1 = (((real - syn) ** 2).sum(dim=0)).mean() * 0.2
+
+                loss_value = (((real - syn) ** 2).sum(dim=0)).mean()
+
+                real_slope = real[:, 1:] - real[:, :-1]
+                syn_slope  = syn[:, 1:] - syn[:, :-1]
+
+                loss_slope = (((real_slope - syn_slope) ** 2).sum(dim=0)).mean()
+
+                loss1 = loss_value * 0.2 + loss_slope * 0.02
+                # =====================================================
+                # 5. 保留 M3D loss
+                # =====================================================
                 loss1 += m3d_criterion(layers_real["x_gf"], layers_syn["x_gf"]) * 0.001
+
+                # 按 ppc 放大
                 loss += loss1 * args.ppc
 
             optimizer_img.zero_grad()

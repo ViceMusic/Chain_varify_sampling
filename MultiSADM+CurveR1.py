@@ -24,6 +24,7 @@ CONFIG = {
     # 蒸馏设置
     "ppc": 10,
     "eval_mode": "S",
+    "multieval":False,
     "num_exp": 1,
     "num_eval": 10,                   # 测试时建议先小一点
     "epoch_eval_train": 500,         # 测试时建议先小一点
@@ -143,7 +144,7 @@ def main():
     else:
         eval_it_pool = (
             np.arange(0, args.Iteration + 1, 250).tolist()
-            if args.eval_mode in ["S", "SSS"]
+            if args.eval_mode and args.multieval in ["S", "SSS"]
             else [args.Iteration]
         )
 
@@ -351,24 +352,124 @@ def main():
                     _, _, _, _, layers_real = net(pc_real)
                 _, _, _, _, layers_syn = net(pc_syn)
 
-                # 这里是按照channel进行排序
-                # dim=2就是N的这个维度，数据是[B, C, N]
-                # 也就是只给每个channel的N个点进行排序，排序后还是[B, C, N]，但是每个channel的N个点已经按照数值大小排好序了
-                # 这里有点反直觉，因为我们通常会觉得点云数据是[N, 3]，但是在输入到网络之前，我们把它转置成了[3, N]，所以现在的维度是[B, C, N]，其中C是映射以后的多维度。
-                # 按照dim=2的方式进行排序的话，实际上是每个channel的N个点进行排序，排序后每个channel的N个点已经按照数值大小排好序了，这样就可以让网络更好地学习到每个channel的特征分布了。
-                # 也就是说channel之间并不是一一对应的，而是每个channel内部的特征值进行排序，这样就可以让网络更好地学习到每个channel的特征分布了。
-                sorted_real = torch.sort(layers_real["x_m"], dim=2, descending=True)[0].detach()
-                sorted_syn = torch.sort(layers_syn["x_m"], dim=2, descending=True)[0]
 
-                # 对这一整个batch做平均池化，这个其实先做池化和后做池化是一样的，这里倒是不用改
-                real = sorted_real.mean(dim=0)
-                syn = sorted_syn.mean(dim=0)
+                # =====================================================
+                # Multi-level SADM + CurveR1
+                # 保持你原本的 loss 口径：
+                # - value loss: channel-sum 后 rank-mean
+                # - slope loss: 全元素 mean
+                # 不做口径统一
+                # =====================================================
 
-                # 损失计算
-                loss1 = (((real - syn) ** 2).sum(dim=0)).mean() * 0.2
-                loss1 += m3d_criterion(layers_real["x_gf"], layers_syn["x_gf"]) * 0.001
+                def sadm_value_loss(feat_real, feat_syn):
+                    """
+                    feat_real / feat_syn: [B, C, N]
+
+                    原始 SADM:
+                    1. 每个 channel 沿点维度 N 排序
+                    2. 对 batch 求平均，得到 [C, N]
+                    3. 用原始 SADM 的 channel-sum 写法计算 value loss
+                    """
+                    sorted_real = torch.sort(feat_real, dim=2, descending=True)[0].detach()
+                    sorted_syn  = torch.sort(feat_syn,  dim=2, descending=True)[0]
+
+                    real = sorted_real.mean(dim=0)  # [C, N]
+                    syn  = sorted_syn.mean(dim=0)   # [C, N]
+
+                    loss_value = (((real - syn) ** 2).sum(dim=0)).mean()
+
+                    return loss_value
+
+
+                def curve_r1_loss(feat_real, feat_syn):
+                    """
+                    feat_real / feat_syn: [B, C, N]
+
+                    CurveR1:
+                    1. 每个 channel 沿点维度 N 排序
+                    2. 对 batch 求平均，得到 sorted response curve: [C, N]
+                    3. 计算一阶差分 slope
+                    4. 用你原本的全元素 mean 方式计算 slope loss
+                    """
+                    sorted_real = torch.sort(feat_real, dim=2, descending=True)[0].detach()
+                    sorted_syn  = torch.sort(feat_syn,  dim=2, descending=True)[0]
+
+                    real = sorted_real.mean(dim=0)  # [C, N]
+                    syn  = sorted_syn.mean(dim=0)   # [C, N]
+
+                    real_slope = real[:, 1:] - real[:, :-1]
+                    syn_slope  = syn[:, 1:]  - syn[:, :-1]
+
+                    loss_slope = ((real_slope - syn_slope) ** 2).mean()
+
+                    return loss_slope
+
+
+                # =====================================================
+                # 1. 原始 SADM value loss
+                # =====================================================
+
+                # 主层 x_m：深层逐点语义响应
+                loss_sadm_main = sadm_value_loss(
+                    layers_real["x_m"],
+                    layers_syn["x_m"]
+                )
+
+                # 辅助层 x_2：中层逐点结构响应
+                loss_sadm_aux = sadm_value_loss(
+                    layers_real["x_2"],
+                    layers_syn["x_2"]
+                )
+
+
+                # =====================================================
+                # 2. CurveR1 slope loss
+                # =====================================================
+
+                # 主层 x_m 的一阶曲线约束
+                loss_curve_main = curve_r1_loss(
+                    layers_real["x_m"],
+                    layers_syn["x_m"]
+                )
+
+                # 辅助层 x_2 的一阶曲线约束
+                # 如果你想先保守一点，可以把这一项注释掉
+                loss_curve_aux = curve_r1_loss(
+                    layers_real["x_2"],
+                    layers_syn["x_2"]
+                )
+
+
+                # =====================================================
+                # 3. M3D global feature loss
+                # =====================================================
+
+                loss_m3d = m3d_criterion(
+                    layers_real["x_gf"],
+                    layers_syn["x_gf"]
+                )
+
+
+                # =====================================================
+                # 4. 合并 loss
+                #
+                # 完全沿用你之前的风格：
+                # - x_m SADM: 0.2
+                # - x_2 SADM: 0.05
+                # - x_m CurveR1: 0.02
+                # - x_2 CurveR1: 0.005，辅助层更弱一点
+                # - M3D: 0.001
+                # =====================================================
+
+                loss1 = loss_sadm_main * 0.2
+                loss1 += loss_sadm_aux * 0.05
+
+                loss1 += loss_curve_main * 0.02
+                loss1 += loss_curve_aux * 0.005
+
+                loss1 += loss_m3d * 0.001
+
                 loss += loss1 * args.ppc
-
             optimizer_img.zero_grad()
             optimizer_theta.zero_grad()
             loss.backward()

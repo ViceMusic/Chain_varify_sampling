@@ -24,10 +24,11 @@ CONFIG = {
     # 蒸馏设置
     "ppc": 10,
     "eval_mode": "S",
+    "OnlyOneEval":False,
     "num_exp": 1,
     "num_eval": 10,                   # 测试时建议先小一点
     "epoch_eval_train": 500,         # 测试时建议先小一点
-    "Iteration": 1500,                 # 测试先小一点，正式跑再调大
+    "Iteration": 4000,                 # 测试先小一点，正式跑再调大
     "lr_img": 10.0,
     "lr_rot": 0.01,
     "lr_net": 0.01,
@@ -50,7 +51,7 @@ CONFIG = {
 
     # 训练过程输出频率
     "PRINT_EVERY": 10,               # 每多少轮 print 一次训练 loss
-    "message":"curvesR1R2" #这个变量用来给生成结果做标识的 
+    "message":"curvesR1R2iter4000" #这个变量用来给生成结果做标识的 
 }
 
 # 逐个方法是协助读取CONFIG的，不用管
@@ -143,7 +144,7 @@ def main():
     else:
         eval_it_pool = (
             np.arange(0, args.Iteration + 1, 250).tolist()
-            if args.eval_mode in ["S", "SSS"]
+            if args.eval_mode in ["S", "SSS"] and False
             else [args.Iteration]
         )
 

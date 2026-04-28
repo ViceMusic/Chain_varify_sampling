@@ -1,0 +1,151 @@
+========== Basic Info ==========
+Device   : cuda
+Dataset  : MODELNET40_H5
+Model    : PointNet
+Iter     : 1500
+PPC      : 10
+Anchors  : 64
+================================
+The size of train data is 9841
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+The size of test data is 2468
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+
+========== Experiment 1/1 ==========
+/root/workspace/varify_sampling/Distill_Chain_start.py:225: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:253.)
+  label_syn = torch.tensor(
+[  0.00%] Iter 0000/1500 | anchor_chain_loss = 7.1871
+[  0.67%] Iter 0010/1500 | anchor_chain_loss = 12.5835
+[  1.33%] Iter 0020/1500 | anchor_chain_loss = 10.5279
+[  2.00%] Iter 0030/1500 | anchor_chain_loss = 10.4255
+[  2.67%] Iter 0040/1500 | anchor_chain_loss = 9.2890
+[  3.33%] Iter 0050/1500 | anchor_chain_loss = 9.7924
+[  4.00%] Iter 0060/1500 | anchor_chain_loss = 10.3106
+[  4.67%] Iter 0070/1500 | anchor_chain_loss = 10.4229
+[  5.33%] Iter 0080/1500 | anchor_chain_loss = 9.4782
+[  6.00%] Iter 0090/1500 | anchor_chain_loss = 9.9318
+[  6.67%] Iter 0100/1500 | anchor_chain_loss = 10.5868
+[  7.33%] Iter 0110/1500 | anchor_chain_loss = 9.2280
+[  8.00%] Iter 0120/1500 | anchor_chain_loss = 9.6426
+[  8.67%] Iter 0130/1500 | anchor_chain_loss = 9.5521
+[  9.33%] Iter 0140/1500 | anchor_chain_loss = 9.7436
+[ 10.00%] Iter 0150/1500 | anchor_chain_loss = 9.7797
+[ 10.67%] Iter 0160/1500 | anchor_chain_loss = 10.1484
+[ 11.33%] Iter 0170/1500 | anchor_chain_loss = 10.2717
+[ 12.00%] Iter 0180/1500 | anchor_chain_loss = 10.7878
+[ 12.67%] Iter 0190/1500 | anchor_chain_loss = 9.6919
+[ 13.33%] Iter 0200/1500 | anchor_chain_loss = 9.5690
+[ 14.00%] Iter 0210/1500 | anchor_chain_loss = 11.2358
+[ 14.67%] Iter 0220/1500 | anchor_chain_loss = 10.0677
+[ 15.33%] Iter 0230/1500 | anchor_chain_loss = 9.8786
+[ 16.00%] Iter 0240/1500 | anchor_chain_loss = 10.6767
+[ 16.67%] Iter 0250/1500 | anchor_chain_loss = 10.7161
+[ 17.33%] Iter 0260/1500 | anchor_chain_loss = 9.8904
+[ 18.00%] Iter 0270/1500 | anchor_chain_loss = 10.9178
+[ 18.67%] Iter 0280/1500 | anchor_chain_loss = 10.5744
+[ 19.33%] Iter 0290/1500 | anchor_chain_loss = 10.4021
+[ 20.00%] Iter 0300/1500 | anchor_chain_loss = 10.2915
+[ 20.67%] Iter 0310/1500 | anchor_chain_loss = 10.1164
+[ 21.33%] Iter 0320/1500 | anchor_chain_loss = 11.1432
+[ 22.00%] Iter 0330/1500 | anchor_chain_loss = 9.2005
+[ 22.67%] Iter 0340/1500 | anchor_chain_loss = 9.8918
+[ 23.33%] Iter 0350/1500 | anchor_chain_loss = 9.9383
+[ 24.00%] Iter 0360/1500 | anchor_chain_loss = 10.4190
+[ 24.67%] Iter 0370/1500 | anchor_chain_loss = 10.0186
+[ 25.33%] Iter 0380/1500 | anchor_chain_loss = 9.8895
+[ 26.00%] Iter 0390/1500 | anchor_chain_loss = 10.5896
+[ 26.67%] Iter 0400/1500 | anchor_chain_loss = 10.4503
+[ 27.33%] Iter 0410/1500 | anchor_chain_loss = 10.6454
+[ 28.00%] Iter 0420/1500 | anchor_chain_loss = 11.0981
+[ 28.67%] Iter 0430/1500 | anchor_chain_loss = 10.2608
+[ 29.33%] Iter 0440/1500 | anchor_chain_loss = 9.8261
+[ 30.00%] Iter 0450/1500 | anchor_chain_loss = 10.3555
+[ 30.67%] Iter 0460/1500 | anchor_chain_loss = 10.4444
+[ 31.33%] Iter 0470/1500 | anchor_chain_loss = 9.7817
+[ 32.00%] Iter 0480/1500 | anchor_chain_loss = 9.5985
+[ 32.67%] Iter 0490/1500 | anchor_chain_loss = 9.6237
+[ 33.33%] Iter 0500/1500 | anchor_chain_loss = 12.0010
+[ 34.00%] Iter 0510/1500 | anchor_chain_loss = 10.9685
+[ 34.67%] Iter 0520/1500 | anchor_chain_loss = 9.3290
+[ 35.33%] Iter 0530/1500 | anchor_chain_loss = 10.1556
+[ 36.00%] Iter 0540/1500 | anchor_chain_loss = 9.6108
+[ 36.67%] Iter 0550/1500 | anchor_chain_loss = 10.4715
+[ 37.33%] Iter 0560/1500 | anchor_chain_loss = 10.5824
+[ 38.00%] Iter 0570/1500 | anchor_chain_loss = 10.1351
+[ 38.67%] Iter 0580/1500 | anchor_chain_loss = 10.1382
+[ 39.33%] Iter 0590/1500 | anchor_chain_loss = 10.2772
+[ 40.00%] Iter 0600/1500 | anchor_chain_loss = 10.4822
+[ 40.67%] Iter 0610/1500 | anchor_chain_loss = 9.6530
+[ 41.33%] Iter 0620/1500 | anchor_chain_loss = 10.4654
+[ 42.00%] Iter 0630/1500 | anchor_chain_loss = 10.3558
+[ 42.67%] Iter 0640/1500 | anchor_chain_loss = 10.1210
+[ 43.33%] Iter 0650/1500 | anchor_chain_loss = 10.0269
+[ 44.00%] Iter 0660/1500 | anchor_chain_loss = 9.9714
+[ 44.67%] Iter 0670/1500 | anchor_chain_loss = 10.6736
+[ 45.33%] Iter 0680/1500 | anchor_chain_loss = 10.2471
+[ 46.00%] Iter 0690/1500 | anchor_chain_loss = 10.6252
+[ 46.67%] Iter 0700/1500 | anchor_chain_loss = 10.1993
+[ 47.33%] Iter 0710/1500 | anchor_chain_loss = 9.9146
+[ 48.00%] Iter 0720/1500 | anchor_chain_loss = 9.6745
+[ 48.67%] Iter 0730/1500 | anchor_chain_loss = 10.4017
+[ 49.33%] Iter 0740/1500 | anchor_chain_loss = 10.3553
+[ 50.00%] Iter 0750/1500 | anchor_chain_loss = 10.9948
+[ 50.67%] Iter 0760/1500 | anchor_chain_loss = 10.3651
+[ 51.33%] Iter 0770/1500 | anchor_chain_loss = 10.1963
+[ 52.00%] Iter 0780/1500 | anchor_chain_loss = 9.9923
+[ 52.67%] Iter 0790/1500 | anchor_chain_loss = 10.1248
+[ 53.33%] Iter 0800/1500 | anchor_chain_loss = 9.0256
+[ 54.00%] Iter 0810/1500 | anchor_chain_loss = 9.9615
+[ 54.67%] Iter 0820/1500 | anchor_chain_loss = 9.3192
+[ 55.33%] Iter 0830/1500 | anchor_chain_loss = 9.9023
+[ 56.00%] Iter 0840/1500 | anchor_chain_loss = 10.7076
+[ 56.67%] Iter 0850/1500 | anchor_chain_loss = 9.7518
+[ 57.33%] Iter 0860/1500 | anchor_chain_loss = 10.3023
+[ 58.00%] Iter 0870/1500 | anchor_chain_loss = 9.7402
+[ 58.67%] Iter 0880/1500 | anchor_chain_loss = 11.3353
+[ 59.33%] Iter 0890/1500 | anchor_chain_loss = 10.3945
+[ 60.00%] Iter 0900/1500 | anchor_chain_loss = 10.5981
+[ 60.67%] Iter 0910/1500 | anchor_chain_loss = 9.9521
+[ 61.33%] Iter 0920/1500 | anchor_chain_loss = 10.7302
+[ 62.00%] Iter 0930/1500 | anchor_chain_loss = 10.6124
+[ 62.67%] Iter 0940/1500 | anchor_chain_loss = 9.7684
+[ 63.33%] Iter 0950/1500 | anchor_chain_loss = 10.3792
+[ 64.00%] Iter 0960/1500 | anchor_chain_loss = 10.4267
+[ 64.67%] Iter 0970/1500 | anchor_chain_loss = 10.6914
+[ 65.33%] Iter 0980/1500 | anchor_chain_loss = 10.3779
+[ 66.00%] Iter 0990/1500 | anchor_chain_loss = 9.9239
+[ 66.67%] Iter 1000/1500 | anchor_chain_loss = 10.1069
+[ 67.33%] Iter 1010/1500 | anchor_chain_loss = 10.2397
+[ 68.00%] Iter 1020/1500 | anchor_chain_loss = 10.1208
+[ 68.67%] Iter 1030/1500 | anchor_chain_loss = 10.7042
+[ 69.33%] Iter 1040/1500 | anchor_chain_loss = 9.7034
+[ 70.00%] Iter 1050/1500 | anchor_chain_loss = 9.8822
+[ 70.67%] Iter 1060/1500 | anchor_chain_loss = 11.0808
+[ 71.33%] Iter 1070/1500 | anchor_chain_loss = 10.1057
+[ 72.00%] Iter 1080/1500 | anchor_chain_loss = 10.4368
+[ 72.67%] Iter 1090/1500 | anchor_chain_loss = 9.8047
+[ 73.33%] Iter 1100/1500 | anchor_chain_loss = 10.5379
+[ 74.00%] Iter 1110/1500 | anchor_chain_loss = 10.6108
+[ 74.67%] Iter 1120/1500 | anchor_chain_loss = 10.3184
+[ 75.33%] Iter 1130/1500 | anchor_chain_loss = 9.8040
+[ 76.00%] Iter 1140/1500 | anchor_chain_loss = 10.0020
+[ 76.67%] Iter 1150/1500 | anchor_chain_loss = 9.4158
+[ 77.33%] Iter 1160/1500 | anchor_chain_loss = 10.1864
+[ 78.00%] Iter 1170/1500 | anchor_chain_loss = 10.6768
+[ 78.67%] Iter 1180/1500 | anchor_chain_loss = 10.5121
+[ 79.33%] Iter 1190/1500 | anchor_chain_loss = 10.0638
+[ 80.00%] Iter 1200/1500 | anchor_chain_loss = 10.2107
+[ 80.67%] Iter 1210/1500 | anchor_chain_loss = 10.1377
+[ 81.33%] Iter 1220/1500 | anchor_chain_loss = 10.3226
+[ 82.00%] Iter 1230/1500 | anchor_chain_loss = 10.1668
+[ 82.67%] Iter 1240/1500 | anchor_chain_loss = 9.6584
+[ 83.33%] Iter 1250/1500 | anchor_chain_loss = 10.2093
+[ 84.00%] Iter 1260/1500 | anchor_chain_loss = 10.4592
+[ 84.67%] Iter 1270/1500 | anchor_chain_loss = 9.9424
+[ 85.33%] Iter 1280/1500 | anchor_chain_loss = 9.7620
+[ 86.00%] Iter 1290/1500 | anchor_chain_loss = 9.8794
+[ 86.67%] Iter 1300/1500 | anchor_chain_loss = 10.3512
+[ 87.33%] Iter 1310/1500 | anchor_chain_loss = 9.9437
+[ 88.00%] Iter 1320/1500 | anchor_chain_loss = 10.3481
+[ 88.67%] Iter 1330/1500 | anchor_chain_loss = 10.1419
+[ 89.33%] Iter 1340/1500 | anchor_chain_loss = 9.9767

@@ -27,7 +27,7 @@ CONFIG = {
     "num_exp": 1,
     "num_eval": 10,                   # 测试时建议先小一点
     "epoch_eval_train": 500,         # 测试时建议先小一点
-    "Iteration": 1500,                 # 测试先小一点，正式跑再调大
+    "Iteration": 4000,                 # 测试先小一点，正式跑再调大
     "lr_img": 10.0,
     "lr_rot": 0.01,
     "lr_net": 0.01,
@@ -50,8 +50,8 @@ CONFIG = {
 
     # 训练过程输出频率
     "PRINT_EVERY": 10,               # 每多少轮 print 一次训练 loss
-    "message":"tau045", #这个变量用来给生成结果做标识的
-    "tau":0.45,
+    "message":"RWSAtau025iter4000", #这个变量用来给生成结果做标识的
+    "tau":0.25,
 }
 
 # 逐个方法是协助读取CONFIG的，不用管

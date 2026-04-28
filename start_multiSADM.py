@@ -24,6 +24,7 @@ CONFIG = {
     # 蒸馏设置
     "ppc": 10,
     "eval_mode": "S",
+    "multieval":False,
     "num_exp": 1,
     "num_eval": 10,                   # 测试时建议先小一点
     "epoch_eval_train": 500,         # 测试时建议先小一点
@@ -50,7 +51,7 @@ CONFIG = {
 
     # 训练过程输出频率
     "PRINT_EVERY": 10,               # 每多少轮 print 一次训练 loss
-    "message":"SADM4000" #这个变量用来给生成结果做标识的 
+    "message":"SADMxmx1m2" #这个变量用来给生成结果做标识的 
 }
 
 # 逐个方法是协助读取CONFIG的，不用管
@@ -143,7 +144,7 @@ def main():
     else:
         eval_it_pool = (
             np.arange(0, args.Iteration + 1, 250).tolist()
-            if args.eval_mode in ["S", "SSS"]
+            if args.eval_mode and args.multieval in ["S", "SSS"]
             else [args.Iteration]
         )
 
@@ -351,24 +352,64 @@ def main():
                     _, _, _, _, layers_real = net(pc_real)
                 _, _, _, _, layers_syn = net(pc_syn)
 
-                # 这里是按照channel进行排序
-                # dim=2就是N的这个维度，数据是[B, C, N]
-                # 也就是只给每个channel的N个点进行排序，排序后还是[B, C, N]，但是每个channel的N个点已经按照数值大小排好序了
-                # 这里有点反直觉，因为我们通常会觉得点云数据是[N, 3]，但是在输入到网络之前，我们把它转置成了[3, N]，所以现在的维度是[B, C, N]，其中C是映射以后的多维度。
-                # 按照dim=2的方式进行排序的话，实际上是每个channel的N个点进行排序，排序后每个channel的N个点已经按照数值大小排好序了，这样就可以让网络更好地学习到每个channel的特征分布了。
-                # 也就是说channel之间并不是一一对应的，而是每个channel内部的特征值进行排序，这样就可以让网络更好地学习到每个channel的特征分布了。
-                sorted_real = torch.sort(layers_real["x_m"], dim=2, descending=True)[0].detach()
-                sorted_syn = torch.sort(layers_syn["x_m"], dim=2, descending=True)[0]
+                # =====================================================
+                # DoubleSADM:
+                # 主层 x_m：深层逐点语义响应 [B, 1024, N]
+                # 辅层 x_2：中层逐点结构响应 [B, 128, N]
+                # =====================================================
 
-                # 对这一整个batch做平均池化，这个其实先做池化和后做池化是一样的，这里倒是不用改
-                real = sorted_real.mean(dim=0)
-                syn = sorted_syn.mean(dim=0)
+                def sadm_layer_loss(feat_real, feat_syn):
+                    """
+                    feat_real / feat_syn: [B, C, N]
+                    对每个 channel 沿点维度 N 排序，然后对 batch 求平均，
+                    最后匹配 real/syn 的 sorted response distribution。
+                    """
+                    sorted_real = torch.sort(feat_real, dim=2, descending=True)[0].detach()
+                    sorted_syn  = torch.sort(feat_syn,  dim=2, descending=True)[0]
 
-                # 损失计算
-                loss1 = (((real - syn) ** 2).sum(dim=0)).mean() * 0.2
-                loss1 += m3d_criterion(layers_real["x_gf"], layers_syn["x_gf"]) * 0.001
+                    real = sorted_real.mean(dim=0)  # [C, N]
+                    syn  = sorted_syn.mean(dim=0)   # [C, N]
+
+                    # 保持原 SADM 的 channel-sum 写法，尽量减少对 baseline 尺度的改变
+                    return (((real - syn) ** 2).sum(dim=0)).mean()
+
+
+                # 原始 SADM 主损失：深层 x_m
+                loss_sadm_main = sadm_layer_loss(
+                    layers_real["x_m"],
+                    layers_syn["x_m"]
+                )
+
+                # 辅助 SADM 损失：中层 x_2
+                loss_sadm_aux_x1 = sadm_layer_loss(
+                    layers_real["x_1"],
+                    layers_syn["x_1"]
+                )
+
+                # 辅助 SADM 损失：中层 x_2
+                loss_sadm_aux_x2 = sadm_layer_loss(
+                    layers_real["x_2"],
+                    layers_syn["x_2"]
+                )
+
+                # 全局特征 M3D 损失
+                loss_m3d = m3d_criterion(
+                    layers_real["x_gf"],
+                    layers_syn["x_gf"]
+                )
+
+                # =====================================================
+                # 合并 loss
+                # 0.2：保留原始 SADM 主损失权重
+                # 0.05：辅助层先给小一点，避免中层约束过强
+                # 0.001：保留原始 M3D 权重
+                # =====================================================
+                loss1 = loss_sadm_main * 0.2
+                loss1 += loss_sadm_aux_x1 * 0.05
+                loss1 += loss_sadm_aux_x2 * 0.05
+                loss1 += loss_m3d * 0.001
+
                 loss += loss1 * args.ppc
-
             optimizer_img.zero_grad()
             optimizer_theta.zero_grad()
             loss.backward()

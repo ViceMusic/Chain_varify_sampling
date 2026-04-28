@@ -1,5 +1,6 @@
 import os
 import copy
+import math
 import random
 from types import SimpleNamespace
 
@@ -19,6 +20,7 @@ CONFIG = {
     # distillation
     "ppc": 10,
     "eval_mode": "S",
+    "Multi":False,
     "num_exp": 1,
     "num_eval": 10,
     "epoch_eval_train": 500,
@@ -27,10 +29,14 @@ CONFIG = {
 
     "lr_img": 10.0,
     "lr_net": 0.01,
+    "lr_rot": 0.01,
     "batch_real": 8,
     "batch_train": 8,
     "init": "real",
     "feature_transform": 0,
+
+    # learnable rotation alignment
+    "use_rotation": True,
 
     # AnchorChain loss
     "anchor_k": 64,
@@ -63,11 +69,45 @@ def set_seed(seed=1999):
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
 
+def create_rotation_matrix(angle, rot_type="x"):
+    """
+    根据每个 synthetic 样本的旋转角，构造 batch 形式的 3D 旋转矩阵。
+
+    angle: [B]
+    return: [B, 3, 3]
+    """
+    c = torch.cos(angle)
+    s = torch.sin(angle)
+    zeros = torch.zeros_like(c)
+    ones = torch.ones_like(c)
+
+    if rot_type == "x":
+        return torch.stack([
+            torch.stack([ones, zeros, zeros], dim=1),
+            torch.stack([zeros, c, -s], dim=1),
+            torch.stack([zeros, s, c], dim=1)
+        ], dim=2)
+
+    elif rot_type == "y":
+        return torch.stack([
+            torch.stack([c, zeros, s], dim=1),
+            torch.stack([zeros, ones, zeros], dim=1),
+            torch.stack([-s, zeros, c], dim=1)
+        ], dim=2)
+
+    elif rot_type == "z":
+        return torch.stack([
+            torch.stack([c, -s, zeros], dim=1),
+            torch.stack([s, c, zeros], dim=1),
+            torch.stack([zeros, zeros, ones], dim=1)
+        ], dim=2)
+
+    else:
+        raise ValueError(f"Unknown rot_type: {rot_type}")
 
 def print_train_progress(it, total_it, loss_avg):
     percent = 100.0 * it / max(total_it, 1)
     print(f"[{percent:6.2f}%] Iter {it:04d}/{total_it} | anchor_chain_loss = {loss_avg:.4f}")
-
 
 def evaluate_current_synset(pointcloud_syn, label_syn, testloader, args, channel, num_classes):
     """Evaluate current synthetic set multiple times and return mean/std/best-run result."""
@@ -141,7 +181,7 @@ def main():
     channel = 3
 
     # fixed evaluation schedule
-    eval_it_pool = list(range(0, args.Iteration + 1, args.eval_interval))
+    eval_it_pool = list(range(0, args.Iteration + 1, args.eval_interval)) if args.Multi else [args.Iteration + 1]
     if eval_it_pool[-1] != args.Iteration:
         eval_it_pool.append(args.Iteration)
 
@@ -191,10 +231,49 @@ def main():
 
         optimizer_img = torch.optim.SGD([pointcloud_tmp], lr=args.lr_img, momentum=0.5)
 
+        # learnable rotation parameters for each synthetic sample
+        num_syn = num_classes * args.ppc
+        theta_x = torch.zeros(num_syn, dtype=torch.float, device=args.device, requires_grad=True)
+        theta_y = torch.zeros(num_syn, dtype=torch.float, device=args.device, requires_grad=True)
+        theta_z = torch.zeros(num_syn, dtype=torch.float, device=args.device, requires_grad=True)
+
+        optimizer_rot = torch.optim.SGD([
+            {"params": theta_x, "lr": args.lr_rot / 10},
+            {"params": theta_y, "lr": args.lr_rot},
+            {"params": theta_z, "lr": args.lr_rot / 10},
+        ], momentum=0.5)
+
         # distillation loop
         for it in range(args.Iteration + 1):
-            # No rotation optimization here; keep normalization before feature matching.
-            pointcloud_syn = pc_normalize_batch(pointcloud_tmp)
+            # Normalize synthetic point clouds first.
+            # pointcloud_tmp: raw learnable synthetic coordinates
+            # pointcloud_syn_base: normalized synthetic point clouds before rotation
+            pointcloud_syn_base = pc_normalize_batch(pointcloud_tmp)
+
+            if args.use_rotation:
+                # keep rotation angles in [-pi, pi] for numerical stability
+                with torch.no_grad():
+                    theta_x.data = torch.remainder(theta_x.data + math.pi, 2 * math.pi) - math.pi
+                    theta_y.data = torch.remainder(theta_y.data + math.pi, 2 * math.pi) - math.pi
+                    theta_z.data = torch.remainder(theta_z.data + math.pi, 2 * math.pi) - math.pi
+
+                rot_matrix_x = create_rotation_matrix(theta_x, "x")
+                rot_matrix_y = create_rotation_matrix(theta_y, "y")
+                rot_matrix_z = create_rotation_matrix(theta_z, "z")
+
+                # combined rotation matrix for each synthetic sample
+                rot_matrix = torch.bmm(rot_matrix_z, torch.bmm(rot_matrix_y, rot_matrix_x))
+
+                # [B, 3, N] -> [B, N, 3] -> rotate -> [B, 3, N]
+                pointcloud_syn_xyz = pointcloud_syn_base.permute(0, 2, 1).contiguous()
+                pointcloud_syn_rotated = torch.bmm(pointcloud_syn_xyz, rot_matrix)
+                pointcloud_syn = pointcloud_syn_rotated.permute(0, 2, 1).contiguous()
+
+                # optional: normalize again after rotation to avoid tiny numerical drift
+                pointcloud_syn = pc_normalize_batch(pointcloud_syn)
+
+            else:
+                pointcloud_syn = pointcloud_syn_base
 
             # evaluate current synthetic set
             if it in eval_it_pool:
@@ -209,16 +288,19 @@ def main():
                     best_eval_acc = current_eval_acc
                     best_eval_iter = it
                     best_eval_model = best_model_name
-                    best_data_package = {
+                    best_data_package = best_data_package = {
                         "pointcloud_syn": copy.deepcopy(pointcloud_syn.detach().cpu()),
+                        "pointcloud_tmp": copy.deepcopy(pointcloud_tmp.detach().cpu()),
                         "label_syn": copy.deepcopy(label_syn.detach().cpu()),
+                        "theta_x": copy.deepcopy(theta_x.detach().cpu()) if args.use_rotation else None,
+                        "theta_y": copy.deepcopy(theta_y.detach().cpu()) if args.use_rotation else None,
+                        "theta_z": copy.deepcopy(theta_z.detach().cpu()) if args.use_rotation else None,
                         "eval_summary": copy.deepcopy(eval_summary),
                         "best_eval_acc": best_eval_acc,
                         "best_eval_iter": best_eval_iter,
                         "best_eval_model": best_eval_model,
                         "config": dict(CONFIG),
                     }
-
                     save_file = os.path.join(
                         args.save_path,
                         f"best_res_{args.method}_{args.dataset}_{args.model}_{args.ppc}ppc.pt"
@@ -420,8 +502,14 @@ def main():
                 loss += (loss_c / max(pair_count, 1)) * args.ppc
 
             optimizer_img.zero_grad()
+            if args.use_rotation:
+                optimizer_rot.zero_grad()
+
             loss.backward()
+
             optimizer_img.step()
+            if args.use_rotation:
+                optimizer_rot.step()
 
             if (it % args.PRINT_EVERY == 0) or (it == args.Iteration):
                 loss_avg = loss.item() / num_classes
