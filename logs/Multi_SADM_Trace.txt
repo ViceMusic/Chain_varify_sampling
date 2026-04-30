@@ -1,0 +1,534 @@
+2026-04-29 21:04:58: Device: cuda
+2026-04-29 21:04:58: Dataset: MODELNET40_H5
+2026-04-29 21:04:58: Model: PointNet
+2026-04-29 21:04:58: TEST_ONLY: False
+2026-04-29 21:04:58: Experiment: Replay Schedule SADM
+2026-04-29 21:04:58: Replay interpolate: True
+The size of train data is 9841
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+The size of test data is 2468
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+2026-04-29 21:04:58: eval_it_pool: [4000]
+2026-04-29 21:04:58: 
+================== Exp 0 ==================
+
+/root/workspace/varify_sampling/Multi_SADM_Manual.py:395: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:253.)
+  label_syn = torch.tensor(
+2026-04-29 21:05:12: SADM layers: ['x_m', 'x_2', 'x_1']
+2026-04-29 21:05:12: SADM base coef: {'x_m': 0.2, 'x_2': 0.05, 'x_1': 0.01}
+2026-04-29 21:05:13: Initialize synthetic data from random real samples
+2026-04-29 21:05:13: [2026-04-29 21:05:13] training begins
+[  0.00%] Iter 0000/4000 | loss = 0.0404
+2026-04-29 21:05:13: [Replay Schedule Weights] Iter 0 | schedule=replay_0 | x_m=0.7462 | x_2=0.2030 | x_1=0.0508
+[Replay Schedule Weights] Iter 0 | schedule=replay_0 | x_m=0.7462 | x_2=0.2030 | x_1=0.0508
+[  0.25%] Iter 0010/4000 | loss = 0.0452
+[  0.50%] Iter 0020/4000 | loss = 0.0366
+[  0.75%] Iter 0030/4000 | loss = 0.0385
+[  1.00%] Iter 0040/4000 | loss = 0.0208
+[  1.25%] Iter 0050/4000 | loss = 0.0318
+[  1.50%] Iter 0060/4000 | loss = 0.0357
+[  1.75%] Iter 0070/4000 | loss = 0.0347
+[  2.00%] Iter 0080/4000 | loss = 0.0214
+[  2.25%] Iter 0090/4000 | loss = 0.0247
+[  2.50%] Iter 0100/4000 | loss = 0.0253
+2026-04-29 21:05:49: [Replay Schedule Weights] Iter 100 | schedule=interp_100_200 | x_m=0.3146 | x_2=0.5468 | x_1=0.1386
+[Replay Schedule Weights] Iter 100 | schedule=interp_100_200 | x_m=0.3146 | x_2=0.5468 | x_1=0.1386
+[  2.75%] Iter 0110/4000 | loss = 0.0170
+[  3.00%] Iter 0120/4000 | loss = 0.0204
+[  3.25%] Iter 0130/4000 | loss = 0.0137
+[  3.50%] Iter 0140/4000 | loss = 0.0174
+[  3.75%] Iter 0150/4000 | loss = 0.0193
+[  4.00%] Iter 0160/4000 | loss = 0.0160
+[  4.25%] Iter 0170/4000 | loss = 0.0148
+[  4.50%] Iter 0180/4000 | loss = 0.0152
+[  4.75%] Iter 0190/4000 | loss = 0.0108
+[  5.00%] Iter 0200/4000 | loss = 0.0093
+2026-04-29 21:06:25: [Replay Schedule Weights] Iter 200 | schedule=interp_200_300 | x_m=0.1066 | x_2=0.6974 | x_1=0.1960
+[Replay Schedule Weights] Iter 200 | schedule=interp_200_300 | x_m=0.1066 | x_2=0.6974 | x_1=0.1960
+[  5.25%] Iter 0210/4000 | loss = 0.0156
+[  5.50%] Iter 0220/4000 | loss = 0.0099
+[  5.75%] Iter 0230/4000 | loss = 0.0087
+[  6.00%] Iter 0240/4000 | loss = 0.0123
+[  6.25%] Iter 0250/4000 | loss = 0.0109
+[  6.50%] Iter 0260/4000 | loss = 0.0101
+[  6.75%] Iter 0270/4000 | loss = 0.0122
+[  7.00%] Iter 0280/4000 | loss = 0.0100
+[  7.25%] Iter 0290/4000 | loss = 0.0100
+[  7.50%] Iter 0300/4000 | loss = 0.0094
+2026-04-29 21:07:00: [Replay Schedule Weights] Iter 300 | schedule=interp_300_400 | x_m=0.0535 | x_2=0.6973 | x_1=0.2492
+[Replay Schedule Weights] Iter 300 | schedule=interp_300_400 | x_m=0.0535 | x_2=0.6973 | x_1=0.2492
+[  7.75%] Iter 0310/4000 | loss = 0.0085
+[  8.00%] Iter 0320/4000 | loss = 0.0114
+[  8.25%] Iter 0330/4000 | loss = 0.0069
+[  8.50%] Iter 0340/4000 | loss = 0.0080
+[  8.75%] Iter 0350/4000 | loss = 0.0086
+[  9.00%] Iter 0360/4000 | loss = 0.0071
+[  9.25%] Iter 0370/4000 | loss = 0.0082
+[  9.50%] Iter 0380/4000 | loss = 0.0075
+[  9.75%] Iter 0390/4000 | loss = 0.0080
+[ 10.00%] Iter 0400/4000 | loss = 0.0077
+2026-04-29 21:07:35: [Replay Schedule Weights] Iter 400 | schedule=interp_400_500 | x_m=0.0324 | x_2=0.6336 | x_1=0.3340
+[Replay Schedule Weights] Iter 400 | schedule=interp_400_500 | x_m=0.0324 | x_2=0.6336 | x_1=0.3340
+[ 10.25%] Iter 0410/4000 | loss = 0.0103
+[ 10.50%] Iter 0420/4000 | loss = 0.0089
+[ 10.75%] Iter 0430/4000 | loss = 0.0085
+[ 11.00%] Iter 0440/4000 | loss = 0.0073
+[ 11.25%] Iter 0450/4000 | loss = 0.0069
+[ 11.50%] Iter 0460/4000 | loss = 0.0091
+[ 11.75%] Iter 0470/4000 | loss = 0.0082
+[ 12.00%] Iter 0480/4000 | loss = 0.0067
+[ 12.25%] Iter 0490/4000 | loss = 0.0072
+[ 12.50%] Iter 0500/4000 | loss = 0.0108
+2026-04-29 21:08:10: [Replay Schedule Weights] Iter 500 | schedule=interp_500_600 | x_m=0.0208 | x_2=0.5118 | x_1=0.4674
+[Replay Schedule Weights] Iter 500 | schedule=interp_500_600 | x_m=0.0208 | x_2=0.5118 | x_1=0.4674
+[ 12.75%] Iter 0510/4000 | loss = 0.0072
+[ 13.00%] Iter 0520/4000 | loss = 0.0064
+[ 13.25%] Iter 0530/4000 | loss = 0.0083
+[ 13.50%] Iter 0540/4000 | loss = 0.0071
+[ 13.75%] Iter 0550/4000 | loss = 0.0069
+[ 14.00%] Iter 0560/4000 | loss = 0.0081
+[ 14.25%] Iter 0570/4000 | loss = 0.0066
+[ 14.50%] Iter 0580/4000 | loss = 0.0069
+[ 14.75%] Iter 0590/4000 | loss = 0.0070
+[ 15.00%] Iter 0600/4000 | loss = 0.0077
+2026-04-29 21:08:46: [Replay Schedule Weights] Iter 600 | schedule=interp_600_700 | x_m=0.0132 | x_2=0.3594 | x_1=0.6274
+[Replay Schedule Weights] Iter 600 | schedule=interp_600_700 | x_m=0.0132 | x_2=0.3594 | x_1=0.6274
+[ 15.25%] Iter 0610/4000 | loss = 0.0070
+[ 15.50%] Iter 0620/4000 | loss = 0.0081
+[ 15.75%] Iter 0630/4000 | loss = 0.0061
+[ 16.00%] Iter 0640/4000 | loss = 0.0066
+[ 16.25%] Iter 0650/4000 | loss = 0.0071
+[ 16.50%] Iter 0660/4000 | loss = 0.0061
+[ 16.75%] Iter 0670/4000 | loss = 0.0073
+[ 17.00%] Iter 0680/4000 | loss = 0.0068
+[ 17.25%] Iter 0690/4000 | loss = 0.0063
+[ 17.50%] Iter 0700/4000 | loss = 0.0072
+2026-04-29 21:09:21: [Replay Schedule Weights] Iter 700 | schedule=interp_700_800 | x_m=0.0084 | x_2=0.2335 | x_1=0.7581
+[Replay Schedule Weights] Iter 700 | schedule=interp_700_800 | x_m=0.0084 | x_2=0.2335 | x_1=0.7581
+[ 17.75%] Iter 0710/4000 | loss = 0.0063
+[ 18.00%] Iter 0720/4000 | loss = 0.0058
+[ 18.25%] Iter 0730/4000 | loss = 0.0067
+[ 18.50%] Iter 0740/4000 | loss = 0.0066
+[ 18.75%] Iter 0750/4000 | loss = 0.0068
+[ 19.00%] Iter 0760/4000 | loss = 0.0063
+[ 19.25%] Iter 0770/4000 | loss = 0.0059
+[ 19.50%] Iter 0780/4000 | loss = 0.0059
+[ 19.75%] Iter 0790/4000 | loss = 0.0061
+[ 20.00%] Iter 0800/4000 | loss = 0.0056
+2026-04-29 21:09:56: [Replay Schedule Weights] Iter 800 | schedule=interp_800_900 | x_m=0.0055 | x_2=0.1511 | x_1=0.8434
+[Replay Schedule Weights] Iter 800 | schedule=interp_800_900 | x_m=0.0055 | x_2=0.1511 | x_1=0.8434
+[ 20.25%] Iter 0810/4000 | loss = 0.0061
+[ 20.50%] Iter 0820/4000 | loss = 0.0057
+[ 20.75%] Iter 0830/4000 | loss = 0.0065
+[ 21.00%] Iter 0840/4000 | loss = 0.0075
+[ 21.25%] Iter 0850/4000 | loss = 0.0062
+[ 21.50%] Iter 0860/4000 | loss = 0.0070
+[ 21.75%] Iter 0870/4000 | loss = 0.0056
+[ 22.00%] Iter 0880/4000 | loss = 0.0064
+[ 22.25%] Iter 0890/4000 | loss = 0.0055
+[ 22.50%] Iter 0900/4000 | loss = 0.0061
+2026-04-29 21:10:32: [Replay Schedule Weights] Iter 900 | schedule=interp_900_1000 | x_m=0.0039 | x_2=0.1077 | x_1=0.8884
+[Replay Schedule Weights] Iter 900 | schedule=interp_900_1000 | x_m=0.0039 | x_2=0.1077 | x_1=0.8884
+[ 22.75%] Iter 0910/4000 | loss = 0.0055
+[ 23.00%] Iter 0920/4000 | loss = 0.0063
+[ 23.25%] Iter 0930/4000 | loss = 0.0061
+[ 23.50%] Iter 0940/4000 | loss = 0.0060
+[ 23.75%] Iter 0950/4000 | loss = 0.0060
+[ 24.00%] Iter 0960/4000 | loss = 0.0067
+[ 24.25%] Iter 0970/4000 | loss = 0.0069
+[ 24.50%] Iter 0980/4000 | loss = 0.0059
+[ 24.75%] Iter 0990/4000 | loss = 0.0058
+[ 25.00%] Iter 1000/4000 | loss = 0.0056
+2026-04-29 21:11:08: [Replay Schedule Weights] Iter 1000 | schedule=interp_1000_1100 | x_m=0.0029 | x_2=0.0790 | x_1=0.9181
+[Replay Schedule Weights] Iter 1000 | schedule=interp_1000_1100 | x_m=0.0029 | x_2=0.0790 | x_1=0.9181
+[ 25.25%] Iter 1010/4000 | loss = 0.0063
+[ 25.50%] Iter 1020/4000 | loss = 0.0052
+[ 25.75%] Iter 1030/4000 | loss = 0.0063
+[ 26.00%] Iter 1040/4000 | loss = 0.0062
+[ 26.25%] Iter 1050/4000 | loss = 0.0051
+[ 26.50%] Iter 1060/4000 | loss = 0.0071
+[ 26.75%] Iter 1070/4000 | loss = 0.0061
+[ 27.00%] Iter 1080/4000 | loss = 0.0056
+[ 27.25%] Iter 1090/4000 | loss = 0.0061
+[ 27.50%] Iter 1100/4000 | loss = 0.0065
+2026-04-29 21:11:45: [Replay Schedule Weights] Iter 1100 | schedule=interp_1100_1200 | x_m=0.0023 | x_2=0.0606 | x_1=0.9371
+[Replay Schedule Weights] Iter 1100 | schedule=interp_1100_1200 | x_m=0.0023 | x_2=0.0606 | x_1=0.9371
+[ 27.75%] Iter 1110/4000 | loss = 0.0051
+[ 28.00%] Iter 1120/4000 | loss = 0.0066
+[ 28.25%] Iter 1130/4000 | loss = 0.0058
+[ 28.50%] Iter 1140/4000 | loss = 0.0053
+[ 28.75%] Iter 1150/4000 | loss = 0.0058
+[ 29.00%] Iter 1160/4000 | loss = 0.0061
+[ 29.25%] Iter 1170/4000 | loss = 0.0056
+[ 29.50%] Iter 1180/4000 | loss = 0.0059
+[ 29.75%] Iter 1190/4000 | loss = 0.0062
+[ 30.00%] Iter 1200/4000 | loss = 0.0058
+2026-04-29 21:12:22: [Replay Schedule Weights] Iter 1200 | schedule=interp_1200_1300 | x_m=0.0019 | x_2=0.0488 | x_1=0.9493
+[Replay Schedule Weights] Iter 1200 | schedule=interp_1200_1300 | x_m=0.0019 | x_2=0.0488 | x_1=0.9493
+[ 30.25%] Iter 1210/4000 | loss = 0.0056
+[ 30.50%] Iter 1220/4000 | loss = 0.0061
+[ 30.75%] Iter 1230/4000 | loss = 0.0065
+[ 31.00%] Iter 1240/4000 | loss = 0.0056
+[ 31.25%] Iter 1250/4000 | loss = 0.0051
+[ 31.50%] Iter 1260/4000 | loss = 0.0056
+[ 31.75%] Iter 1270/4000 | loss = 0.0070
+[ 32.00%] Iter 1280/4000 | loss = 0.0058
+[ 32.25%] Iter 1290/4000 | loss = 0.0056
+[ 32.50%] Iter 1300/4000 | loss = 0.0061
+2026-04-29 21:13:00: [Replay Schedule Weights] Iter 1300 | schedule=interp_1300_1400 | x_m=0.0015 | x_2=0.0401 | x_1=0.9584
+[Replay Schedule Weights] Iter 1300 | schedule=interp_1300_1400 | x_m=0.0015 | x_2=0.0401 | x_1=0.9584
+[ 32.75%] Iter 1310/4000 | loss = 0.0056
+[ 33.00%] Iter 1320/4000 | loss = 0.0052
+[ 33.25%] Iter 1330/4000 | loss = 0.0055
+[ 33.50%] Iter 1340/4000 | loss = 0.0057
+[ 33.75%] Iter 1350/4000 | loss = 0.0056
+[ 34.00%] Iter 1360/4000 | loss = 0.0059
+[ 34.25%] Iter 1370/4000 | loss = 0.0055
+[ 34.50%] Iter 1380/4000 | loss = 0.0061
+[ 34.75%] Iter 1390/4000 | loss = 0.0057
+[ 35.00%] Iter 1400/4000 | loss = 0.0053
+2026-04-29 21:13:37: [Replay Schedule Weights] Iter 1400 | schedule=interp_1400_1500 | x_m=0.0013 | x_2=0.0333 | x_1=0.9654
+[Replay Schedule Weights] Iter 1400 | schedule=interp_1400_1500 | x_m=0.0013 | x_2=0.0333 | x_1=0.9654
+[ 35.25%] Iter 1410/4000 | loss = 0.0062
+[ 35.50%] Iter 1420/4000 | loss = 0.0054
+[ 35.75%] Iter 1430/4000 | loss = 0.0059
+[ 36.00%] Iter 1440/4000 | loss = 0.0059
+[ 36.25%] Iter 1450/4000 | loss = 0.0057
+[ 36.50%] Iter 1460/4000 | loss = 0.0056
+[ 36.75%] Iter 1470/4000 | loss = 0.0057
+[ 37.00%] Iter 1480/4000 | loss = 0.0071
+[ 37.25%] Iter 1490/4000 | loss = 0.0057
+[ 37.50%] Iter 1500/4000 | loss = 0.0058
+2026-04-29 21:14:14: [Replay Schedule Weights] Iter 1500 | schedule=interp_1500_1600 | x_m=0.0011 | x_2=0.0285 | x_1=0.9704
+[Replay Schedule Weights] Iter 1500 | schedule=interp_1500_1600 | x_m=0.0011 | x_2=0.0285 | x_1=0.9704
+[ 37.75%] Iter 1510/4000 | loss = 0.0059
+[ 38.00%] Iter 1520/4000 | loss = 0.0072
+[ 38.25%] Iter 1530/4000 | loss = 0.0061
+[ 38.50%] Iter 1540/4000 | loss = 0.0052
+[ 38.75%] Iter 1550/4000 | loss = 0.0067
+[ 39.00%] Iter 1560/4000 | loss = 0.0054
+[ 39.25%] Iter 1570/4000 | loss = 0.0070
+[ 39.50%] Iter 1580/4000 | loss = 0.0065
+[ 39.75%] Iter 1590/4000 | loss = 0.0062
+[ 40.00%] Iter 1600/4000 | loss = 0.0068
+2026-04-29 21:14:49: [Replay Schedule Weights] Iter 1600 | schedule=interp_1600_1700 | x_m=0.0010 | x_2=0.0243 | x_1=0.9747
+[Replay Schedule Weights] Iter 1600 | schedule=interp_1600_1700 | x_m=0.0010 | x_2=0.0243 | x_1=0.9747
+[ 40.25%] Iter 1610/4000 | loss = 0.0067
+[ 40.50%] Iter 1620/4000 | loss = 0.0060
+[ 40.75%] Iter 1630/4000 | loss = 0.0053
+[ 41.00%] Iter 1640/4000 | loss = 0.0062
+[ 41.25%] Iter 1650/4000 | loss = 0.0054
+[ 41.50%] Iter 1660/4000 | loss = 0.0061
+[ 41.75%] Iter 1670/4000 | loss = 0.0051
+[ 42.00%] Iter 1680/4000 | loss = 0.0064
+[ 42.25%] Iter 1690/4000 | loss = 0.0060
+[ 42.50%] Iter 1700/4000 | loss = 0.0056
+2026-04-29 21:15:26: [Replay Schedule Weights] Iter 1700 | schedule=interp_1700_1800 | x_m=0.0008 | x_2=0.0212 | x_1=0.9780
+[Replay Schedule Weights] Iter 1700 | schedule=interp_1700_1800 | x_m=0.0008 | x_2=0.0212 | x_1=0.9780
+[ 42.75%] Iter 1710/4000 | loss = 0.0059
+[ 43.00%] Iter 1720/4000 | loss = 0.0059
+[ 43.25%] Iter 1730/4000 | loss = 0.0058
+[ 43.50%] Iter 1740/4000 | loss = 0.0054
+[ 43.75%] Iter 1750/4000 | loss = 0.0056
+[ 44.00%] Iter 1760/4000 | loss = 0.0063
+[ 44.25%] Iter 1770/4000 | loss = 0.0055
+[ 44.50%] Iter 1780/4000 | loss = 0.0056
+[ 44.75%] Iter 1790/4000 | loss = 0.0061
+[ 45.00%] Iter 1800/4000 | loss = 0.0060
+2026-04-29 21:16:01: [Replay Schedule Weights] Iter 1800 | schedule=interp_1800_1900 | x_m=0.0007 | x_2=0.0185 | x_1=0.9808
+[Replay Schedule Weights] Iter 1800 | schedule=interp_1800_1900 | x_m=0.0007 | x_2=0.0185 | x_1=0.9808
+[ 45.25%] Iter 1810/4000 | loss = 0.0058
+[ 45.50%] Iter 1820/4000 | loss = 0.0053
+[ 45.75%] Iter 1830/4000 | loss = 0.0059
+[ 46.00%] Iter 1840/4000 | loss = 0.0060
+[ 46.25%] Iter 1850/4000 | loss = 0.0053
+[ 46.50%] Iter 1860/4000 | loss = 0.0059
+[ 46.75%] Iter 1870/4000 | loss = 0.0055
+[ 47.00%] Iter 1880/4000 | loss = 0.0063
+[ 47.25%] Iter 1890/4000 | loss = 0.0059
+[ 47.50%] Iter 1900/4000 | loss = 0.0054
+2026-04-29 21:16:36: [Replay Schedule Weights] Iter 1900 | schedule=interp_1900_2000 | x_m=0.0007 | x_2=0.0163 | x_1=0.9830
+[Replay Schedule Weights] Iter 1900 | schedule=interp_1900_2000 | x_m=0.0007 | x_2=0.0163 | x_1=0.9830
+[ 47.75%] Iter 1910/4000 | loss = 0.0057
+[ 48.00%] Iter 1920/4000 | loss = 0.0064
+[ 48.25%] Iter 1930/4000 | loss = 0.0054
+[ 48.50%] Iter 1940/4000 | loss = 0.0060
+[ 48.75%] Iter 1950/4000 | loss = 0.0056
+[ 49.00%] Iter 1960/4000 | loss = 0.0078
+[ 49.25%] Iter 1970/4000 | loss = 0.0064
+[ 49.50%] Iter 1980/4000 | loss = 0.0060
+[ 49.75%] Iter 1990/4000 | loss = 0.0046
+[ 50.00%] Iter 2000/4000 | loss = 0.0056
+2026-04-29 21:17:12: [Replay Schedule Weights] Iter 2000 | schedule=interp_2000_2100 | x_m=0.0006 | x_2=0.0145 | x_1=0.9849
+[Replay Schedule Weights] Iter 2000 | schedule=interp_2000_2100 | x_m=0.0006 | x_2=0.0145 | x_1=0.9849
+[ 50.25%] Iter 2010/4000 | loss = 0.0066
+[ 50.50%] Iter 2020/4000 | loss = 0.0051
+[ 50.75%] Iter 2030/4000 | loss = 0.0054
+[ 51.00%] Iter 2040/4000 | loss = 0.0065
+[ 51.25%] Iter 2050/4000 | loss = 0.0055
+[ 51.50%] Iter 2060/4000 | loss = 0.0052
+[ 51.75%] Iter 2070/4000 | loss = 0.0055
+[ 52.00%] Iter 2080/4000 | loss = 0.0057
+[ 52.25%] Iter 2090/4000 | loss = 0.0057
+[ 52.50%] Iter 2100/4000 | loss = 0.0070
+2026-04-29 21:17:48: [Replay Schedule Weights] Iter 2100 | schedule=interp_2100_2200 | x_m=0.0005 | x_2=0.0130 | x_1=0.9865
+[Replay Schedule Weights] Iter 2100 | schedule=interp_2100_2200 | x_m=0.0005 | x_2=0.0130 | x_1=0.9865
+[ 52.75%] Iter 2110/4000 | loss = 0.0066
+[ 53.00%] Iter 2120/4000 | loss = 0.0061
+[ 53.25%] Iter 2130/4000 | loss = 0.0061
+[ 53.50%] Iter 2140/4000 | loss = 0.0057
+[ 53.75%] Iter 2150/4000 | loss = 0.0065
+[ 54.00%] Iter 2160/4000 | loss = 0.0051
+[ 54.25%] Iter 2170/4000 | loss = 0.0056
+[ 54.50%] Iter 2180/4000 | loss = 0.0060
+[ 54.75%] Iter 2190/4000 | loss = 0.0055
+[ 55.00%] Iter 2200/4000 | loss = 0.0063
+2026-04-29 21:18:25: [Replay Schedule Weights] Iter 2200 | schedule=interp_2200_2300 | x_m=0.0005 | x_2=0.0116 | x_1=0.9879
+[Replay Schedule Weights] Iter 2200 | schedule=interp_2200_2300 | x_m=0.0005 | x_2=0.0116 | x_1=0.9879
+[ 55.25%] Iter 2210/4000 | loss = 0.0053
+[ 55.50%] Iter 2220/4000 | loss = 0.0063
+[ 55.75%] Iter 2230/4000 | loss = 0.0064
+[ 56.00%] Iter 2240/4000 | loss = 0.0059
+[ 56.25%] Iter 2250/4000 | loss = 0.0055
+[ 56.50%] Iter 2260/4000 | loss = 0.0054
+[ 56.75%] Iter 2270/4000 | loss = 0.0053
+[ 57.00%] Iter 2280/4000 | loss = 0.0062
+[ 57.25%] Iter 2290/4000 | loss = 0.0055
+[ 57.50%] Iter 2300/4000 | loss = 0.0053
+2026-04-29 21:19:00: [Replay Schedule Weights] Iter 2300 | schedule=interp_2300_2400 | x_m=0.0004 | x_2=0.0105 | x_1=0.9891
+[Replay Schedule Weights] Iter 2300 | schedule=interp_2300_2400 | x_m=0.0004 | x_2=0.0105 | x_1=0.9891
+[ 57.75%] Iter 2310/4000 | loss = 0.0060
+[ 58.00%] Iter 2320/4000 | loss = 0.0055
+[ 58.25%] Iter 2330/4000 | loss = 0.0056
+[ 58.50%] Iter 2340/4000 | loss = 0.0056
+[ 58.75%] Iter 2350/4000 | loss = 0.0054
+[ 59.00%] Iter 2360/4000 | loss = 0.0045
+[ 59.25%] Iter 2370/4000 | loss = 0.0052
+[ 59.50%] Iter 2380/4000 | loss = 0.0076
+[ 59.75%] Iter 2390/4000 | loss = 0.0065
+[ 60.00%] Iter 2400/4000 | loss = 0.0045
+2026-04-29 21:19:36: [Replay Schedule Weights] Iter 2400 | schedule=interp_2400_2500 | x_m=0.0004 | x_2=0.0095 | x_1=0.9901
+[Replay Schedule Weights] Iter 2400 | schedule=interp_2400_2500 | x_m=0.0004 | x_2=0.0095 | x_1=0.9901
+[ 60.25%] Iter 2410/4000 | loss = 0.0060
+[ 60.50%] Iter 2420/4000 | loss = 0.0063
+[ 60.75%] Iter 2430/4000 | loss = 0.0061
+[ 61.00%] Iter 2440/4000 | loss = 0.0066
+[ 61.25%] Iter 2450/4000 | loss = 0.0057
+[ 61.50%] Iter 2460/4000 | loss = 0.0054
+[ 61.75%] Iter 2470/4000 | loss = 0.0053
+[ 62.00%] Iter 2480/4000 | loss = 0.0056
+[ 62.25%] Iter 2490/4000 | loss = 0.0052
+[ 62.50%] Iter 2500/4000 | loss = 0.0055
+2026-04-29 21:20:11: [Replay Schedule Weights] Iter 2500 | schedule=interp_2500_2600 | x_m=0.0004 | x_2=0.0087 | x_1=0.9909
+[Replay Schedule Weights] Iter 2500 | schedule=interp_2500_2600 | x_m=0.0004 | x_2=0.0087 | x_1=0.9909
+[ 62.75%] Iter 2510/4000 | loss = 0.0057
+[ 63.00%] Iter 2520/4000 | loss = 0.0063
+[ 63.25%] Iter 2530/4000 | loss = 0.0047
+[ 63.50%] Iter 2540/4000 | loss = 0.0062
+[ 63.75%] Iter 2550/4000 | loss = 0.0053
+[ 64.00%] Iter 2560/4000 | loss = 0.0063
+[ 64.25%] Iter 2570/4000 | loss = 0.0069
+[ 64.50%] Iter 2580/4000 | loss = 0.0054
+[ 64.75%] Iter 2590/4000 | loss = 0.0055
+[ 65.00%] Iter 2600/4000 | loss = 0.0064
+2026-04-29 21:20:45: [Replay Schedule Weights] Iter 2600 | schedule=interp_2600_2700 | x_m=0.0003 | x_2=0.0079 | x_1=0.9918
+[Replay Schedule Weights] Iter 2600 | schedule=interp_2600_2700 | x_m=0.0003 | x_2=0.0079 | x_1=0.9918
+[ 65.25%] Iter 2610/4000 | loss = 0.0067
+[ 65.50%] Iter 2620/4000 | loss = 0.0056
+[ 65.75%] Iter 2630/4000 | loss = 0.0059
+[ 66.00%] Iter 2640/4000 | loss = 0.0069
+[ 66.25%] Iter 2650/4000 | loss = 0.0052
+[ 66.50%] Iter 2660/4000 | loss = 0.0054
+[ 66.75%] Iter 2670/4000 | loss = 0.0056
+[ 67.00%] Iter 2680/4000 | loss = 0.0054
+[ 67.25%] Iter 2690/4000 | loss = 0.0063
+[ 67.50%] Iter 2700/4000 | loss = 0.0057
+2026-04-29 21:21:19: [Replay Schedule Weights] Iter 2700 | schedule=interp_2700_2800 | x_m=0.0003 | x_2=0.0073 | x_1=0.9924
+[Replay Schedule Weights] Iter 2700 | schedule=interp_2700_2800 | x_m=0.0003 | x_2=0.0073 | x_1=0.9924
+[ 67.75%] Iter 2710/4000 | loss = 0.0052
+[ 68.00%] Iter 2720/4000 | loss = 0.0058
+[ 68.25%] Iter 2730/4000 | loss = 0.0057
+[ 68.50%] Iter 2740/4000 | loss = 0.0052
+[ 68.75%] Iter 2750/4000 | loss = 0.0057
+[ 69.00%] Iter 2760/4000 | loss = 0.0058
+[ 69.25%] Iter 2770/4000 | loss = 0.0060
+[ 69.50%] Iter 2780/4000 | loss = 0.0060
+[ 69.75%] Iter 2790/4000 | loss = 0.0054
+[ 70.00%] Iter 2800/4000 | loss = 0.0059
+2026-04-29 21:21:55: [Replay Schedule Weights] Iter 2800 | schedule=interp_2800_2900 | x_m=0.0003 | x_2=0.0067 | x_1=0.9930
+[Replay Schedule Weights] Iter 2800 | schedule=interp_2800_2900 | x_m=0.0003 | x_2=0.0067 | x_1=0.9930
+[ 70.25%] Iter 2810/4000 | loss = 0.0053
+[ 70.50%] Iter 2820/4000 | loss = 0.0061
+[ 70.75%] Iter 2830/4000 | loss = 0.0054
+[ 71.00%] Iter 2840/4000 | loss = 0.0055
+[ 71.25%] Iter 2850/4000 | loss = 0.0061
+[ 71.50%] Iter 2860/4000 | loss = 0.0057
+[ 71.75%] Iter 2870/4000 | loss = 0.0060
+[ 72.00%] Iter 2880/4000 | loss = 0.0056
+[ 72.25%] Iter 2890/4000 | loss = 0.0062
+[ 72.50%] Iter 2900/4000 | loss = 0.0057
+2026-04-29 21:22:30: [Replay Schedule Weights] Iter 2900 | schedule=interp_2900_3000 | x_m=0.0003 | x_2=0.0062 | x_1=0.9935
+[Replay Schedule Weights] Iter 2900 | schedule=interp_2900_3000 | x_m=0.0003 | x_2=0.0062 | x_1=0.9935
+[ 72.75%] Iter 2910/4000 | loss = 0.0059
+[ 73.00%] Iter 2920/4000 | loss = 0.0053
+[ 73.25%] Iter 2930/4000 | loss = 0.0056
+[ 73.50%] Iter 2940/4000 | loss = 0.0059
+[ 73.75%] Iter 2950/4000 | loss = 0.0064
+[ 74.00%] Iter 2960/4000 | loss = 0.0055
+[ 74.25%] Iter 2970/4000 | loss = 0.0076
+[ 74.50%] Iter 2980/4000 | loss = 0.0060
+[ 74.75%] Iter 2990/4000 | loss = 0.0050
+[ 75.00%] Iter 3000/4000 | loss = 0.0052
+2026-04-29 21:23:06: [Replay Schedule Weights] Iter 3000 | schedule=interp_3000_3100 | x_m=0.0002 | x_2=0.0057 | x_1=0.9941
+[Replay Schedule Weights] Iter 3000 | schedule=interp_3000_3100 | x_m=0.0002 | x_2=0.0057 | x_1=0.9941
+[ 75.25%] Iter 3010/4000 | loss = 0.0055
+[ 75.50%] Iter 3020/4000 | loss = 0.0063
+[ 75.75%] Iter 3030/4000 | loss = 0.0063
+[ 76.00%] Iter 3040/4000 | loss = 0.0056
+[ 76.25%] Iter 3050/4000 | loss = 0.0059
+[ 76.50%] Iter 3060/4000 | loss = 0.0061
+[ 76.75%] Iter 3070/4000 | loss = 0.0050
+[ 77.00%] Iter 3080/4000 | loss = 0.0048
+[ 77.25%] Iter 3090/4000 | loss = 0.0049
+[ 77.50%] Iter 3100/4000 | loss = 0.0065
+2026-04-29 21:23:41: [Replay Schedule Weights] Iter 3100 | schedule=interp_3100_3200 | x_m=0.0002 | x_2=0.0052 | x_1=0.9946
+[Replay Schedule Weights] Iter 3100 | schedule=interp_3100_3200 | x_m=0.0002 | x_2=0.0052 | x_1=0.9946
+[ 77.75%] Iter 3110/4000 | loss = 0.0056
+[ 78.00%] Iter 3120/4000 | loss = 0.0052
+[ 78.25%] Iter 3130/4000 | loss = 0.0055
+[ 78.50%] Iter 3140/4000 | loss = 0.0051
+[ 78.75%] Iter 3150/4000 | loss = 0.0060
+[ 79.00%] Iter 3160/4000 | loss = 0.0057
+[ 79.25%] Iter 3170/4000 | loss = 0.0060
+[ 79.50%] Iter 3180/4000 | loss = 0.0058
+[ 79.75%] Iter 3190/4000 | loss = 0.0076
+[ 80.00%] Iter 3200/4000 | loss = 0.0058
+2026-04-29 21:24:17: [Replay Schedule Weights] Iter 3200 | schedule=interp_3200_3300 | x_m=0.0002 | x_2=0.0049 | x_1=0.9949
+[Replay Schedule Weights] Iter 3200 | schedule=interp_3200_3300 | x_m=0.0002 | x_2=0.0049 | x_1=0.9949
+[ 80.25%] Iter 3210/4000 | loss = 0.0069
+[ 80.50%] Iter 3220/4000 | loss = 0.0054
+[ 80.75%] Iter 3230/4000 | loss = 0.0063
+[ 81.00%] Iter 3240/4000 | loss = 0.0062
+[ 81.25%] Iter 3250/4000 | loss = 0.0056
+[ 81.50%] Iter 3260/4000 | loss = 0.0058
+[ 81.75%] Iter 3270/4000 | loss = 0.0053
+[ 82.00%] Iter 3280/4000 | loss = 0.0051
+[ 82.25%] Iter 3290/4000 | loss = 0.0052
+[ 82.50%] Iter 3300/4000 | loss = 0.0055
+2026-04-29 21:24:52: [Replay Schedule Weights] Iter 3300 | schedule=interp_3300_3400 | x_m=0.0002 | x_2=0.0045 | x_1=0.9953
+[Replay Schedule Weights] Iter 3300 | schedule=interp_3300_3400 | x_m=0.0002 | x_2=0.0045 | x_1=0.9953
+[ 82.75%] Iter 3310/4000 | loss = 0.0062
+[ 83.00%] Iter 3320/4000 | loss = 0.0045
+[ 83.25%] Iter 3330/4000 | loss = 0.0063
+[ 83.50%] Iter 3340/4000 | loss = 0.0054
+[ 83.75%] Iter 3350/4000 | loss = 0.0067
+[ 84.00%] Iter 3360/4000 | loss = 0.0053
+[ 84.25%] Iter 3370/4000 | loss = 0.0059
+[ 84.50%] Iter 3380/4000 | loss = 0.0054
+[ 84.75%] Iter 3390/4000 | loss = 0.0060
+[ 85.00%] Iter 3400/4000 | loss = 0.0047
+2026-04-29 21:25:29: [Replay Schedule Weights] Iter 3400 | schedule=interp_3400_3500 | x_m=0.0002 | x_2=0.0042 | x_1=0.9956
+[Replay Schedule Weights] Iter 3400 | schedule=interp_3400_3500 | x_m=0.0002 | x_2=0.0042 | x_1=0.9956
+[ 85.25%] Iter 3410/4000 | loss = 0.0061
+[ 85.50%] Iter 3420/4000 | loss = 0.0057
+[ 85.75%] Iter 3430/4000 | loss = 0.0055
+[ 86.00%] Iter 3440/4000 | loss = 0.0060
+[ 86.25%] Iter 3450/4000 | loss = 0.0060
+[ 86.50%] Iter 3460/4000 | loss = 0.0055
+[ 86.75%] Iter 3470/4000 | loss = 0.0057
+[ 87.00%] Iter 3480/4000 | loss = 0.0070
+[ 87.25%] Iter 3490/4000 | loss = 0.0057
+[ 87.50%] Iter 3500/4000 | loss = 0.0056
+2026-04-29 21:26:05: [Replay Schedule Weights] Iter 3500 | schedule=interp_3500_3600 | x_m=0.0002 | x_2=0.0039 | x_1=0.9959
+[Replay Schedule Weights] Iter 3500 | schedule=interp_3500_3600 | x_m=0.0002 | x_2=0.0039 | x_1=0.9959
+[ 87.75%] Iter 3510/4000 | loss = 0.0057
+[ 88.00%] Iter 3520/4000 | loss = 0.0057
+[ 88.25%] Iter 3530/4000 | loss = 0.0052
+[ 88.50%] Iter 3540/4000 | loss = 0.0066
+[ 88.75%] Iter 3550/4000 | loss = 0.0058
+[ 89.00%] Iter 3560/4000 | loss = 0.0056
+[ 89.25%] Iter 3570/4000 | loss = 0.0058
+[ 89.50%] Iter 3580/4000 | loss = 0.0052
+[ 89.75%] Iter 3590/4000 | loss = 0.0059
+[ 90.00%] Iter 3600/4000 | loss = 0.0063
+2026-04-29 21:26:41: [Replay Schedule Weights] Iter 3600 | schedule=interp_3600_3700 | x_m=0.0002 | x_2=0.0036 | x_1=0.9962
+[Replay Schedule Weights] Iter 3600 | schedule=interp_3600_3700 | x_m=0.0002 | x_2=0.0036 | x_1=0.9962
+[ 90.25%] Iter 3610/4000 | loss = 0.0064
+[ 90.50%] Iter 3620/4000 | loss = 0.0059
+[ 90.75%] Iter 3630/4000 | loss = 0.0055
+[ 91.00%] Iter 3640/4000 | loss = 0.0061
+[ 91.25%] Iter 3650/4000 | loss = 0.0061
+[ 91.50%] Iter 3660/4000 | loss = 0.0055
+[ 91.75%] Iter 3670/4000 | loss = 0.0050
+[ 92.00%] Iter 3680/4000 | loss = 0.0053
+[ 92.25%] Iter 3690/4000 | loss = 0.0054
+[ 92.50%] Iter 3700/4000 | loss = 0.0053
+2026-04-29 21:27:16: [Replay Schedule Weights] Iter 3700 | schedule=interp_3700_3800 | x_m=0.0001 | x_2=0.0034 | x_1=0.9965
+[Replay Schedule Weights] Iter 3700 | schedule=interp_3700_3800 | x_m=0.0001 | x_2=0.0034 | x_1=0.9965
+[ 92.75%] Iter 3710/4000 | loss = 0.0058
+[ 93.00%] Iter 3720/4000 | loss = 0.0051
+[ 93.25%] Iter 3730/4000 | loss = 0.0054
+[ 93.50%] Iter 3740/4000 | loss = 0.0048
+[ 93.75%] Iter 3750/4000 | loss = 0.0052
+[ 94.00%] Iter 3760/4000 | loss = 0.0063
+[ 94.25%] Iter 3770/4000 | loss = 0.0055
+[ 94.50%] Iter 3780/4000 | loss = 0.0051
+[ 94.75%] Iter 3790/4000 | loss = 0.0050
+[ 95.00%] Iter 3800/4000 | loss = 0.0056
+2026-04-29 21:27:51: [Replay Schedule Weights] Iter 3800 | schedule=interp_3800_3900 | x_m=0.0001 | x_2=0.0032 | x_1=0.9967
+[Replay Schedule Weights] Iter 3800 | schedule=interp_3800_3900 | x_m=0.0001 | x_2=0.0032 | x_1=0.9967
+[ 95.25%] Iter 3810/4000 | loss = 0.0050
+[ 95.50%] Iter 3820/4000 | loss = 0.0062
+[ 95.75%] Iter 3830/4000 | loss = 0.0055
+[ 96.00%] Iter 3840/4000 | loss = 0.0059
+[ 96.25%] Iter 3850/4000 | loss = 0.0050
+[ 96.50%] Iter 3860/4000 | loss = 0.0051
+[ 96.75%] Iter 3870/4000 | loss = 0.0051
+[ 97.00%] Iter 3880/4000 | loss = 0.0051
+[ 97.25%] Iter 3890/4000 | loss = 0.0063
+[ 97.50%] Iter 3900/4000 | loss = 0.0057
+2026-04-29 21:28:25: [Replay Schedule Weights] Iter 3900 | schedule=interp_3900_4000 | x_m=0.0001 | x_2=0.0030 | x_1=0.9969
+[Replay Schedule Weights] Iter 3900 | schedule=interp_3900_4000 | x_m=0.0001 | x_2=0.0030 | x_1=0.9969
+[ 97.75%] Iter 3910/4000 | loss = 0.0050
+[ 98.00%] Iter 3920/4000 | loss = 0.0050
+[ 98.25%] Iter 3930/4000 | loss = 0.0051
+[ 98.50%] Iter 3940/4000 | loss = 0.0061
+[ 98.75%] Iter 3950/4000 | loss = 0.0052
+[ 99.00%] Iter 3960/4000 | loss = 0.0061
+[ 99.25%] Iter 3970/4000 | loss = 0.0055
+[ 99.50%] Iter 3980/4000 | loss = 0.0067
+[ 99.75%] Iter 3990/4000 | loss = 0.0062
+2026-04-29 21:29:00: Evaluate at iteration 4000
+[Eval] model=PointNet | round 1/10
+[2026-04-29 21:32:55] Evaluate_00: epoch = 0500 train time = 234 s train loss = 0.015046 train acc = 0.9975, test acc = 0.7767
+[Eval] model=PointNet | round 2/10
+[2026-04-29 21:36:52] Evaluate_01: epoch = 0500 train time = 236 s train loss = 0.012141 train acc = 1.0000, test acc = 0.7804
+[Eval] model=PointNet | round 3/10
+[2026-04-29 21:40:48] Evaluate_02: epoch = 0500 train time = 236 s train loss = 0.017120 train acc = 0.9975, test acc = 0.7812
+[Eval] model=PointNet | round 4/10
+[2026-04-29 21:44:44] Evaluate_03: epoch = 0500 train time = 236 s train loss = 0.016039 train acc = 0.9975, test acc = 0.7808
+[Eval] model=PointNet | round 5/10
+[2026-04-29 21:48:44] Evaluate_04: epoch = 0500 train time = 239 s train loss = 0.008539 train acc = 1.0000, test acc = 0.7820
+[Eval] model=PointNet | round 6/10
+[2026-04-29 21:52:39] Evaluate_05: epoch = 0500 train time = 235 s train loss = 0.016809 train acc = 0.9950, test acc = 0.7784
+[Eval] model=PointNet | round 7/10
+[2026-04-29 21:56:34] Evaluate_06: epoch = 0500 train time = 234 s train loss = 0.018267 train acc = 0.9950, test acc = 0.7804
+[Eval] model=PointNet | round 8/10
+[2026-04-29 22:00:26] Evaluate_07: epoch = 0500 train time = 232 s train loss = 0.017731 train acc = 0.9975, test acc = 0.7735
+[Eval] model=PointNet | round 9/10
+[2026-04-29 22:04:18] Evaluate_08: epoch = 0500 train time = 232 s train loss = 0.011979 train acc = 0.9975, test acc = 0.7788
+[Eval] model=PointNet | round 10/10
+[2026-04-29 22:08:16] Evaluate_09: epoch = 0500 train time = 237 s train loss = 0.010761 train acc = 1.0000, test acc = 0.7784
+2026-04-29 22:08:16: Model PointNet | mean acc = 0.7791 | std = 0.0024
+[100.00%] Iter 4000/4000 | loss = 0.0057
+2026-04-29 22:08:16: [Replay Schedule Weights] Iter 4000 | schedule=replay_4000 | x_m=0.0001 | x_2=0.0028 | x_1=0.9971
+[Replay Schedule Weights] Iter 4000 | schedule=replay_4000 | x_m=0.0001 | x_2=0.0028 | x_1=0.9971
+2026-04-29 22:08:16: Saved result to result_h5/res_DC_MODELNET40_H5_PointNet_10ppc_ReplayScheduleSADM_100iter_interp.pt
+2026-04-29 22:08:16: 
+==================== Final Results ====================
+
+2026-04-29 22:08:16: Run 1 exp | train on PointNet | eval 10 random PointNet | mean=77.91% std=0.24%
+
+==================== Final Results ====================
+
+[0.77905186]

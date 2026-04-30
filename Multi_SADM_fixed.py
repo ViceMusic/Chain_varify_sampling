@@ -24,14 +24,15 @@ CONFIG = {
     # 蒸馏设置
     "ppc": 10,
     "eval_mode": "S",
+    "multieval": False,
     "num_exp": 1,
-    "num_eval": 10,                   # 测试时建议先小一点
-    "epoch_eval_train": 500,         # 测试时建议先小一点
-    "Iteration": 4000,                 # 测试先小一点，正式跑再调大
+    "num_eval": 10,
+    "epoch_eval_train": 500,
+    "Iteration": 4000,
     "lr_img": 10.0,
     "lr_rot": 0.01,
     "lr_net": 0.01,
-    "batch_real": 16,
+    "batch_real": 8,
     "batch_train": 8,
     "init": "real",
     "feature_transform": 0,
@@ -43,21 +44,41 @@ CONFIG = {
     "addition_setting": "None",
 
     # 调试 / 测试模式
-    "TEST_ONLY": False,               # True: 只做快速检查；False: 正式训练
-    "TEST_EVAL_IT": 0,               # 测试模式下在第几轮做评估
-    "SAVE_SYNTHETIC_TXT": False,     # 是否保存中间 txt
-    "LOG_CLASS_INFO": False,         # 是否打印每类样本数
+    "TEST_ONLY": False,
+    "TEST_EVAL_IT": 0,
+    "SAVE_SYNTHETIC_TXT": False,
+    "LOG_CLASS_INFO": False,
 
     # 训练过程输出频率
-    "PRINT_EVERY": 10,               # 每多少轮 print 一次训练 loss
-    "message":"SADM4000batchreal16" #这个变量用来给生成结果做标识的 
+    "PRINT_EVERY": 10,
+
+    # =====================================================
+    # Fixed Final Weight SADM
+    # =====================================================
+    "sadm_layers": ["x_m", "x_2", "x_1"],
+
+    # 保留 AdaSADM 原来的人工尺度
+    "sadm_base_coef": {
+        "x_m": 0.2,
+        "x_2": 0.05,
+        "x_1": 0.01,
+    },
+
+    # 固定最终权重：来自 AdaSADM 最终学到的权重
+    "fixed_sadm_weights": {
+        "x_m": 0.0001,
+        "x_2": 0.0028,
+        "x_1": 0.9971,
+    },
+
+    "message": "FixedFinalWeightSADM_xm0001_x20028_x19971",
 }
 
-# 逐个方法是协助读取CONFIG的，不用管
+
 def build_args_from_config(config_dict):
     return SimpleNamespace(**config_dict)
 
-# 设置随机函数
+
 def set_seed(seed=1999):
     random.seed(seed)
     np.random.seed(seed)
@@ -67,9 +88,7 @@ def set_seed(seed=1999):
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
 
-# 这东西是在构造旋转矩阵
-# 也就是给定一个轴以后，生成绕这个轴旋转的矩阵，输入是旋转角度和旋转轴的类型（x/y/z）
-# 虽然是在计算图之中，但是本身其实并不存在可以训练的参数，就是一个纯粹地计算函数
+
 def create_rotation_matrix(angle, rot_type="x"):
     c = torch.cos(angle)
     s = torch.sin(angle)
@@ -82,12 +101,14 @@ def create_rotation_matrix(angle, rot_type="x"):
             torch.stack([zeros, c, -s], dim=1),
             torch.stack([zeros, s, c], dim=1)
         ], dim=2)
+
     elif rot_type == "y":
         return torch.stack([
             torch.stack([c, zeros, s], dim=1),
             torch.stack([zeros, ones, zeros], dim=1),
             torch.stack([-s, zeros, c], dim=1)
         ], dim=2)
+
     else:
         return torch.stack([
             torch.stack([c, -s, zeros], dim=1),
@@ -95,23 +116,91 @@ def create_rotation_matrix(angle, rot_type="x"):
             torch.stack([zeros, zeros, ones], dim=1)
         ], dim=2)
 
-# 保存为txt
+
 def save_pointcloud_txt_batch(pointcloud_batch, save_dir, prefix):
     os.makedirs(save_dir, exist_ok=True)
     for i, save_pc in enumerate(pointcloud_batch):
         file_name = os.path.join(save_dir, f"{prefix}_{i}.txt")
         np.savetxt(file_name, save_pc.T, delimiter=",")
 
-# 打印进度
+
 def print_train_progress(it, total_it, loss_avg):
     percent = 100.0 * it / max(total_it, 1)
     print(f"[{percent:6.2f}%] Iter {it:04d}/{total_it} | loss = {loss_avg:.4f}")
 
 
+# =========================================================
+# SADM 工具函数
+# =========================================================
+def sadm_layer_loss(feat_real, feat_syn):
+    """
+    feat_real / feat_syn: [B, C, N]
+
+    原始 SADM:
+    1. 每个 channel 沿点维度 N 排序；
+    2. 对 batch 求平均，得到 [C, N]；
+    3. 保持原始 SADM 的 channel-sum 写法：
+       (((real - syn) ** 2).sum(dim=0)).mean()
+    """
+    sorted_real = torch.sort(feat_real, dim=2, descending=True)[0].detach()
+    sorted_syn = torch.sort(feat_syn, dim=2, descending=True)[0]
+
+    real = sorted_real.mean(dim=0)
+    syn = sorted_syn.mean(dim=0)
+
+    return (((real - syn) ** 2).sum(dim=0)).mean()
+
+
+def fixed_weight_sadm_loss(
+    layers_real,
+    layers_syn,
+    layer_names,
+    base_coef_dict,
+    fixed_weight_dict,
+    device,
+):
+    """
+    固定最终权重版本。
+
+    用来验证：
+    AdaSADM 的收益到底来自最终权重组合，
+    还是来自训练过程中的动态权重变化。
+    """
+    weights = torch.tensor(
+        [fixed_weight_dict[name] for name in layer_names],
+        dtype=torch.float,
+        device=device
+    )
+    weights = weights / weights.sum()
+
+    total = torch.tensor(0.0, device=device)
+    loss_items = {}
+
+    for i, name in enumerate(layer_names):
+        layer_loss = sadm_layer_loss(layers_real[name], layers_syn[name])
+        base_coef = base_coef_dict[name]
+
+        total = total + weights[i] * base_coef * layer_loss
+        loss_items[name] = layer_loss.detach()
+
+    # 和 AdaSADM 保持一致：softmax 加权后乘层数
+    total = total * len(layer_names)
+
+    return total, weights, loss_items
+
+
+def get_fixed_layer_weights(args, layer_names):
+    weights = torch.tensor(
+        [args.fixed_sadm_weights[name] for name in layer_names],
+        dtype=torch.float,
+        device=args.device
+    )
+    return weights / weights.sum()
+
+
 def main():
     args = build_args_from_config(CONFIG)
 
-    # 获取配置和打印一些东西
     os.makedirs(args.mode, exist_ok=True)
     os.makedirs(args.save_path, exist_ok=True)
 
@@ -128,6 +217,7 @@ def main():
     logger.info("Dataset: %s", args.dataset)
     logger.info("Model: %s", args.model)
     logger.info("TEST_ONLY: %s", args.TEST_ONLY)
+    logger.info("Experiment: Fixed final SADM layer weights")
 
     # =========================================================
     # 数据集读取
@@ -137,15 +227,18 @@ def main():
     args.num_classes = num_classes
     model_eval_pool = get_eval_pool(args.eval_mode, args.model)
 
-    # 测试模式：只在指定轮次评估一次
+    # =========================================================
+    # 评估轮次
+    # =========================================================
     if args.TEST_ONLY:
         eval_it_pool = [args.TEST_EVAL_IT]
     else:
-        eval_it_pool = (
-            np.arange(0, args.Iteration + 1, 250).tolist()
-            if args.eval_mode in ["S", "SSS"]
-            else [args.Iteration]
-        )
+        if args.multieval:
+            eval_it_pool = np.arange(0, args.Iteration + 1, 250).tolist()
+            if args.Iteration not in eval_it_pool:
+                eval_it_pool.append(args.Iteration)
+        else:
+            eval_it_pool = [args.Iteration]
 
     logger.info("eval_it_pool: %s", eval_it_pool)
 
@@ -181,7 +274,6 @@ def main():
 
         # =========================================================
         # 初始化 synthetic 点云
-        # 生成数据格式为[num_classes * ppc, 3, npoints]
         # =========================================================
         pointcloud_tmp = torch.randn(
             size=(num_classes * args.ppc, coord_dim, npoints),
@@ -198,9 +290,33 @@ def main():
             device=args.device
         ).view(-1)
 
-        theta_x = torch.zeros(num_classes * args.ppc, dtype=torch.float, device=args.device).requires_grad_(True)
-        theta_y = torch.zeros(num_classes * args.ppc, dtype=torch.float, device=args.device).requires_grad_(True)
-        theta_z = torch.zeros(num_classes * args.ppc, dtype=torch.float, device=args.device).requires_grad_(True)
+        theta_x = torch.zeros(
+            num_classes * args.ppc,
+            dtype=torch.float,
+            device=args.device
+        ).requires_grad_(True)
+
+        theta_y = torch.zeros(
+            num_classes * args.ppc,
+            dtype=torch.float,
+            device=args.device
+        ).requires_grad_(True)
+
+        theta_z = torch.zeros(
+            num_classes * args.ppc,
+            dtype=torch.float,
+            device=args.device
+        ).requires_grad_(True)
+
+        # =========================================================
+        # 固定层权重
+        # =========================================================
+        sadm_layer_names = list(args.sadm_layers)
+        fixed_weights = get_fixed_layer_weights(args, sadm_layer_names)
+
+        logger.info("SADM layers: %s", sadm_layer_names)
+        logger.info("SADM base coef: %s", args.sadm_base_coef)
+        logger.info("Fixed SADM layer weights: %s", fixed_weights.detach().cpu().numpy())
 
         optimizer_theta = torch.optim.SGD([
             {"params": theta_x, "lr": args.lr_rot / 10},
@@ -211,7 +327,9 @@ def main():
         if args.init == "real":
             logger.info("Initialize synthetic data from random real samples")
             for c in range(num_classes):
-                pointcloud_tmp.data[c * args.ppc:(c + 1) * args.ppc] = get_pointclouds(c, args.ppc).detach().data
+                pointcloud_tmp.data[c * args.ppc:(c + 1) * args.ppc] = (
+                    get_pointclouds(c, args.ppc).detach().data
+                )
         else:
             logger.info("Initialize synthetic data from random noise")
 
@@ -230,13 +348,20 @@ def main():
             for c in range(num_classes):
                 label_folder = os.path.join(pc_div_name, f"class_{c}")
                 os.makedirs(label_folder, exist_ok=True)
-                pc_per_class = pointcloud_tmp.data[c * args.ppc:(c + 1) * args.ppc].cpu().numpy()
+                pc_per_class = pointcloud_tmp.data[
+                    c * args.ppc:(c + 1) * args.ppc
+                ].cpu().numpy()
                 save_pointcloud_txt_batch(pc_per_class, label_folder, f"init_{c}")
 
         # =========================================================
         # 训练准备
         # =========================================================
-        optimizer_img = torch.optim.SGD([pointcloud_tmp], lr=args.lr_img, momentum=0.5)
+        optimizer_img = torch.optim.SGD(
+            [pointcloud_tmp],
+            lr=args.lr_img,
+            momentum=0.5
+        )
+
         criterion = nn.CrossEntropyLoss().to(args.device)
         m3d_criterion = M3DLoss(args.mmdkernel)
 
@@ -245,9 +370,8 @@ def main():
         # =========================================================
         # 主训练循环
         # =========================================================
-        # iteration外循环内容是每轮训练都要做的事情，主要是更新 synthetic 数据和评估 synthetic 数据
         for it in range(args.Iteration + 1):
-            
+
             with torch.no_grad():
                 theta_x.data = torch.remainder(theta_x.data + math.pi, 2 * math.pi) - math.pi
                 theta_y.data = torch.remainder(theta_y.data + math.pi, 2 * math.pi) - math.pi
@@ -274,9 +398,21 @@ def main():
 
                     for it_eval in range(args.num_eval):
                         print(f"[Eval] model={model_eval} | round {it_eval + 1}/{args.num_eval}")
-                        torch.manual_seed(1996 + it_eval)
 
-                        net_eval = get_network(model_eval, channel, num_classes, args.feature_transform).to(args.device)
+                        eval_seed = 1996 + it_eval
+                        random.seed(eval_seed)
+                        np.random.seed(eval_seed)
+                        torch.manual_seed(eval_seed)
+                        torch.cuda.manual_seed(eval_seed)
+                        torch.cuda.manual_seed_all(eval_seed)
+
+                        net_eval = get_network(
+                            model_eval,
+                            channel,
+                            num_classes,
+                            args.feature_transform
+                        ).to(args.device)
+
                         pointcloud_syn_eval = copy.deepcopy(pointcloud_syn.detach())
                         label_syn_eval = copy.deepcopy(label_syn.detach())
 
@@ -298,9 +434,15 @@ def main():
 
                     mean_acc = float(np.mean(accs))
                     std_acc = float(np.std(accs))
-                    logger.info("Model %s | mean acc = %.4f | std = %.4f", model_eval, mean_acc, std_acc)
+                    logger.info(
+                        "Model %s | mean acc = %.4f | std = %.4f",
+                        model_eval,
+                        mean_acc,
+                        std_acc
+                    )
 
                     accs_all.append(mean_acc)
+
                     if it == args.Iteration or args.TEST_ONLY:
                         accs_all_exps[model_eval] += accs
 
@@ -309,8 +451,14 @@ def main():
                     for c in range(num_classes):
                         label_folder = os.path.join(pc_div_name, f"class_{c}")
                         os.makedirs(label_folder, exist_ok=True)
-                        pc_syn_per_class = pointcloud_syn_vis[c * args.ppc:(c + 1) * args.ppc]
-                        save_pointcloud_txt_batch(pc_syn_per_class, label_folder, f"iter_{it}_class_{c}")
+                        pc_syn_per_class = pointcloud_syn_vis[
+                            c * args.ppc:(c + 1) * args.ppc
+                        ]
+                        save_pointcloud_txt_batch(
+                            pc_syn_per_class,
+                            label_folder,
+                            f"iter_{it}_class_{c}"
+                        )
 
                 if args.TEST_ONLY:
                     logger.info("TEST_ONLY=True, stop after first evaluation.")
@@ -319,7 +467,13 @@ def main():
             # =====================================================
             # 更新 synthetic 数据
             # =====================================================
-            net = get_network(args.model, channel, num_classes, args.feature_transform).to(args.device)
+            net = get_network(
+                args.model,
+                channel,
+                num_classes,
+                args.feature_transform
+            ).to(args.device)
+
             net.train()
 
             for param in net.parameters():
@@ -328,50 +482,56 @@ def main():
             bn_flag = any("BatchNorm" in module._get_name() for module in net.modules())
             if bn_flag:
                 bn_size_pc = 8
-                pc_real = torch.cat([get_pointclouds(c, bn_size_pc) for c in range(num_classes)], dim=0)
+                pc_real = torch.cat(
+                    [get_pointclouds(c, bn_size_pc) for c in range(num_classes)],
+                    dim=0
+                )
                 net.train()
                 _ = net(pc_real)
                 for module in net.modules():
                     if "BatchNorm" in module._get_name():
                         module.eval()
 
-            # 初始化信息
             loss = torch.tensor(0.0, device=args.device)
-            # 按照每个类别进行循环
+
             for c in range(num_classes):
-                # 取出所有的合成数据
                 pc_syn = pointcloud_syn[c * args.ppc:(c + 1) * args.ppc].reshape(
-                    args.ppc, coord_dim, npoints
+                    args.ppc,
+                    coord_dim,
+                    npoints
                 ).to(args.device)
-                # 随机取batch_real个真实数据
+
                 pc_real = get_pointclouds(c, args.batch_real)
 
-                #提取特征，这个net不是模型？？
                 with torch.no_grad():
                     _, _, _, _, layers_real = net(pc_real)
+
                 _, _, _, _, layers_syn = net(pc_syn)
 
-                # 这里是按照channel进行排序
-                # dim=2就是N的这个维度，数据是[B, C, N]
-                # 也就是只给每个channel的N个点进行排序，排序后还是[B, C, N]，但是每个channel的N个点已经按照数值大小排好序了
-                # 这里有点反直觉，因为我们通常会觉得点云数据是[N, 3]，但是在输入到网络之前，我们把它转置成了[3, N]，所以现在的维度是[B, C, N]，其中C是映射以后的多维度。
-                # 按照dim=2的方式进行排序的话，实际上是每个channel的N个点进行排序，排序后每个channel的N个点已经按照数值大小排好序了，这样就可以让网络更好地学习到每个channel的特征分布了。
-                # 也就是说channel之间并不是一一对应的，而是每个channel内部的特征值进行排序，这样就可以让网络更好地学习到每个channel的特征分布了。
-                sorted_real = torch.sort(layers_real["x_m"], dim=2, descending=True)[0].detach()
-                sorted_syn = torch.sort(layers_syn["x_m"], dim=2, descending=True)[0]
+                loss_sadm_fixed, sadm_weights, sadm_loss_items = fixed_weight_sadm_loss(
+                    layers_real=layers_real,
+                    layers_syn=layers_syn,
+                    layer_names=sadm_layer_names,
+                    base_coef_dict=args.sadm_base_coef,
+                    fixed_weight_dict=args.fixed_sadm_weights,
+                    device=args.device,
+                )
 
-                # 对这一整个batch做平均池化，这个其实先做池化和后做池化是一样的，这里倒是不用改
-                real = sorted_real.mean(dim=0)
-                syn = sorted_syn.mean(dim=0)
+                loss_m3d = m3d_criterion(
+                    layers_real["x_gf"],
+                    layers_syn["x_gf"]
+                )
 
-                # 损失计算
-                loss1 = (((real - syn) ** 2).sum(dim=0)).mean() * 0.2
-                loss1 += m3d_criterion(layers_real["x_gf"], layers_syn["x_gf"]) * 0.001
+                loss1 = loss_sadm_fixed
+                loss1 += loss_m3d * 0.001
+
                 loss += loss1 * args.ppc
 
             optimizer_img.zero_grad()
             optimizer_theta.zero_grad()
+
             loss.backward()
+
             optimizer_img.step()
             optimizer_theta.step()
 
@@ -380,24 +540,64 @@ def main():
             if (it % args.PRINT_EVERY == 0) or (it == args.Iteration):
                 print_train_progress(it, args.Iteration, loss_avg)
 
+            # 打印固定层权重
+            if (it % (args.PRINT_EVERY * 10) == 0) or (it == args.Iteration):
+                with torch.no_grad():
+                    w = get_fixed_layer_weights(args, sadm_layer_names).detach().cpu().numpy()
+                    weight_msg = " | ".join([
+                        f"{name}={w_i:.4f}"
+                        for name, w_i in zip(sadm_layer_names, w)
+                    ])
+                    logger.info("[Fixed Layer Weights] Iter %d | %s", it, weight_msg)
+                    print(f"[Fixed Layer Weights] Iter {it} | {weight_msg}")
+
+            # =====================================================
+            # 保存最终 synthetic 数据
+            # =====================================================
             if it == args.Iteration:
                 data_save.append([
                     copy.deepcopy(pointcloud_syn.detach().cpu()),
                     copy.deepcopy(label_syn.detach().cpu())
                 ])
-                torch.save(
-                    {"data": data_save, "accs_all_exps": accs_all_exps},
-                    os.path.join(args.save_path, f"res_{args.method}_{args.dataset}_{args.model}_{args.ppc}ppc_{args.message}.pt")
+
+                save_dict = {
+                    "data": data_save,
+                    "accs_all_exps": accs_all_exps,
+                    "sadm_layer_names": sadm_layer_names,
+                    "sadm_layer_weights": get_fixed_layer_weights(
+                        args,
+                        sadm_layer_names
+                    ).detach().cpu(),
+                    "sadm_base_coef": args.sadm_base_coef,
+                    "fixed_sadm_weights": args.fixed_sadm_weights,
+                    "experiment_type": "fixed_final_weight_sadm",
+                }
+
+                save_file = os.path.join(
+                    args.save_path,
+                    f"res_{args.method}_{args.dataset}_{args.model}_{args.ppc}ppc_{args.message}.pt"
                 )
-    # 下面纯打印来着
+
+                torch.save(save_dict, save_file)
+                logger.info("Saved result to %s", save_file)
+
+    # =========================================================
+    # 打印最终结果
+    # =========================================================
     logger.info("\n==================== Final Results ====================\n")
     for key in model_eval_pool:
         accs = accs_all_exps[key]
         if len(accs) > 0:
             logger.info(
                 "Run %d exp | train on %s | eval %d random %s | mean=%.2f%% std=%.2f%%",
-                args.num_exp, args.model, len(accs), key, np.mean(accs) * 100, np.std(accs) * 100
+                args.num_exp,
+                args.model,
+                len(accs),
+                key,
+                np.mean(accs) * 100,
+                np.std(accs) * 100
             )
+
     if len(accs_all) > 0:
         print("\n==================== Final Results ====================\n")
         print(np.array(accs_all))

@@ -1,1 +1,1 @@
-nohup python -u start_SADM_ablation.py > ./logs/Multi_SADM_learn_ablation_iter4000.txt 2>&1 &
+nohup python -u Multi_SADM_learn_ieterpret.py > ./logs/Multi_SADM_learn_ieterpret_iter4000.txt 2>&1 &

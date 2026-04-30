@@ -358,8 +358,8 @@ def main():
                 # 这里有点反直觉，因为我们通常会觉得点云数据是[N, 3]，但是在输入到网络之前，我们把它转置成了[3, N]，所以现在的维度是[B, C, N]，其中C是映射以后的多维度。
                 # 按照dim=2的方式进行排序的话，实际上是每个channel的N个点进行排序，排序后每个channel的N个点已经按照数值大小排好序了，这样就可以让网络更好地学习到每个channel的特征分布了。
                 # 也就是说channel之间并不是一一对应的，而是每个channel内部的特征值进行排序，这样就可以让网络更好地学习到每个channel的特征分布了。
-                sorted_real = torch.sort(layers_real["x_1"], dim=2, descending=True)[0].detach()
-                sorted_syn = torch.sort(layers_syn["x_1"], dim=2, descending=True)[0]
+                sorted_real = torch.sort(layers_real["x_2"], dim=2, descending=True)[0].detach()
+                sorted_syn = torch.sort(layers_syn["x_2"], dim=2, descending=True)[0]
 
                 # 对这一整个batch做平均池化，这个其实先做池化和后做池化是一样的，这里倒是不用改
                 real = sorted_real.mean(dim=0)
