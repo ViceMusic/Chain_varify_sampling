@@ -4,6 +4,12 @@ import matplotlib.pyplot as plt
 
 
 PT_PATH = "./result_h5/best_res_AnchorChain_MODELNET40_H5_PointNet_10ppc.pt"
+# 这上面的地址可能包含四种不同的蒸馏规模，因此一共有四个这样的文件
+# 我希望你在这个脚本的基础上进行修改，让最后的绘图结果
+# 1. 一共分成四列，每一列下面可以注明title，对应四个不同的蒸馏规模
+# 2. 分为四行，行不需要title，每一行对应"airplane", "bathtub", "bed", "bench"四种被蒸馏结果可视化
+# 3. 最后生成png格式图片
+# 要求可修改参数为：PATH，column_title
 SAVE_PATH = "syn_pointcloud_5x5.png"
 
 NUM_CLASSES_SHOW = 5

@@ -22,8 +22,9 @@ CONFIG = {
     "device": "cuda" if torch.cuda.is_available() else "cpu",
 
     # 蒸馏设置
-    "ppc": 10,
+    "ppc": 1,
     "eval_mode": "S",
+    "multieval": False,
     "num_exp": 1,
     "num_eval": 10,                   # 测试时建议先小一点
     "epoch_eval_train": 500,         # 测试时建议先小一点
@@ -50,7 +51,7 @@ CONFIG = {
 
     # 训练过程输出频率
     "PRINT_EVERY": 10,               # 每多少轮 print 一次训练 loss
-    "message":"SADM4000batchreal16" #这个变量用来给生成结果做标识的 
+    "message":"SADM_ppc=1_iter=4000" #这个变量用来给生成结果做标识的 
 }
 
 # 逐个方法是协助读取CONFIG的，不用管
@@ -143,7 +144,7 @@ def main():
     else:
         eval_it_pool = (
             np.arange(0, args.Iteration + 1, 250).tolist()
-            if args.eval_mode in ["S", "SSS"]
+            if args.eval_mode and args.multieval in ["S", "SSS"]
             else [args.Iteration]
         )
 

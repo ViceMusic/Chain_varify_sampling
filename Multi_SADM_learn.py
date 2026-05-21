@@ -22,7 +22,7 @@ CONFIG = {
     "device": "cuda" if torch.cuda.is_available() else "cpu",
 
     # 蒸馏设置
-    "ppc": 10,
+    "ppc": 1,
     "eval_mode": "S",
     "multieval": False,
     "num_exp": 1,
@@ -84,7 +84,7 @@ CONFIG = {
     # 如果你想完全自由学习，可以设成 0.0
     "layer_weight_kl": 0.001,
 
-    "message": "AdaptiveMultiSADM_xm_x2_x1",
+    "message": "AdaSADM_ppc=1_iter=4000",
 }
 
 

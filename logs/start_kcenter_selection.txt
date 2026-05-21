@@ -1,0 +1,84 @@
+2026-04-30 11:58:22: Device: cuda
+2026-04-30 11:58:22: Dataset: MODELNET40_H5
+2026-04-30 11:58:22: Model: PointNet
+2026-04-30 11:58:22: Selection method: KCenter
+2026-04-30 11:58:22: ppc: 5
+The size of train data is 9841
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+The size of test data is 2468
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+2026-04-30 11:58:29: class 0: 626 samples
+2026-04-30 11:58:29: class 1: 106 samples
+2026-04-30 11:58:29: class 2: 515 samples
+2026-04-30 11:58:29: class 3: 173 samples
+2026-04-30 11:58:29: class 4: 572 samples
+2026-04-30 11:58:29: class 5: 335 samples
+2026-04-30 11:58:29: class 6: 64 samples
+2026-04-30 11:58:29: class 7: 197 samples
+2026-04-30 11:58:29: class 8: 889 samples
+2026-04-30 11:58:29: class 9: 166 samples
+2026-04-30 11:58:29: class 10: 79 samples
+2026-04-30 11:58:29: class 11: 137 samples
+2026-04-30 11:58:29: class 12: 200 samples
+2026-04-30 11:58:29: class 13: 109 samples
+2026-04-30 11:58:29: class 14: 200 samples
+2026-04-30 11:58:29: class 15: 149 samples
+2026-04-30 11:58:29: class 16: 171 samples
+2026-04-30 11:58:29: class 17: 155 samples
+2026-04-30 11:58:29: class 18: 145 samples
+2026-04-30 11:58:29: class 19: 124 samples
+2026-04-30 11:58:29: class 20: 149 samples
+2026-04-30 11:58:29: class 21: 284 samples
+2026-04-30 11:58:29: class 22: 465 samples
+2026-04-30 11:58:29: class 23: 200 samples
+2026-04-30 11:58:29: class 24: 88 samples
+2026-04-30 11:58:29: class 25: 231 samples
+2026-04-30 11:58:29: class 26: 240 samples
+2026-04-30 11:58:29: class 27: 104 samples
+2026-04-30 11:58:29: class 28: 115 samples
+2026-04-30 11:58:29: class 29: 128 samples
+2026-04-30 11:58:29: class 30: 680 samples
+2026-04-30 11:58:29: class 31: 124 samples
+2026-04-30 11:58:29: class 32: 90 samples
+2026-04-30 11:58:29: class 33: 392 samples
+2026-04-30 11:58:29: class 34: 163 samples
+2026-04-30 11:58:29: class 35: 344 samples
+2026-04-30 11:58:29: class 36: 267 samples
+2026-04-30 11:58:29: class 37: 475 samples
+2026-04-30 11:58:29: class 38: 87 samples
+2026-04-30 11:58:29: class 39: 103 samples
+2026-04-30 11:58:29: 
+================== Exp 0 ==================
+
+2026-04-30 11:58:52: pointcloud_syn.shape: (200, 3, 1024)
+2026-04-30 11:58:52: label_syn.shape: (200,)
+2026-04-30 11:58:52: Evaluate selected set
+[Eval] model=PointNet | round 1/10
+[2026-04-30 12:02:17] Evaluate_00: epoch = 0500 train time = 204 s train loss = 0.009482 train acc = 1.0000, test acc = 0.5754
+[Eval] model=PointNet | round 2/10
+[2026-04-30 12:05:40] Evaluate_01: epoch = 0500 train time = 202 s train loss = 0.007881 train acc = 1.0000, test acc = 0.5790
+[Eval] model=PointNet | round 3/10
+[2026-04-30 12:09:03] Evaluate_02: epoch = 0500 train time = 203 s train loss = 0.011247 train acc = 1.0000, test acc = 0.5454
+[Eval] model=PointNet | round 4/10
+[2026-04-30 12:12:27] Evaluate_03: epoch = 0500 train time = 204 s train loss = 0.005893 train acc = 1.0000, test acc = 0.5758
+[Eval] model=PointNet | round 5/10
+[2026-04-30 12:15:58] Evaluate_04: epoch = 0500 train time = 211 s train loss = 0.005679 train acc = 1.0000, test acc = 0.5575
+[Eval] model=PointNet | round 6/10
+[2026-04-30 12:19:37] Evaluate_05: epoch = 0500 train time = 218 s train loss = 0.005438 train acc = 1.0000, test acc = 0.5806
+[Eval] model=PointNet | round 7/10
+[2026-04-30 12:23:04] Evaluate_06: epoch = 0500 train time = 206 s train loss = 0.024995 train acc = 0.9950, test acc = 0.5235
+[Eval] model=PointNet | round 8/10
+[2026-04-30 12:26:38] Evaluate_07: epoch = 0500 train time = 213 s train loss = 0.015208 train acc = 1.0000, test acc = 0.5616
+[Eval] model=PointNet | round 9/10
+[2026-04-30 12:30:13] Evaluate_08: epoch = 0500 train time = 215 s train loss = 0.006656 train acc = 1.0000, test acc = 0.5482
+[Eval] model=PointNet | round 10/10
+[2026-04-30 12:33:51] Evaluate_09: epoch = 0500 train time = 218 s train loss = 0.008363 train acc = 1.0000, test acc = 0.5656
+2026-04-30 12:33:51: Model PointNet | mean acc = 0.5613 | std = 0.0173
+2026-04-30 12:33:51: 
+==================== Final Results ====================
+
+2026-04-30 12:33:51: Run 1 exp | train on PointNet | eval 10 random PointNet | mean=56.13% std=1.73%
+
+==================== Final Results ====================
+
+[0.56126418]

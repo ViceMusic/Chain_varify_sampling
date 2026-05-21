@@ -16,7 +16,7 @@ CONFIG = {
     "model": "PointNet",
     "device": "cuda" if torch.cuda.is_available() else "cpu",
 
-    "ppc": 5,
+    "ppc": 1,
     "eval_mode": "S",
     "num_exp": 1,
     "num_eval": 10,
@@ -27,7 +27,7 @@ CONFIG = {
 
     "save_path": "result_h5",
     "mode": "result_h5",
-    "message": "RandomSelection",
+    "message": "RandomSelectionPPC1",
 }
 
 
