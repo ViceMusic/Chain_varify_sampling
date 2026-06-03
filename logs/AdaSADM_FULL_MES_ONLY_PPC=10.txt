@@ -1,0 +1,1111 @@
+2026-06-02 10:52:22: Device: cuda
+2026-06-02 10:52:22: Dataset: MODELNET40_H5
+2026-06-02 10:52:22: Model: PointNet
+2026-06-02 10:52:22: TEST_ONLY: False
+2026-06-02 10:52:22: Experiment: AdaSADM with layer contribution logging
+The size of train data is 9841
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+The size of test data is 2468
+Classes: {'airplane': 0, 'bathtub': 1, 'bed': 2, 'bench': 3, 'bookshelf': 4, 'bottle': 5, 'bowl': 6, 'car': 7, 'chair': 8, 'cone': 9, 'cup': 10, 'curtain': 11, 'desk': 12, 'door': 13, 'dresser': 14, 'flower_pot': 15, 'glass_box': 16, 'guitar': 17, 'keyboard': 18, 'lamp': 19, 'laptop': 20, 'mantel': 21, 'monitor': 22, 'night_stand': 23, 'person': 24, 'piano': 25, 'plant': 26, 'radio': 27, 'range_hood': 28, 'sink': 29, 'sofa': 30, 'stairs': 31, 'stool': 32, 'table': 33, 'tent': 34, 'toilet': 35, 'tv_stand': 36, 'vase': 37, 'wardrobe': 38, 'xbox': 39}
+2026-06-02 10:52:22: eval_it_pool: [4000]
+2026-06-02 10:52:22: 
+================== Exp 0 ==================
+
+/root/workspace/varify_sampling/AdaSADM_FULL.py:415: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:253.)
+  label_syn = torch.tensor(
+2026-06-02 10:52:36: SADM layers: ['x_m', 'x_2', 'x_1']
+2026-06-02 10:52:36: SADM base coef: {'x_m': 0.2, 'x_2': 0.05, 'x_1': 0.01}
+2026-06-02 10:52:36: Initial SADM layer prior: [0.75 0.2  0.05]
+2026-06-02 10:52:36: Feature layers: ['f1', 'f2', 'f3']
+2026-06-02 10:52:36: Feature base coef: {'f1': 0.01, 'f2': 0.01, 'f3': 0.01}
+2026-06-02 10:52:36: Initial feature layer prior: [0.5 0.3 0.2]
+2026-06-02 10:52:37: Initialize synthetic data from random real samples
+2026-06-02 10:52:37: [2026-06-02 10:52:37] training begins
+[  0.00%] Iter 0000/4000 | loss = 0.0048
+2026-06-02 10:52:38: [SADM Weights] Iter 0 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 10:52:38: [SADM Raw Loss] Iter 0 | x_m_raw=0.007722 | x_2_raw=0.002885 | x_1_raw=0.006751
+2026-06-02 10:52:38: [SADM Contribution] Iter 0 | x_m_contrib=0.003475 | x_2_contrib=0.000087 | x_1_contrib=0.000010
+2026-06-02 10:52:38: [MSE Weights] Iter 0 | f1=0.5030 | f2=0.2958 | f3=0.2012
+2026-06-02 10:52:38: [MSE Raw Loss] Iter 0 | f1_raw=0.000003 | f2_raw=0.000072 | f3_raw=0.000024
+2026-06-02 10:52:38: [MSE Contribution] Iter 0 | f1_contrib=0.000000 | f2_contrib=0.000001 | f3_contrib=0.000000
+2026-06-02 10:52:38: [Combined Contribution Ratio: SADM+MSE] Iter 0 | SADM:x_m_ratio=0.9727 | SADM:x_2_ratio=0.0242 | SADM:x_1_ratio=0.0028 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0002 | MSE:f3_ratio=0.0000
+2026-06-02 10:52:38: [Branch Contribution Ratio: SADM vs MSE] Iter 0 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[SADM Weights] Iter 0 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 0 | x_m_raw=0.007722 | x_2_raw=0.002885 | x_1_raw=0.006751
+[SADM Contribution] Iter 0 | x_m_contrib=0.003475 | x_2_contrib=0.000087 | x_1_contrib=0.000010
+[MSE Weights] Iter 0 | f1=0.5030 | f2=0.2958 | f3=0.2012
+[MSE Raw Loss] Iter 0 | f1_raw=0.000003 | f2_raw=0.000072 | f3_raw=0.000024
+[MSE Contribution] Iter 0 | f1_contrib=0.000000 | f2_contrib=0.000001 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 0 | SADM:x_m_ratio=0.9727 | SADM:x_2_ratio=0.0242 | SADM:x_1_ratio=0.0028 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0002 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 0 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[  0.25%] Iter 0010/4000 | loss = 0.0048
+[  0.50%] Iter 0020/4000 | loss = 0.0048
+[  0.75%] Iter 0030/4000 | loss = 0.0048
+[  1.00%] Iter 0040/4000 | loss = 0.0043
+[  1.25%] Iter 0050/4000 | loss = 0.0043
+[  1.50%] Iter 0060/4000 | loss = 0.0050
+[  1.75%] Iter 0070/4000 | loss = 0.0045
+[  2.00%] Iter 0080/4000 | loss = 0.0045
+[  2.25%] Iter 0090/4000 | loss = 0.0047
+[  2.50%] Iter 0100/4000 | loss = 0.0043
+2026-06-02 10:53:22: [SADM Weights] Iter 100 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 10:53:22: [SADM Raw Loss] Iter 100 | x_m_raw=0.013457 | x_2_raw=0.004997 | x_1_raw=0.011099
+2026-06-02 10:53:22: [SADM Contribution] Iter 100 | x_m_contrib=0.006056 | x_2_contrib=0.000150 | x_1_contrib=0.000017
+2026-06-02 10:53:22: [MSE Weights] Iter 100 | f1=0.6603 | f2=0.1464 | f3=0.1934
+2026-06-02 10:53:22: [MSE Raw Loss] Iter 100 | f1_raw=0.000005 | f2_raw=0.000071 | f3_raw=0.000024
+2026-06-02 10:53:22: [MSE Contribution] Iter 100 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 10:53:22: [Combined Contribution Ratio: SADM+MSE] Iter 100 | SADM:x_m_ratio=0.9731 | SADM:x_2_ratio=0.0241 | SADM:x_1_ratio=0.0027 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 10:53:22: [Branch Contribution Ratio: SADM vs MSE] Iter 100 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 100 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 100 | x_m_raw=0.013457 | x_2_raw=0.004997 | x_1_raw=0.011099
+[SADM Contribution] Iter 100 | x_m_contrib=0.006056 | x_2_contrib=0.000150 | x_1_contrib=0.000017
+[MSE Weights] Iter 100 | f1=0.6603 | f2=0.1464 | f3=0.1934
+[MSE Raw Loss] Iter 100 | f1_raw=0.000005 | f2_raw=0.000071 | f3_raw=0.000024
+[MSE Contribution] Iter 100 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 100 | SADM:x_m_ratio=0.9731 | SADM:x_2_ratio=0.0241 | SADM:x_1_ratio=0.0027 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 100 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[  2.75%] Iter 0110/4000 | loss = 0.0044
+[  3.00%] Iter 0120/4000 | loss = 0.0048
+[  3.25%] Iter 0130/4000 | loss = 0.0038
+[  3.50%] Iter 0140/4000 | loss = 0.0043
+[  3.75%] Iter 0150/4000 | loss = 0.0047
+[  4.00%] Iter 0160/4000 | loss = 0.0041
+[  4.25%] Iter 0170/4000 | loss = 0.0043
+[  4.50%] Iter 0180/4000 | loss = 0.0042
+[  4.75%] Iter 0190/4000 | loss = 0.0041
+[  5.00%] Iter 0200/4000 | loss = 0.0040
+2026-06-02 10:54:07: [SADM Weights] Iter 200 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 10:54:07: [SADM Raw Loss] Iter 200 | x_m_raw=0.008797 | x_2_raw=0.003279 | x_1_raw=0.009281
+2026-06-02 10:54:07: [SADM Contribution] Iter 200 | x_m_contrib=0.003959 | x_2_contrib=0.000098 | x_1_contrib=0.000014
+2026-06-02 10:54:07: [MSE Weights] Iter 200 | f1=0.6606 | f2=0.1449 | f3=0.1945
+2026-06-02 10:54:07: [MSE Raw Loss] Iter 200 | f1_raw=0.000002 | f2_raw=0.000101 | f3_raw=0.000034
+2026-06-02 10:54:07: [MSE Contribution] Iter 200 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 10:54:07: [Combined Contribution Ratio: SADM+MSE] Iter 200 | SADM:x_m_ratio=0.9723 | SADM:x_2_ratio=0.0242 | SADM:x_1_ratio=0.0034 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 10:54:07: [Branch Contribution Ratio: SADM vs MSE] Iter 200 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[SADM Weights] Iter 200 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 200 | x_m_raw=0.008797 | x_2_raw=0.003279 | x_1_raw=0.009281
+[SADM Contribution] Iter 200 | x_m_contrib=0.003959 | x_2_contrib=0.000098 | x_1_contrib=0.000014
+[MSE Weights] Iter 200 | f1=0.6606 | f2=0.1449 | f3=0.1945
+[MSE Raw Loss] Iter 200 | f1_raw=0.000002 | f2_raw=0.000101 | f3_raw=0.000034
+[MSE Contribution] Iter 200 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 200 | SADM:x_m_ratio=0.9723 | SADM:x_2_ratio=0.0242 | SADM:x_1_ratio=0.0034 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 200 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[  5.25%] Iter 0210/4000 | loss = 0.0043
+[  5.50%] Iter 0220/4000 | loss = 0.0038
+[  5.75%] Iter 0230/4000 | loss = 0.0039
+[  6.00%] Iter 0240/4000 | loss = 0.0043
+[  6.25%] Iter 0250/4000 | loss = 0.0040
+[  6.50%] Iter 0260/4000 | loss = 0.0040
+[  6.75%] Iter 0270/4000 | loss = 0.0040
+[  7.00%] Iter 0280/4000 | loss = 0.0041
+[  7.25%] Iter 0290/4000 | loss = 0.0042
+[  7.50%] Iter 0300/4000 | loss = 0.0043
+2026-06-02 10:54:51: [SADM Weights] Iter 300 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 10:54:51: [SADM Raw Loss] Iter 300 | x_m_raw=0.010448 | x_2_raw=0.003902 | x_1_raw=0.009271
+2026-06-02 10:54:51: [SADM Contribution] Iter 300 | x_m_contrib=0.004702 | x_2_contrib=0.000117 | x_1_contrib=0.000014
+2026-06-02 10:54:51: [MSE Weights] Iter 300 | f1=0.6608 | f2=0.1474 | f3=0.1918
+2026-06-02 10:54:51: [MSE Raw Loss] Iter 300 | f1_raw=0.000004 | f2_raw=0.000075 | f3_raw=0.000026
+2026-06-02 10:54:51: [MSE Contribution] Iter 300 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 10:54:51: [Combined Contribution Ratio: SADM+MSE] Iter 300 | SADM:x_m_ratio=0.9728 | SADM:x_2_ratio=0.0242 | SADM:x_1_ratio=0.0029 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 10:54:51: [Branch Contribution Ratio: SADM vs MSE] Iter 300 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 300 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 300 | x_m_raw=0.010448 | x_2_raw=0.003902 | x_1_raw=0.009271
+[SADM Contribution] Iter 300 | x_m_contrib=0.004702 | x_2_contrib=0.000117 | x_1_contrib=0.000014
+[MSE Weights] Iter 300 | f1=0.6608 | f2=0.1474 | f3=0.1918
+[MSE Raw Loss] Iter 300 | f1_raw=0.000004 | f2_raw=0.000075 | f3_raw=0.000026
+[MSE Contribution] Iter 300 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 300 | SADM:x_m_ratio=0.9728 | SADM:x_2_ratio=0.0242 | SADM:x_1_ratio=0.0029 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 300 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[  7.75%] Iter 0310/4000 | loss = 0.0041
+[  8.00%] Iter 0320/4000 | loss = 0.0040
+[  8.25%] Iter 0330/4000 | loss = 0.0040
+[  8.50%] Iter 0340/4000 | loss = 0.0041
+[  8.75%] Iter 0350/4000 | loss = 0.0043
+[  9.00%] Iter 0360/4000 | loss = 0.0039
+[  9.25%] Iter 0370/4000 | loss = 0.0040
+[  9.50%] Iter 0380/4000 | loss = 0.0039
+[  9.75%] Iter 0390/4000 | loss = 0.0039
+[ 10.00%] Iter 0400/4000 | loss = 0.0039
+2026-06-02 10:55:35: [SADM Weights] Iter 400 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 10:55:35: [SADM Raw Loss] Iter 400 | x_m_raw=0.009805 | x_2_raw=0.003663 | x_1_raw=0.009265
+2026-06-02 10:55:35: [SADM Contribution] Iter 400 | x_m_contrib=0.004412 | x_2_contrib=0.000110 | x_1_contrib=0.000014
+2026-06-02 10:55:35: [MSE Weights] Iter 400 | f1=0.6657 | f2=0.1396 | f3=0.1947
+2026-06-02 10:55:35: [MSE Raw Loss] Iter 400 | f1_raw=0.000004 | f2_raw=0.000106 | f3_raw=0.000035
+2026-06-02 10:55:35: [MSE Contribution] Iter 400 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 10:55:35: [Combined Contribution Ratio: SADM+MSE] Iter 400 | SADM:x_m_ratio=0.9726 | SADM:x_2_ratio=0.0242 | SADM:x_1_ratio=0.0031 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 10:55:35: [Branch Contribution Ratio: SADM vs MSE] Iter 400 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[SADM Weights] Iter 400 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 400 | x_m_raw=0.009805 | x_2_raw=0.003663 | x_1_raw=0.009265
+[SADM Contribution] Iter 400 | x_m_contrib=0.004412 | x_2_contrib=0.000110 | x_1_contrib=0.000014
+[MSE Weights] Iter 400 | f1=0.6657 | f2=0.1396 | f3=0.1947
+[MSE Raw Loss] Iter 400 | f1_raw=0.000004 | f2_raw=0.000106 | f3_raw=0.000035
+[MSE Contribution] Iter 400 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 400 | SADM:x_m_ratio=0.9726 | SADM:x_2_ratio=0.0242 | SADM:x_1_ratio=0.0031 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 400 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[ 10.25%] Iter 0410/4000 | loss = 0.0047
+[ 10.50%] Iter 0420/4000 | loss = 0.0041
+[ 10.75%] Iter 0430/4000 | loss = 0.0041
+[ 11.00%] Iter 0440/4000 | loss = 0.0037
+[ 11.25%] Iter 0450/4000 | loss = 0.0038
+[ 11.50%] Iter 0460/4000 | loss = 0.0047
+[ 11.75%] Iter 0470/4000 | loss = 0.0042
+[ 12.00%] Iter 0480/4000 | loss = 0.0039
+[ 12.25%] Iter 0490/4000 | loss = 0.0041
+[ 12.50%] Iter 0500/4000 | loss = 0.0040
+2026-06-02 10:56:19: [SADM Weights] Iter 500 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 10:56:19: [SADM Raw Loss] Iter 500 | x_m_raw=0.020220 | x_2_raw=0.007304 | x_1_raw=0.015002
+2026-06-02 10:56:19: [SADM Contribution] Iter 500 | x_m_contrib=0.009099 | x_2_contrib=0.000219 | x_1_contrib=0.000023
+2026-06-02 10:56:19: [MSE Weights] Iter 500 | f1=0.6648 | f2=0.1413 | f3=0.1939
+2026-06-02 10:56:19: [MSE Raw Loss] Iter 500 | f1_raw=0.000005 | f2_raw=0.000073 | f3_raw=0.000024
+2026-06-02 10:56:19: [MSE Contribution] Iter 500 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 10:56:19: [Combined Contribution Ratio: SADM+MSE] Iter 500 | SADM:x_m_ratio=0.9741 | SADM:x_2_ratio=0.0235 | SADM:x_1_ratio=0.0024 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0000 | MSE:f3_ratio=0.0000
+2026-06-02 10:56:19: [Branch Contribution Ratio: SADM vs MSE] Iter 500 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 500 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 500 | x_m_raw=0.020220 | x_2_raw=0.007304 | x_1_raw=0.015002
+[SADM Contribution] Iter 500 | x_m_contrib=0.009099 | x_2_contrib=0.000219 | x_1_contrib=0.000023
+[MSE Weights] Iter 500 | f1=0.6648 | f2=0.1413 | f3=0.1939
+[MSE Raw Loss] Iter 500 | f1_raw=0.000005 | f2_raw=0.000073 | f3_raw=0.000024
+[MSE Contribution] Iter 500 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 500 | SADM:x_m_ratio=0.9741 | SADM:x_2_ratio=0.0235 | SADM:x_1_ratio=0.0024 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0000 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 500 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 12.75%] Iter 0510/4000 | loss = 0.0038
+[ 13.00%] Iter 0520/4000 | loss = 0.0039
+[ 13.25%] Iter 0530/4000 | loss = 0.0042
+[ 13.50%] Iter 0540/4000 | loss = 0.0042
+[ 13.75%] Iter 0550/4000 | loss = 0.0040
+[ 14.00%] Iter 0560/4000 | loss = 0.0042
+[ 14.25%] Iter 0570/4000 | loss = 0.0039
+[ 14.50%] Iter 0580/4000 | loss = 0.0041
+[ 14.75%] Iter 0590/4000 | loss = 0.0040
+[ 15.00%] Iter 0600/4000 | loss = 0.0043
+2026-06-02 10:57:03: [SADM Weights] Iter 600 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 10:57:03: [SADM Raw Loss] Iter 600 | x_m_raw=0.010406 | x_2_raw=0.003728 | x_1_raw=0.009435
+2026-06-02 10:57:03: [SADM Contribution] Iter 600 | x_m_contrib=0.004683 | x_2_contrib=0.000112 | x_1_contrib=0.000014
+2026-06-02 10:57:03: [MSE Weights] Iter 600 | f1=0.6650 | f2=0.1411 | f3=0.1938
+2026-06-02 10:57:03: [MSE Raw Loss] Iter 600 | f1_raw=0.000004 | f2_raw=0.000078 | f3_raw=0.000026
+2026-06-02 10:57:03: [MSE Contribution] Iter 600 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 10:57:03: [Combined Contribution Ratio: SADM+MSE] Iter 600 | SADM:x_m_ratio=0.9737 | SADM:x_2_ratio=0.0233 | SADM:x_1_ratio=0.0029 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 10:57:03: [Branch Contribution Ratio: SADM vs MSE] Iter 600 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 600 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 600 | x_m_raw=0.010406 | x_2_raw=0.003728 | x_1_raw=0.009435
+[SADM Contribution] Iter 600 | x_m_contrib=0.004683 | x_2_contrib=0.000112 | x_1_contrib=0.000014
+[MSE Weights] Iter 600 | f1=0.6650 | f2=0.1411 | f3=0.1938
+[MSE Raw Loss] Iter 600 | f1_raw=0.000004 | f2_raw=0.000078 | f3_raw=0.000026
+[MSE Contribution] Iter 600 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 600 | SADM:x_m_ratio=0.9737 | SADM:x_2_ratio=0.0233 | SADM:x_1_ratio=0.0029 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 600 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 15.25%] Iter 0610/4000 | loss = 0.0041
+[ 15.50%] Iter 0620/4000 | loss = 0.0045
+[ 15.75%] Iter 0630/4000 | loss = 0.0038
+[ 16.00%] Iter 0640/4000 | loss = 0.0041
+[ 16.25%] Iter 0650/4000 | loss = 0.0043
+[ 16.50%] Iter 0660/4000 | loss = 0.0037
+[ 16.75%] Iter 0670/4000 | loss = 0.0042
+[ 17.00%] Iter 0680/4000 | loss = 0.0043
+[ 17.25%] Iter 0690/4000 | loss = 0.0037
+[ 17.50%] Iter 0700/4000 | loss = 0.0042
+2026-06-02 10:57:47: [SADM Weights] Iter 700 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 10:57:47: [SADM Raw Loss] Iter 700 | x_m_raw=0.011896 | x_2_raw=0.004593 | x_1_raw=0.013074
+2026-06-02 10:57:47: [SADM Contribution] Iter 700 | x_m_contrib=0.005353 | x_2_contrib=0.000138 | x_1_contrib=0.000020
+2026-06-02 10:57:47: [MSE Weights] Iter 700 | f1=0.6625 | f2=0.1426 | f3=0.1949
+2026-06-02 10:57:47: [MSE Raw Loss] Iter 700 | f1_raw=0.000004 | f2_raw=0.000091 | f3_raw=0.000031
+2026-06-02 10:57:47: [MSE Contribution] Iter 700 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 10:57:47: [Combined Contribution Ratio: SADM+MSE] Iter 700 | SADM:x_m_ratio=0.9713 | SADM:x_2_ratio=0.0250 | SADM:x_1_ratio=0.0036 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 10:57:47: [Branch Contribution Ratio: SADM vs MSE] Iter 700 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 700 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 700 | x_m_raw=0.011896 | x_2_raw=0.004593 | x_1_raw=0.013074
+[SADM Contribution] Iter 700 | x_m_contrib=0.005353 | x_2_contrib=0.000138 | x_1_contrib=0.000020
+[MSE Weights] Iter 700 | f1=0.6625 | f2=0.1426 | f3=0.1949
+[MSE Raw Loss] Iter 700 | f1_raw=0.000004 | f2_raw=0.000091 | f3_raw=0.000031
+[MSE Contribution] Iter 700 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 700 | SADM:x_m_ratio=0.9713 | SADM:x_2_ratio=0.0250 | SADM:x_1_ratio=0.0036 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 700 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 17.75%] Iter 0710/4000 | loss = 0.0040
+[ 18.00%] Iter 0720/4000 | loss = 0.0037
+[ 18.25%] Iter 0730/4000 | loss = 0.0041
+[ 18.50%] Iter 0740/4000 | loss = 0.0042
+[ 18.75%] Iter 0750/4000 | loss = 0.0042
+[ 19.00%] Iter 0760/4000 | loss = 0.0038
+[ 19.25%] Iter 0770/4000 | loss = 0.0036
+[ 19.50%] Iter 0780/4000 | loss = 0.0037
+[ 19.75%] Iter 0790/4000 | loss = 0.0039
+[ 20.00%] Iter 0800/4000 | loss = 0.0038
+2026-06-02 10:58:31: [SADM Weights] Iter 800 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 10:58:31: [SADM Raw Loss] Iter 800 | x_m_raw=0.007171 | x_2_raw=0.002837 | x_1_raw=0.008887
+2026-06-02 10:58:31: [SADM Contribution] Iter 800 | x_m_contrib=0.003227 | x_2_contrib=0.000085 | x_1_contrib=0.000013
+2026-06-02 10:58:31: [MSE Weights] Iter 800 | f1=0.6745 | f2=0.1384 | f3=0.1871
+2026-06-02 10:58:31: [MSE Raw Loss] Iter 800 | f1_raw=0.000002 | f2_raw=0.000139 | f3_raw=0.000045
+2026-06-02 10:58:31: [MSE Contribution] Iter 800 | f1_contrib=0.000000 | f2_contrib=0.000001 | f3_contrib=0.000000
+2026-06-02 10:58:31: [Combined Contribution Ratio: SADM+MSE] Iter 800 | SADM:x_m_ratio=0.9701 | SADM:x_2_ratio=0.0256 | SADM:x_1_ratio=0.0040 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0002 | MSE:f3_ratio=0.0001
+2026-06-02 10:58:31: [Branch Contribution Ratio: SADM vs MSE] Iter 800 | SADM_total_ratio=0.9997 | MSE_total_ratio=0.0003
+[SADM Weights] Iter 800 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 800 | x_m_raw=0.007171 | x_2_raw=0.002837 | x_1_raw=0.008887
+[SADM Contribution] Iter 800 | x_m_contrib=0.003227 | x_2_contrib=0.000085 | x_1_contrib=0.000013
+[MSE Weights] Iter 800 | f1=0.6745 | f2=0.1384 | f3=0.1871
+[MSE Raw Loss] Iter 800 | f1_raw=0.000002 | f2_raw=0.000139 | f3_raw=0.000045
+[MSE Contribution] Iter 800 | f1_contrib=0.000000 | f2_contrib=0.000001 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 800 | SADM:x_m_ratio=0.9701 | SADM:x_2_ratio=0.0256 | SADM:x_1_ratio=0.0040 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0002 | MSE:f3_ratio=0.0001
+[Branch Contribution Ratio: SADM vs MSE] Iter 800 | SADM_total_ratio=0.9997 | MSE_total_ratio=0.0003
+[ 20.25%] Iter 0810/4000 | loss = 0.0041
+[ 20.50%] Iter 0820/4000 | loss = 0.0039
+[ 20.75%] Iter 0830/4000 | loss = 0.0042
+[ 21.00%] Iter 0840/4000 | loss = 0.0043
+[ 21.25%] Iter 0850/4000 | loss = 0.0040
+[ 21.50%] Iter 0860/4000 | loss = 0.0041
+[ 21.75%] Iter 0870/4000 | loss = 0.0041
+[ 22.00%] Iter 0880/4000 | loss = 0.0038
+[ 22.25%] Iter 0890/4000 | loss = 0.0037
+[ 22.50%] Iter 0900/4000 | loss = 0.0038
+2026-06-02 10:59:14: [SADM Weights] Iter 900 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 10:59:14: [SADM Raw Loss] Iter 900 | x_m_raw=0.012870 | x_2_raw=0.005012 | x_1_raw=0.011145
+2026-06-02 10:59:14: [SADM Contribution] Iter 900 | x_m_contrib=0.005791 | x_2_contrib=0.000150 | x_1_contrib=0.000017
+2026-06-02 10:59:14: [MSE Weights] Iter 900 | f1=0.6652 | f2=0.1398 | f3=0.1951
+2026-06-02 10:59:14: [MSE Raw Loss] Iter 900 | f1_raw=0.000004 | f2_raw=0.000072 | f3_raw=0.000024
+2026-06-02 10:59:14: [MSE Contribution] Iter 900 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 10:59:14: [Combined Contribution Ratio: SADM+MSE] Iter 900 | SADM:x_m_ratio=0.9719 | SADM:x_2_ratio=0.0252 | SADM:x_1_ratio=0.0028 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 10:59:14: [Branch Contribution Ratio: SADM vs MSE] Iter 900 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 900 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 900 | x_m_raw=0.012870 | x_2_raw=0.005012 | x_1_raw=0.011145
+[SADM Contribution] Iter 900 | x_m_contrib=0.005791 | x_2_contrib=0.000150 | x_1_contrib=0.000017
+[MSE Weights] Iter 900 | f1=0.6652 | f2=0.1398 | f3=0.1951
+[MSE Raw Loss] Iter 900 | f1_raw=0.000004 | f2_raw=0.000072 | f3_raw=0.000024
+[MSE Contribution] Iter 900 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 900 | SADM:x_m_ratio=0.9719 | SADM:x_2_ratio=0.0252 | SADM:x_1_ratio=0.0028 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 900 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 22.75%] Iter 0910/4000 | loss = 0.0039
+[ 23.00%] Iter 0920/4000 | loss = 0.0042
+[ 23.25%] Iter 0930/4000 | loss = 0.0039
+[ 23.50%] Iter 0940/4000 | loss = 0.0041
+[ 23.75%] Iter 0950/4000 | loss = 0.0038
+[ 24.00%] Iter 0960/4000 | loss = 0.0041
+[ 24.25%] Iter 0970/4000 | loss = 0.0040
+[ 24.50%] Iter 0980/4000 | loss = 0.0038
+[ 24.75%] Iter 0990/4000 | loss = 0.0039
+[ 25.00%] Iter 1000/4000 | loss = 0.0040
+2026-06-02 10:59:58: [SADM Weights] Iter 1000 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 10:59:58: [SADM Raw Loss] Iter 1000 | x_m_raw=0.009534 | x_2_raw=0.003636 | x_1_raw=0.008481
+2026-06-02 10:59:58: [SADM Contribution] Iter 1000 | x_m_contrib=0.004290 | x_2_contrib=0.000109 | x_1_contrib=0.000013
+2026-06-02 10:59:58: [MSE Weights] Iter 1000 | f1=0.6664 | f2=0.1427 | f3=0.1909
+2026-06-02 10:59:58: [MSE Raw Loss] Iter 1000 | f1_raw=0.000003 | f2_raw=0.000097 | f3_raw=0.000030
+2026-06-02 10:59:58: [MSE Contribution] Iter 1000 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 10:59:58: [Combined Contribution Ratio: SADM+MSE] Iter 1000 | SADM:x_m_ratio=0.9722 | SADM:x_2_ratio=0.0247 | SADM:x_1_ratio=0.0029 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 10:59:58: [Branch Contribution Ratio: SADM vs MSE] Iter 1000 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 1000 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 1000 | x_m_raw=0.009534 | x_2_raw=0.003636 | x_1_raw=0.008481
+[SADM Contribution] Iter 1000 | x_m_contrib=0.004290 | x_2_contrib=0.000109 | x_1_contrib=0.000013
+[MSE Weights] Iter 1000 | f1=0.6664 | f2=0.1427 | f3=0.1909
+[MSE Raw Loss] Iter 1000 | f1_raw=0.000003 | f2_raw=0.000097 | f3_raw=0.000030
+[MSE Contribution] Iter 1000 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 1000 | SADM:x_m_ratio=0.9722 | SADM:x_2_ratio=0.0247 | SADM:x_1_ratio=0.0029 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 1000 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 25.25%] Iter 1010/4000 | loss = 0.0041
+[ 25.50%] Iter 1020/4000 | loss = 0.0036
+[ 25.75%] Iter 1030/4000 | loss = 0.0041
+[ 26.00%] Iter 1040/4000 | loss = 0.0042
+[ 26.25%] Iter 1050/4000 | loss = 0.0039
+[ 26.50%] Iter 1060/4000 | loss = 0.0042
+[ 26.75%] Iter 1070/4000 | loss = 0.0040
+[ 27.00%] Iter 1080/4000 | loss = 0.0038
+[ 27.25%] Iter 1090/4000 | loss = 0.0040
+[ 27.50%] Iter 1100/4000 | loss = 0.0041
+2026-06-02 11:00:39: [SADM Weights] Iter 1100 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:00:39: [SADM Raw Loss] Iter 1100 | x_m_raw=0.013142 | x_2_raw=0.005032 | x_1_raw=0.012187
+2026-06-02 11:00:39: [SADM Contribution] Iter 1100 | x_m_contrib=0.005914 | x_2_contrib=0.000151 | x_1_contrib=0.000018
+2026-06-02 11:00:39: [MSE Weights] Iter 1100 | f1=0.6596 | f2=0.1490 | f3=0.1914
+2026-06-02 11:00:39: [MSE Raw Loss] Iter 1100 | f1_raw=0.000004 | f2_raw=0.000078 | f3_raw=0.000026
+2026-06-02 11:00:39: [MSE Contribution] Iter 1100 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:00:39: [Combined Contribution Ratio: SADM+MSE] Iter 1100 | SADM:x_m_ratio=0.9721 | SADM:x_2_ratio=0.0248 | SADM:x_1_ratio=0.0030 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:00:39: [Branch Contribution Ratio: SADM vs MSE] Iter 1100 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 1100 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 1100 | x_m_raw=0.013142 | x_2_raw=0.005032 | x_1_raw=0.012187
+[SADM Contribution] Iter 1100 | x_m_contrib=0.005914 | x_2_contrib=0.000151 | x_1_contrib=0.000018
+[MSE Weights] Iter 1100 | f1=0.6596 | f2=0.1490 | f3=0.1914
+[MSE Raw Loss] Iter 1100 | f1_raw=0.000004 | f2_raw=0.000078 | f3_raw=0.000026
+[MSE Contribution] Iter 1100 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 1100 | SADM:x_m_ratio=0.9721 | SADM:x_2_ratio=0.0248 | SADM:x_1_ratio=0.0030 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 1100 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 27.75%] Iter 1110/4000 | loss = 0.0034
+[ 28.00%] Iter 1120/4000 | loss = 0.0041
+[ 28.25%] Iter 1130/4000 | loss = 0.0039
+[ 28.50%] Iter 1140/4000 | loss = 0.0038
+[ 28.75%] Iter 1150/4000 | loss = 0.0040
+[ 29.00%] Iter 1160/4000 | loss = 0.0039
+[ 29.25%] Iter 1170/4000 | loss = 0.0038
+[ 29.50%] Iter 1180/4000 | loss = 0.0040
+[ 29.75%] Iter 1190/4000 | loss = 0.0042
+[ 30.00%] Iter 1200/4000 | loss = 0.0040
+2026-06-02 11:01:18: [SADM Weights] Iter 1200 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:01:18: [SADM Raw Loss] Iter 1200 | x_m_raw=0.009630 | x_2_raw=0.003522 | x_1_raw=0.009106
+2026-06-02 11:01:18: [SADM Contribution] Iter 1200 | x_m_contrib=0.004333 | x_2_contrib=0.000106 | x_1_contrib=0.000014
+2026-06-02 11:01:18: [MSE Weights] Iter 1200 | f1=0.6654 | f2=0.1426 | f3=0.1920
+2026-06-02 11:01:18: [MSE Raw Loss] Iter 1200 | f1_raw=0.000004 | f2_raw=0.000068 | f3_raw=0.000023
+2026-06-02 11:01:18: [MSE Contribution] Iter 1200 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:01:18: [Combined Contribution Ratio: SADM+MSE] Iter 1200 | SADM:x_m_ratio=0.9731 | SADM:x_2_ratio=0.0237 | SADM:x_1_ratio=0.0031 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:01:18: [Branch Contribution Ratio: SADM vs MSE] Iter 1200 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 1200 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 1200 | x_m_raw=0.009630 | x_2_raw=0.003522 | x_1_raw=0.009106
+[SADM Contribution] Iter 1200 | x_m_contrib=0.004333 | x_2_contrib=0.000106 | x_1_contrib=0.000014
+[MSE Weights] Iter 1200 | f1=0.6654 | f2=0.1426 | f3=0.1920
+[MSE Raw Loss] Iter 1200 | f1_raw=0.000004 | f2_raw=0.000068 | f3_raw=0.000023
+[MSE Contribution] Iter 1200 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 1200 | SADM:x_m_ratio=0.9731 | SADM:x_2_ratio=0.0237 | SADM:x_1_ratio=0.0031 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 1200 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 30.25%] Iter 1210/4000 | loss = 0.0036
+[ 30.50%] Iter 1220/4000 | loss = 0.0041
+[ 30.75%] Iter 1230/4000 | loss = 0.0041
+[ 31.00%] Iter 1240/4000 | loss = 0.0040
+[ 31.25%] Iter 1250/4000 | loss = 0.0034
+[ 31.50%] Iter 1260/4000 | loss = 0.0036
+[ 31.75%] Iter 1270/4000 | loss = 0.0045
+[ 32.00%] Iter 1280/4000 | loss = 0.0039
+[ 32.25%] Iter 1290/4000 | loss = 0.0038
+[ 32.50%] Iter 1300/4000 | loss = 0.0039
+2026-06-02 11:01:57: [SADM Weights] Iter 1300 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:01:57: [SADM Raw Loss] Iter 1300 | x_m_raw=0.012477 | x_2_raw=0.004844 | x_1_raw=0.011406
+2026-06-02 11:01:57: [SADM Contribution] Iter 1300 | x_m_contrib=0.005615 | x_2_contrib=0.000145 | x_1_contrib=0.000017
+2026-06-02 11:01:57: [MSE Weights] Iter 1300 | f1=0.6597 | f2=0.1455 | f3=0.1948
+2026-06-02 11:01:57: [MSE Raw Loss] Iter 1300 | f1_raw=0.000004 | f2_raw=0.000091 | f3_raw=0.000029
+2026-06-02 11:01:57: [MSE Contribution] Iter 1300 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:01:57: [Combined Contribution Ratio: SADM+MSE] Iter 1300 | SADM:x_m_ratio=0.9718 | SADM:x_2_ratio=0.0251 | SADM:x_1_ratio=0.0030 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:01:57: [Branch Contribution Ratio: SADM vs MSE] Iter 1300 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 1300 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 1300 | x_m_raw=0.012477 | x_2_raw=0.004844 | x_1_raw=0.011406
+[SADM Contribution] Iter 1300 | x_m_contrib=0.005615 | x_2_contrib=0.000145 | x_1_contrib=0.000017
+[MSE Weights] Iter 1300 | f1=0.6597 | f2=0.1455 | f3=0.1948
+[MSE Raw Loss] Iter 1300 | f1_raw=0.000004 | f2_raw=0.000091 | f3_raw=0.000029
+[MSE Contribution] Iter 1300 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 1300 | SADM:x_m_ratio=0.9718 | SADM:x_2_ratio=0.0251 | SADM:x_1_ratio=0.0030 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 1300 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 32.75%] Iter 1310/4000 | loss = 0.0037
+[ 33.00%] Iter 1320/4000 | loss = 0.0035
+[ 33.25%] Iter 1330/4000 | loss = 0.0037
+[ 33.50%] Iter 1340/4000 | loss = 0.0038
+[ 33.75%] Iter 1350/4000 | loss = 0.0038
+[ 34.00%] Iter 1360/4000 | loss = 0.0038
+[ 34.25%] Iter 1370/4000 | loss = 0.0038
+[ 34.50%] Iter 1380/4000 | loss = 0.0038
+[ 34.75%] Iter 1390/4000 | loss = 0.0038
+[ 35.00%] Iter 1400/4000 | loss = 0.0038
+2026-06-02 11:02:36: [SADM Weights] Iter 1400 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:02:36: [SADM Raw Loss] Iter 1400 | x_m_raw=0.009910 | x_2_raw=0.003581 | x_1_raw=0.008844
+2026-06-02 11:02:36: [SADM Contribution] Iter 1400 | x_m_contrib=0.004459 | x_2_contrib=0.000107 | x_1_contrib=0.000013
+2026-06-02 11:02:36: [MSE Weights] Iter 1400 | f1=0.6641 | f2=0.1407 | f3=0.1953
+2026-06-02 11:02:36: [MSE Raw Loss] Iter 1400 | f1_raw=0.000003 | f2_raw=0.000090 | f3_raw=0.000030
+2026-06-02 11:02:36: [MSE Contribution] Iter 1400 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:02:36: [Combined Contribution Ratio: SADM+MSE] Iter 1400 | SADM:x_m_ratio=0.9735 | SADM:x_2_ratio=0.0234 | SADM:x_1_ratio=0.0029 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:02:36: [Branch Contribution Ratio: SADM vs MSE] Iter 1400 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 1400 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 1400 | x_m_raw=0.009910 | x_2_raw=0.003581 | x_1_raw=0.008844
+[SADM Contribution] Iter 1400 | x_m_contrib=0.004459 | x_2_contrib=0.000107 | x_1_contrib=0.000013
+[MSE Weights] Iter 1400 | f1=0.6641 | f2=0.1407 | f3=0.1953
+[MSE Raw Loss] Iter 1400 | f1_raw=0.000003 | f2_raw=0.000090 | f3_raw=0.000030
+[MSE Contribution] Iter 1400 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 1400 | SADM:x_m_ratio=0.9735 | SADM:x_2_ratio=0.0234 | SADM:x_1_ratio=0.0029 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 1400 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 35.25%] Iter 1410/4000 | loss = 0.0040
+[ 35.50%] Iter 1420/4000 | loss = 0.0038
+[ 35.75%] Iter 1430/4000 | loss = 0.0038
+[ 36.00%] Iter 1440/4000 | loss = 0.0040
+[ 36.25%] Iter 1450/4000 | loss = 0.0037
+[ 36.50%] Iter 1460/4000 | loss = 0.0040
+[ 36.75%] Iter 1470/4000 | loss = 0.0041
+[ 37.00%] Iter 1480/4000 | loss = 0.0041
+[ 37.25%] Iter 1490/4000 | loss = 0.0040
+[ 37.50%] Iter 1500/4000 | loss = 0.0039
+2026-06-02 11:03:15: [SADM Weights] Iter 1500 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:03:15: [SADM Raw Loss] Iter 1500 | x_m_raw=0.011354 | x_2_raw=0.004229 | x_1_raw=0.010376
+2026-06-02 11:03:15: [SADM Contribution] Iter 1500 | x_m_contrib=0.005109 | x_2_contrib=0.000127 | x_1_contrib=0.000016
+2026-06-02 11:03:15: [MSE Weights] Iter 1500 | f1=0.6674 | f2=0.1411 | f3=0.1915
+2026-06-02 11:03:15: [MSE Raw Loss] Iter 1500 | f1_raw=0.000003 | f2_raw=0.000094 | f3_raw=0.000031
+2026-06-02 11:03:15: [MSE Contribution] Iter 1500 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:03:15: [Combined Contribution Ratio: SADM+MSE] Iter 1500 | SADM:x_m_ratio=0.9728 | SADM:x_2_ratio=0.0242 | SADM:x_1_ratio=0.0030 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:03:15: [Branch Contribution Ratio: SADM vs MSE] Iter 1500 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 1500 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 1500 | x_m_raw=0.011354 | x_2_raw=0.004229 | x_1_raw=0.010376
+[SADM Contribution] Iter 1500 | x_m_contrib=0.005109 | x_2_contrib=0.000127 | x_1_contrib=0.000016
+[MSE Weights] Iter 1500 | f1=0.6674 | f2=0.1411 | f3=0.1915
+[MSE Raw Loss] Iter 1500 | f1_raw=0.000003 | f2_raw=0.000094 | f3_raw=0.000031
+[MSE Contribution] Iter 1500 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 1500 | SADM:x_m_ratio=0.9728 | SADM:x_2_ratio=0.0242 | SADM:x_1_ratio=0.0030 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 1500 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 37.75%] Iter 1510/4000 | loss = 0.0041
+[ 38.00%] Iter 1520/4000 | loss = 0.0043
+[ 38.25%] Iter 1530/4000 | loss = 0.0039
+[ 38.50%] Iter 1540/4000 | loss = 0.0037
+[ 38.75%] Iter 1550/4000 | loss = 0.0042
+[ 39.00%] Iter 1560/4000 | loss = 0.0037
+[ 39.25%] Iter 1570/4000 | loss = 0.0043
+[ 39.50%] Iter 1580/4000 | loss = 0.0041
+[ 39.75%] Iter 1590/4000 | loss = 0.0040
+[ 40.00%] Iter 1600/4000 | loss = 0.0041
+2026-06-02 11:03:54: [SADM Weights] Iter 1600 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:03:54: [SADM Raw Loss] Iter 1600 | x_m_raw=0.013323 | x_2_raw=0.004877 | x_1_raw=0.013700
+2026-06-02 11:03:54: [SADM Contribution] Iter 1600 | x_m_contrib=0.005996 | x_2_contrib=0.000146 | x_1_contrib=0.000021
+2026-06-02 11:03:54: [MSE Weights] Iter 1600 | f1=0.6768 | f2=0.1297 | f3=0.1935
+2026-06-02 11:03:54: [MSE Raw Loss] Iter 1600 | f1_raw=0.000005 | f2_raw=0.000080 | f3_raw=0.000025
+2026-06-02 11:03:54: [MSE Contribution] Iter 1600 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:03:54: [Combined Contribution Ratio: SADM+MSE] Iter 1600 | SADM:x_m_ratio=0.9728 | SADM:x_2_ratio=0.0237 | SADM:x_1_ratio=0.0033 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:03:54: [Branch Contribution Ratio: SADM vs MSE] Iter 1600 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 1600 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 1600 | x_m_raw=0.013323 | x_2_raw=0.004877 | x_1_raw=0.013700
+[SADM Contribution] Iter 1600 | x_m_contrib=0.005996 | x_2_contrib=0.000146 | x_1_contrib=0.000021
+[MSE Weights] Iter 1600 | f1=0.6768 | f2=0.1297 | f3=0.1935
+[MSE Raw Loss] Iter 1600 | f1_raw=0.000005 | f2_raw=0.000080 | f3_raw=0.000025
+[MSE Contribution] Iter 1600 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 1600 | SADM:x_m_ratio=0.9728 | SADM:x_2_ratio=0.0237 | SADM:x_1_ratio=0.0033 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 1600 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 40.25%] Iter 1610/4000 | loss = 0.0042
+[ 40.50%] Iter 1620/4000 | loss = 0.0041
+[ 40.75%] Iter 1630/4000 | loss = 0.0038
+[ 41.00%] Iter 1640/4000 | loss = 0.0041
+[ 41.25%] Iter 1650/4000 | loss = 0.0037
+[ 41.50%] Iter 1660/4000 | loss = 0.0038
+[ 41.75%] Iter 1670/4000 | loss = 0.0036
+[ 42.00%] Iter 1680/4000 | loss = 0.0040
+[ 42.25%] Iter 1690/4000 | loss = 0.0040
+[ 42.50%] Iter 1700/4000 | loss = 0.0037
+2026-06-02 11:04:33: [SADM Weights] Iter 1700 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:04:33: [SADM Raw Loss] Iter 1700 | x_m_raw=0.009268 | x_2_raw=0.003810 | x_1_raw=0.010675
+2026-06-02 11:04:33: [SADM Contribution] Iter 1700 | x_m_contrib=0.004171 | x_2_contrib=0.000114 | x_1_contrib=0.000016
+2026-06-02 11:04:33: [MSE Weights] Iter 1700 | f1=0.6668 | f2=0.1388 | f3=0.1944
+2026-06-02 11:04:33: [MSE Raw Loss] Iter 1700 | f1_raw=0.000003 | f2_raw=0.000096 | f3_raw=0.000034
+2026-06-02 11:04:33: [MSE Contribution] Iter 1700 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:04:33: [Combined Contribution Ratio: SADM+MSE] Iter 1700 | SADM:x_m_ratio=0.9696 | SADM:x_2_ratio=0.0266 | SADM:x_1_ratio=0.0037 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:04:33: [Branch Contribution Ratio: SADM vs MSE] Iter 1700 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[SADM Weights] Iter 1700 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 1700 | x_m_raw=0.009268 | x_2_raw=0.003810 | x_1_raw=0.010675
+[SADM Contribution] Iter 1700 | x_m_contrib=0.004171 | x_2_contrib=0.000114 | x_1_contrib=0.000016
+[MSE Weights] Iter 1700 | f1=0.6668 | f2=0.1388 | f3=0.1944
+[MSE Raw Loss] Iter 1700 | f1_raw=0.000003 | f2_raw=0.000096 | f3_raw=0.000034
+[MSE Contribution] Iter 1700 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 1700 | SADM:x_m_ratio=0.9696 | SADM:x_2_ratio=0.0266 | SADM:x_1_ratio=0.0037 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 1700 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[ 42.75%] Iter 1710/4000 | loss = 0.0036
+[ 43.00%] Iter 1720/4000 | loss = 0.0039
+[ 43.25%] Iter 1730/4000 | loss = 0.0039
+[ 43.50%] Iter 1740/4000 | loss = 0.0039
+[ 43.75%] Iter 1750/4000 | loss = 0.0038
+[ 44.00%] Iter 1760/4000 | loss = 0.0040
+[ 44.25%] Iter 1770/4000 | loss = 0.0038
+[ 44.50%] Iter 1780/4000 | loss = 0.0038
+[ 44.75%] Iter 1790/4000 | loss = 0.0038
+[ 45.00%] Iter 1800/4000 | loss = 0.0040
+2026-06-02 11:05:13: [SADM Weights] Iter 1800 | x_m=0.7496 | x_2=0.2003 | x_1=0.0501
+2026-06-02 11:05:13: [SADM Raw Loss] Iter 1800 | x_m_raw=0.012592 | x_2_raw=0.004485 | x_1_raw=0.010124
+2026-06-02 11:05:13: [SADM Contribution] Iter 1800 | x_m_contrib=0.005669 | x_2_contrib=0.000134 | x_1_contrib=0.000015
+2026-06-02 11:05:13: [MSE Weights] Iter 1800 | f1=0.6648 | f2=0.1417 | f3=0.1935
+2026-06-02 11:05:13: [MSE Raw Loss] Iter 1800 | f1_raw=0.000004 | f2_raw=0.000099 | f3_raw=0.000035
+2026-06-02 11:05:13: [MSE Contribution] Iter 1800 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:05:13: [Combined Contribution Ratio: SADM+MSE] Iter 1800 | SADM:x_m_ratio=0.9742 | SADM:x_2_ratio=0.0231 | SADM:x_1_ratio=0.0026 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:05:13: [Branch Contribution Ratio: SADM vs MSE] Iter 1800 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 1800 | x_m=0.7496 | x_2=0.2003 | x_1=0.0501
+[SADM Raw Loss] Iter 1800 | x_m_raw=0.012592 | x_2_raw=0.004485 | x_1_raw=0.010124
+[SADM Contribution] Iter 1800 | x_m_contrib=0.005669 | x_2_contrib=0.000134 | x_1_contrib=0.000015
+[MSE Weights] Iter 1800 | f1=0.6648 | f2=0.1417 | f3=0.1935
+[MSE Raw Loss] Iter 1800 | f1_raw=0.000004 | f2_raw=0.000099 | f3_raw=0.000035
+[MSE Contribution] Iter 1800 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 1800 | SADM:x_m_ratio=0.9742 | SADM:x_2_ratio=0.0231 | SADM:x_1_ratio=0.0026 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 1800 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 45.25%] Iter 1810/4000 | loss = 0.0042
+[ 45.50%] Iter 1820/4000 | loss = 0.0037
+[ 45.75%] Iter 1830/4000 | loss = 0.0041
+[ 46.00%] Iter 1840/4000 | loss = 0.0040
+[ 46.25%] Iter 1850/4000 | loss = 0.0033
+[ 46.50%] Iter 1860/4000 | loss = 0.0035
+[ 46.75%] Iter 1870/4000 | loss = 0.0037
+[ 47.00%] Iter 1880/4000 | loss = 0.0041
+[ 47.25%] Iter 1890/4000 | loss = 0.0042
+[ 47.50%] Iter 1900/4000 | loss = 0.0040
+2026-06-02 11:05:52: [SADM Weights] Iter 1900 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:05:52: [SADM Raw Loss] Iter 1900 | x_m_raw=0.008268 | x_2_raw=0.003109 | x_1_raw=0.008234
+2026-06-02 11:05:52: [SADM Contribution] Iter 1900 | x_m_contrib=0.003721 | x_2_contrib=0.000093 | x_1_contrib=0.000012
+2026-06-02 11:05:52: [MSE Weights] Iter 1900 | f1=0.6617 | f2=0.1455 | f3=0.1927
+2026-06-02 11:05:52: [MSE Raw Loss] Iter 1900 | f1_raw=0.000003 | f2_raw=0.000117 | f3_raw=0.000039
+2026-06-02 11:05:52: [MSE Contribution] Iter 1900 | f1_contrib=0.000000 | f2_contrib=0.000001 | f3_contrib=0.000000
+2026-06-02 11:05:52: [Combined Contribution Ratio: SADM+MSE] Iter 1900 | SADM:x_m_ratio=0.9722 | SADM:x_2_ratio=0.0244 | SADM:x_1_ratio=0.0032 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0001
+2026-06-02 11:05:52: [Branch Contribution Ratio: SADM vs MSE] Iter 1900 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[SADM Weights] Iter 1900 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 1900 | x_m_raw=0.008268 | x_2_raw=0.003109 | x_1_raw=0.008234
+[SADM Contribution] Iter 1900 | x_m_contrib=0.003721 | x_2_contrib=0.000093 | x_1_contrib=0.000012
+[MSE Weights] Iter 1900 | f1=0.6617 | f2=0.1455 | f3=0.1927
+[MSE Raw Loss] Iter 1900 | f1_raw=0.000003 | f2_raw=0.000117 | f3_raw=0.000039
+[MSE Contribution] Iter 1900 | f1_contrib=0.000000 | f2_contrib=0.000001 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 1900 | SADM:x_m_ratio=0.9722 | SADM:x_2_ratio=0.0244 | SADM:x_1_ratio=0.0032 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0001
+[Branch Contribution Ratio: SADM vs MSE] Iter 1900 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[ 47.75%] Iter 1910/4000 | loss = 0.0039
+[ 48.00%] Iter 1920/4000 | loss = 0.0044
+[ 48.25%] Iter 1930/4000 | loss = 0.0038
+[ 48.50%] Iter 1940/4000 | loss = 0.0039
+[ 48.75%] Iter 1950/4000 | loss = 0.0037
+[ 49.00%] Iter 1960/4000 | loss = 0.0043
+[ 49.25%] Iter 1970/4000 | loss = 0.0037
+[ 49.50%] Iter 1980/4000 | loss = 0.0041
+[ 49.75%] Iter 1990/4000 | loss = 0.0035
+[ 50.00%] Iter 2000/4000 | loss = 0.0039
+2026-06-02 11:06:31: [SADM Weights] Iter 2000 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:06:31: [SADM Raw Loss] Iter 2000 | x_m_raw=0.009913 | x_2_raw=0.003592 | x_1_raw=0.009734
+2026-06-02 11:06:31: [SADM Contribution] Iter 2000 | x_m_contrib=0.004462 | x_2_contrib=0.000108 | x_1_contrib=0.000015
+2026-06-02 11:06:31: [MSE Weights] Iter 2000 | f1=0.6683 | f2=0.1424 | f3=0.1893
+2026-06-02 11:06:31: [MSE Raw Loss] Iter 2000 | f1_raw=0.000003 | f2_raw=0.000076 | f3_raw=0.000025
+2026-06-02 11:06:31: [MSE Contribution] Iter 2000 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:06:31: [Combined Contribution Ratio: SADM+MSE] Iter 2000 | SADM:x_m_ratio=0.9732 | SADM:x_2_ratio=0.0235 | SADM:x_1_ratio=0.0032 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:06:31: [Branch Contribution Ratio: SADM vs MSE] Iter 2000 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 2000 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 2000 | x_m_raw=0.009913 | x_2_raw=0.003592 | x_1_raw=0.009734
+[SADM Contribution] Iter 2000 | x_m_contrib=0.004462 | x_2_contrib=0.000108 | x_1_contrib=0.000015
+[MSE Weights] Iter 2000 | f1=0.6683 | f2=0.1424 | f3=0.1893
+[MSE Raw Loss] Iter 2000 | f1_raw=0.000003 | f2_raw=0.000076 | f3_raw=0.000025
+[MSE Contribution] Iter 2000 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 2000 | SADM:x_m_ratio=0.9732 | SADM:x_2_ratio=0.0235 | SADM:x_1_ratio=0.0032 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 2000 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 50.25%] Iter 2010/4000 | loss = 0.0039
+[ 50.50%] Iter 2020/4000 | loss = 0.0034
+[ 50.75%] Iter 2030/4000 | loss = 0.0038
+[ 51.00%] Iter 2040/4000 | loss = 0.0040
+[ 51.25%] Iter 2050/4000 | loss = 0.0037
+[ 51.50%] Iter 2060/4000 | loss = 0.0037
+[ 51.75%] Iter 2070/4000 | loss = 0.0038
+[ 52.00%] Iter 2080/4000 | loss = 0.0039
+[ 52.25%] Iter 2090/4000 | loss = 0.0039
+[ 52.50%] Iter 2100/4000 | loss = 0.0044
+2026-06-02 11:07:10: [SADM Weights] Iter 2100 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:07:10: [SADM Raw Loss] Iter 2100 | x_m_raw=0.017402 | x_2_raw=0.006625 | x_1_raw=0.013629
+2026-06-02 11:07:10: [SADM Contribution] Iter 2100 | x_m_contrib=0.007831 | x_2_contrib=0.000199 | x_1_contrib=0.000020
+2026-06-02 11:07:10: [MSE Weights] Iter 2100 | f1=0.6640 | f2=0.1403 | f3=0.1957
+2026-06-02 11:07:10: [MSE Raw Loss] Iter 2100 | f1_raw=0.000006 | f2_raw=0.000105 | f3_raw=0.000036
+2026-06-02 11:07:10: [MSE Contribution] Iter 2100 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:07:10: [Combined Contribution Ratio: SADM+MSE] Iter 2100 | SADM:x_m_ratio=0.9727 | SADM:x_2_ratio=0.0247 | SADM:x_1_ratio=0.0025 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:07:10: [Branch Contribution Ratio: SADM vs MSE] Iter 2100 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 2100 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 2100 | x_m_raw=0.017402 | x_2_raw=0.006625 | x_1_raw=0.013629
+[SADM Contribution] Iter 2100 | x_m_contrib=0.007831 | x_2_contrib=0.000199 | x_1_contrib=0.000020
+[MSE Weights] Iter 2100 | f1=0.6640 | f2=0.1403 | f3=0.1957
+[MSE Raw Loss] Iter 2100 | f1_raw=0.000006 | f2_raw=0.000105 | f3_raw=0.000036
+[MSE Contribution] Iter 2100 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 2100 | SADM:x_m_ratio=0.9727 | SADM:x_2_ratio=0.0247 | SADM:x_1_ratio=0.0025 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 2100 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 52.75%] Iter 2110/4000 | loss = 0.0041
+[ 53.00%] Iter 2120/4000 | loss = 0.0039
+[ 53.25%] Iter 2130/4000 | loss = 0.0043
+[ 53.50%] Iter 2140/4000 | loss = 0.0035
+[ 53.75%] Iter 2150/4000 | loss = 0.0043
+[ 54.00%] Iter 2160/4000 | loss = 0.0035
+[ 54.25%] Iter 2170/4000 | loss = 0.0039
+[ 54.50%] Iter 2180/4000 | loss = 0.0040
+[ 54.75%] Iter 2190/4000 | loss = 0.0036
+[ 55.00%] Iter 2200/4000 | loss = 0.0040
+2026-06-02 11:07:49: [SADM Weights] Iter 2200 | x_m=0.7501 | x_2=0.1999 | x_1=0.0500
+2026-06-02 11:07:49: [SADM Raw Loss] Iter 2200 | x_m_raw=0.012267 | x_2_raw=0.004365 | x_1_raw=0.013412
+2026-06-02 11:07:49: [SADM Contribution] Iter 2200 | x_m_contrib=0.005521 | x_2_contrib=0.000131 | x_1_contrib=0.000020
+2026-06-02 11:07:49: [MSE Weights] Iter 2200 | f1=0.6663 | f2=0.1436 | f3=0.1900
+2026-06-02 11:07:49: [MSE Raw Loss] Iter 2200 | f1_raw=0.000003 | f2_raw=0.000061 | f3_raw=0.000019
+2026-06-02 11:07:49: [MSE Contribution] Iter 2200 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:07:49: [Combined Contribution Ratio: SADM+MSE] Iter 2200 | SADM:x_m_ratio=0.9733 | SADM:x_2_ratio=0.0231 | SADM:x_1_ratio=0.0035 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0000 | MSE:f3_ratio=0.0000
+2026-06-02 11:07:49: [Branch Contribution Ratio: SADM vs MSE] Iter 2200 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 2200 | x_m=0.7501 | x_2=0.1999 | x_1=0.0500
+[SADM Raw Loss] Iter 2200 | x_m_raw=0.012267 | x_2_raw=0.004365 | x_1_raw=0.013412
+[SADM Contribution] Iter 2200 | x_m_contrib=0.005521 | x_2_contrib=0.000131 | x_1_contrib=0.000020
+[MSE Weights] Iter 2200 | f1=0.6663 | f2=0.1436 | f3=0.1900
+[MSE Raw Loss] Iter 2200 | f1_raw=0.000003 | f2_raw=0.000061 | f3_raw=0.000019
+[MSE Contribution] Iter 2200 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 2200 | SADM:x_m_ratio=0.9733 | SADM:x_2_ratio=0.0231 | SADM:x_1_ratio=0.0035 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0000 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 2200 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 55.25%] Iter 2210/4000 | loss = 0.0036
+[ 55.50%] Iter 2220/4000 | loss = 0.0039
+[ 55.75%] Iter 2230/4000 | loss = 0.0043
+[ 56.00%] Iter 2240/4000 | loss = 0.0040
+[ 56.25%] Iter 2250/4000 | loss = 0.0037
+[ 56.50%] Iter 2260/4000 | loss = 0.0036
+[ 56.75%] Iter 2270/4000 | loss = 0.0035
+[ 57.00%] Iter 2280/4000 | loss = 0.0040
+[ 57.25%] Iter 2290/4000 | loss = 0.0036
+[ 57.50%] Iter 2300/4000 | loss = 0.0036
+2026-06-02 11:08:29: [SADM Weights] Iter 2300 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:08:29: [SADM Raw Loss] Iter 2300 | x_m_raw=0.010786 | x_2_raw=0.003906 | x_1_raw=0.009833
+2026-06-02 11:08:29: [SADM Contribution] Iter 2300 | x_m_contrib=0.004854 | x_2_contrib=0.000117 | x_1_contrib=0.000015
+2026-06-02 11:08:29: [MSE Weights] Iter 2300 | f1=0.6733 | f2=0.1311 | f3=0.1956
+2026-06-02 11:08:29: [MSE Raw Loss] Iter 2300 | f1_raw=0.000003 | f2_raw=0.000103 | f3_raw=0.000036
+2026-06-02 11:08:29: [MSE Contribution] Iter 2300 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:08:29: [Combined Contribution Ratio: SADM+MSE] Iter 2300 | SADM:x_m_ratio=0.9734 | SADM:x_2_ratio=0.0235 | SADM:x_1_ratio=0.0030 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:08:29: [Branch Contribution Ratio: SADM vs MSE] Iter 2300 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 2300 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 2300 | x_m_raw=0.010786 | x_2_raw=0.003906 | x_1_raw=0.009833
+[SADM Contribution] Iter 2300 | x_m_contrib=0.004854 | x_2_contrib=0.000117 | x_1_contrib=0.000015
+[MSE Weights] Iter 2300 | f1=0.6733 | f2=0.1311 | f3=0.1956
+[MSE Raw Loss] Iter 2300 | f1_raw=0.000003 | f2_raw=0.000103 | f3_raw=0.000036
+[MSE Contribution] Iter 2300 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 2300 | SADM:x_m_ratio=0.9734 | SADM:x_2_ratio=0.0235 | SADM:x_1_ratio=0.0030 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 2300 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 57.75%] Iter 2310/4000 | loss = 0.0039
+[ 58.00%] Iter 2320/4000 | loss = 0.0039
+[ 58.25%] Iter 2330/4000 | loss = 0.0037
+[ 58.50%] Iter 2340/4000 | loss = 0.0039
+[ 58.75%] Iter 2350/4000 | loss = 0.0036
+[ 59.00%] Iter 2360/4000 | loss = 0.0032
+[ 59.25%] Iter 2370/4000 | loss = 0.0035
+[ 59.50%] Iter 2380/4000 | loss = 0.0043
+[ 59.75%] Iter 2390/4000 | loss = 0.0041
+[ 60.00%] Iter 2400/4000 | loss = 0.0034
+2026-06-02 11:09:09: [SADM Weights] Iter 2400 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:09:09: [SADM Raw Loss] Iter 2400 | x_m_raw=0.006823 | x_2_raw=0.002510 | x_1_raw=0.007124
+2026-06-02 11:09:09: [SADM Contribution] Iter 2400 | x_m_contrib=0.003070 | x_2_contrib=0.000075 | x_1_contrib=0.000011
+2026-06-02 11:09:09: [MSE Weights] Iter 2400 | f1=0.6706 | f2=0.1376 | f3=0.1918
+2026-06-02 11:09:09: [MSE Raw Loss] Iter 2400 | f1_raw=0.000002 | f2_raw=0.000072 | f3_raw=0.000025
+2026-06-02 11:09:09: [MSE Contribution] Iter 2400 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:09:09: [Combined Contribution Ratio: SADM+MSE] Iter 2400 | SADM:x_m_ratio=0.9726 | SADM:x_2_ratio=0.0239 | SADM:x_1_ratio=0.0034 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:09:09: [Branch Contribution Ratio: SADM vs MSE] Iter 2400 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[SADM Weights] Iter 2400 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 2400 | x_m_raw=0.006823 | x_2_raw=0.002510 | x_1_raw=0.007124
+[SADM Contribution] Iter 2400 | x_m_contrib=0.003070 | x_2_contrib=0.000075 | x_1_contrib=0.000011
+[MSE Weights] Iter 2400 | f1=0.6706 | f2=0.1376 | f3=0.1918
+[MSE Raw Loss] Iter 2400 | f1_raw=0.000002 | f2_raw=0.000072 | f3_raw=0.000025
+[MSE Contribution] Iter 2400 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 2400 | SADM:x_m_ratio=0.9726 | SADM:x_2_ratio=0.0239 | SADM:x_1_ratio=0.0034 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 2400 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[ 60.25%] Iter 2410/4000 | loss = 0.0039
+[ 60.50%] Iter 2420/4000 | loss = 0.0042
+[ 60.75%] Iter 2430/4000 | loss = 0.0041
+[ 61.00%] Iter 2440/4000 | loss = 0.0042
+[ 61.25%] Iter 2450/4000 | loss = 0.0040
+[ 61.50%] Iter 2460/4000 | loss = 0.0037
+[ 61.75%] Iter 2470/4000 | loss = 0.0036
+[ 62.00%] Iter 2480/4000 | loss = 0.0040
+[ 62.25%] Iter 2490/4000 | loss = 0.0038
+[ 62.50%] Iter 2500/4000 | loss = 0.0037
+2026-06-02 11:09:49: [SADM Weights] Iter 2500 | x_m=0.7498 | x_2=0.2002 | x_1=0.0500
+2026-06-02 11:09:49: [SADM Raw Loss] Iter 2500 | x_m_raw=0.010320 | x_2_raw=0.003771 | x_1_raw=0.009072
+2026-06-02 11:09:49: [SADM Contribution] Iter 2500 | x_m_contrib=0.004645 | x_2_contrib=0.000113 | x_1_contrib=0.000014
+2026-06-02 11:09:49: [MSE Weights] Iter 2500 | f1=0.6666 | f2=0.1384 | f3=0.1950
+2026-06-02 11:09:49: [MSE Raw Loss] Iter 2500 | f1_raw=0.000004 | f2_raw=0.000104 | f3_raw=0.000037
+2026-06-02 11:09:49: [MSE Contribution] Iter 2500 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:09:49: [Combined Contribution Ratio: SADM+MSE] Iter 2500 | SADM:x_m_ratio=0.9733 | SADM:x_2_ratio=0.0237 | SADM:x_1_ratio=0.0028 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:09:49: [Branch Contribution Ratio: SADM vs MSE] Iter 2500 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[SADM Weights] Iter 2500 | x_m=0.7498 | x_2=0.2002 | x_1=0.0500
+[SADM Raw Loss] Iter 2500 | x_m_raw=0.010320 | x_2_raw=0.003771 | x_1_raw=0.009072
+[SADM Contribution] Iter 2500 | x_m_contrib=0.004645 | x_2_contrib=0.000113 | x_1_contrib=0.000014
+[MSE Weights] Iter 2500 | f1=0.6666 | f2=0.1384 | f3=0.1950
+[MSE Raw Loss] Iter 2500 | f1_raw=0.000004 | f2_raw=0.000104 | f3_raw=0.000037
+[MSE Contribution] Iter 2500 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 2500 | SADM:x_m_ratio=0.9733 | SADM:x_2_ratio=0.0237 | SADM:x_1_ratio=0.0028 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 2500 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[ 62.75%] Iter 2510/4000 | loss = 0.0039
+[ 63.00%] Iter 2520/4000 | loss = 0.0042
+[ 63.25%] Iter 2530/4000 | loss = 0.0036
+[ 63.50%] Iter 2540/4000 | loss = 0.0041
+[ 63.75%] Iter 2550/4000 | loss = 0.0036
+[ 64.00%] Iter 2560/4000 | loss = 0.0041
+[ 64.25%] Iter 2570/4000 | loss = 0.0043
+[ 64.50%] Iter 2580/4000 | loss = 0.0039
+[ 64.75%] Iter 2590/4000 | loss = 0.0037
+[ 65.00%] Iter 2600/4000 | loss = 0.0042
+2026-06-02 11:10:28: [SADM Weights] Iter 2600 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:10:28: [SADM Raw Loss] Iter 2600 | x_m_raw=0.009773 | x_2_raw=0.003566 | x_1_raw=0.011108
+2026-06-02 11:10:28: [SADM Contribution] Iter 2600 | x_m_contrib=0.004398 | x_2_contrib=0.000107 | x_1_contrib=0.000017
+2026-06-02 11:10:28: [MSE Weights] Iter 2600 | f1=0.6607 | f2=0.1438 | f3=0.1955
+2026-06-02 11:10:28: [MSE Raw Loss] Iter 2600 | f1_raw=0.000004 | f2_raw=0.000112 | f3_raw=0.000036
+2026-06-02 11:10:28: [MSE Contribution] Iter 2600 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:10:28: [Combined Contribution Ratio: SADM+MSE] Iter 2600 | SADM:x_m_ratio=0.9725 | SADM:x_2_ratio=0.0237 | SADM:x_1_ratio=0.0037 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:10:28: [Branch Contribution Ratio: SADM vs MSE] Iter 2600 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[SADM Weights] Iter 2600 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 2600 | x_m_raw=0.009773 | x_2_raw=0.003566 | x_1_raw=0.011108
+[SADM Contribution] Iter 2600 | x_m_contrib=0.004398 | x_2_contrib=0.000107 | x_1_contrib=0.000017
+[MSE Weights] Iter 2600 | f1=0.6607 | f2=0.1438 | f3=0.1955
+[MSE Raw Loss] Iter 2600 | f1_raw=0.000004 | f2_raw=0.000112 | f3_raw=0.000036
+[MSE Contribution] Iter 2600 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 2600 | SADM:x_m_ratio=0.9725 | SADM:x_2_ratio=0.0237 | SADM:x_1_ratio=0.0037 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 2600 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[ 65.25%] Iter 2610/4000 | loss = 0.0041
+[ 65.50%] Iter 2620/4000 | loss = 0.0036
+[ 65.75%] Iter 2630/4000 | loss = 0.0040
+[ 66.00%] Iter 2640/4000 | loss = 0.0042
+[ 66.25%] Iter 2650/4000 | loss = 0.0037
+[ 66.50%] Iter 2660/4000 | loss = 0.0038
+[ 66.75%] Iter 2670/4000 | loss = 0.0040
+[ 67.00%] Iter 2680/4000 | loss = 0.0036
+[ 67.25%] Iter 2690/4000 | loss = 0.0040
+[ 67.50%] Iter 2700/4000 | loss = 0.0035
+2026-06-02 11:11:07: [SADM Weights] Iter 2700 | x_m=0.7498 | x_2=0.2001 | x_1=0.0500
+2026-06-02 11:11:07: [SADM Raw Loss] Iter 2700 | x_m_raw=0.013599 | x_2_raw=0.004952 | x_1_raw=0.013917
+2026-06-02 11:11:07: [SADM Contribution] Iter 2700 | x_m_contrib=0.006121 | x_2_contrib=0.000148 | x_1_contrib=0.000021
+2026-06-02 11:11:07: [MSE Weights] Iter 2700 | f1=0.6715 | f2=0.1372 | f3=0.1913
+2026-06-02 11:11:07: [MSE Raw Loss] Iter 2700 | f1_raw=0.000003 | f2_raw=0.000083 | f3_raw=0.000028
+2026-06-02 11:11:07: [MSE Contribution] Iter 2700 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:11:07: [Combined Contribution Ratio: SADM+MSE] Iter 2700 | SADM:x_m_ratio=0.9730 | SADM:x_2_ratio=0.0236 | SADM:x_1_ratio=0.0033 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:11:07: [Branch Contribution Ratio: SADM vs MSE] Iter 2700 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 2700 | x_m=0.7498 | x_2=0.2001 | x_1=0.0500
+[SADM Raw Loss] Iter 2700 | x_m_raw=0.013599 | x_2_raw=0.004952 | x_1_raw=0.013917
+[SADM Contribution] Iter 2700 | x_m_contrib=0.006121 | x_2_contrib=0.000148 | x_1_contrib=0.000021
+[MSE Weights] Iter 2700 | f1=0.6715 | f2=0.1372 | f3=0.1913
+[MSE Raw Loss] Iter 2700 | f1_raw=0.000003 | f2_raw=0.000083 | f3_raw=0.000028
+[MSE Contribution] Iter 2700 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 2700 | SADM:x_m_ratio=0.9730 | SADM:x_2_ratio=0.0236 | SADM:x_1_ratio=0.0033 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 2700 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 67.75%] Iter 2710/4000 | loss = 0.0038
+[ 68.00%] Iter 2720/4000 | loss = 0.0041
+[ 68.25%] Iter 2730/4000 | loss = 0.0040
+[ 68.50%] Iter 2740/4000 | loss = 0.0038
+[ 68.75%] Iter 2750/4000 | loss = 0.0039
+[ 69.00%] Iter 2760/4000 | loss = 0.0037
+[ 69.25%] Iter 2770/4000 | loss = 0.0040
+[ 69.50%] Iter 2780/4000 | loss = 0.0037
+[ 69.75%] Iter 2790/4000 | loss = 0.0038
+[ 70.00%] Iter 2800/4000 | loss = 0.0040
+2026-06-02 11:11:47: [SADM Weights] Iter 2800 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:11:47: [SADM Raw Loss] Iter 2800 | x_m_raw=0.009903 | x_2_raw=0.003528 | x_1_raw=0.010725
+2026-06-02 11:11:47: [SADM Contribution] Iter 2800 | x_m_contrib=0.004456 | x_2_contrib=0.000106 | x_1_contrib=0.000016
+2026-06-02 11:11:47: [MSE Weights] Iter 2800 | f1=0.6592 | f2=0.1477 | f3=0.1930
+2026-06-02 11:11:47: [MSE Raw Loss] Iter 2800 | f1_raw=0.000003 | f2_raw=0.000077 | f3_raw=0.000026
+2026-06-02 11:11:47: [MSE Contribution] Iter 2800 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:11:47: [Combined Contribution Ratio: SADM+MSE] Iter 2800 | SADM:x_m_ratio=0.9732 | SADM:x_2_ratio=0.0231 | SADM:x_1_ratio=0.0035 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:11:47: [Branch Contribution Ratio: SADM vs MSE] Iter 2800 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 2800 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 2800 | x_m_raw=0.009903 | x_2_raw=0.003528 | x_1_raw=0.010725
+[SADM Contribution] Iter 2800 | x_m_contrib=0.004456 | x_2_contrib=0.000106 | x_1_contrib=0.000016
+[MSE Weights] Iter 2800 | f1=0.6592 | f2=0.1477 | f3=0.1930
+[MSE Raw Loss] Iter 2800 | f1_raw=0.000003 | f2_raw=0.000077 | f3_raw=0.000026
+[MSE Contribution] Iter 2800 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 2800 | SADM:x_m_ratio=0.9732 | SADM:x_2_ratio=0.0231 | SADM:x_1_ratio=0.0035 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 2800 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 70.25%] Iter 2810/4000 | loss = 0.0037
+[ 70.50%] Iter 2820/4000 | loss = 0.0040
+[ 70.75%] Iter 2830/4000 | loss = 0.0038
+[ 71.00%] Iter 2840/4000 | loss = 0.0039
+[ 71.25%] Iter 2850/4000 | loss = 0.0041
+[ 71.50%] Iter 2860/4000 | loss = 0.0038
+[ 71.75%] Iter 2870/4000 | loss = 0.0037
+[ 72.00%] Iter 2880/4000 | loss = 0.0038
+[ 72.25%] Iter 2890/4000 | loss = 0.0042
+[ 72.50%] Iter 2900/4000 | loss = 0.0039
+2026-06-02 11:12:25: [SADM Weights] Iter 2900 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:12:25: [SADM Raw Loss] Iter 2900 | x_m_raw=0.009982 | x_2_raw=0.003784 | x_1_raw=0.010778
+2026-06-02 11:12:25: [SADM Contribution] Iter 2900 | x_m_contrib=0.004492 | x_2_contrib=0.000114 | x_1_contrib=0.000016
+2026-06-02 11:12:25: [MSE Weights] Iter 2900 | f1=0.6647 | f2=0.1374 | f3=0.1979
+2026-06-02 11:12:25: [MSE Raw Loss] Iter 2900 | f1_raw=0.000003 | f2_raw=0.000079 | f3_raw=0.000026
+2026-06-02 11:12:25: [MSE Contribution] Iter 2900 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:12:25: [Combined Contribution Ratio: SADM+MSE] Iter 2900 | SADM:x_m_ratio=0.9718 | SADM:x_2_ratio=0.0246 | SADM:x_1_ratio=0.0035 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:12:25: [Branch Contribution Ratio: SADM vs MSE] Iter 2900 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 2900 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 2900 | x_m_raw=0.009982 | x_2_raw=0.003784 | x_1_raw=0.010778
+[SADM Contribution] Iter 2900 | x_m_contrib=0.004492 | x_2_contrib=0.000114 | x_1_contrib=0.000016
+[MSE Weights] Iter 2900 | f1=0.6647 | f2=0.1374 | f3=0.1979
+[MSE Raw Loss] Iter 2900 | f1_raw=0.000003 | f2_raw=0.000079 | f3_raw=0.000026
+[MSE Contribution] Iter 2900 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 2900 | SADM:x_m_ratio=0.9718 | SADM:x_2_ratio=0.0246 | SADM:x_1_ratio=0.0035 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 2900 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 72.75%] Iter 2910/4000 | loss = 0.0038
+[ 73.00%] Iter 2920/4000 | loss = 0.0037
+[ 73.25%] Iter 2930/4000 | loss = 0.0039
+[ 73.50%] Iter 2940/4000 | loss = 0.0041
+[ 73.75%] Iter 2950/4000 | loss = 0.0041
+[ 74.00%] Iter 2960/4000 | loss = 0.0040
+[ 74.25%] Iter 2970/4000 | loss = 0.0044
+[ 74.50%] Iter 2980/4000 | loss = 0.0040
+[ 74.75%] Iter 2990/4000 | loss = 0.0035
+[ 75.00%] Iter 3000/4000 | loss = 0.0037
+2026-06-02 11:13:04: [SADM Weights] Iter 3000 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:13:04: [SADM Raw Loss] Iter 3000 | x_m_raw=0.009836 | x_2_raw=0.003552 | x_1_raw=0.008679
+2026-06-02 11:13:04: [SADM Contribution] Iter 3000 | x_m_contrib=0.004426 | x_2_contrib=0.000107 | x_1_contrib=0.000013
+2026-06-02 11:13:04: [MSE Weights] Iter 3000 | f1=0.6693 | f2=0.1386 | f3=0.1922
+2026-06-02 11:13:04: [MSE Raw Loss] Iter 3000 | f1_raw=0.000004 | f2_raw=0.000107 | f3_raw=0.000038
+2026-06-02 11:13:04: [MSE Contribution] Iter 3000 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:13:04: [Combined Contribution Ratio: SADM+MSE] Iter 3000 | SADM:x_m_ratio=0.9735 | SADM:x_2_ratio=0.0234 | SADM:x_1_ratio=0.0029 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:13:04: [Branch Contribution Ratio: SADM vs MSE] Iter 3000 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[SADM Weights] Iter 3000 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 3000 | x_m_raw=0.009836 | x_2_raw=0.003552 | x_1_raw=0.008679
+[SADM Contribution] Iter 3000 | x_m_contrib=0.004426 | x_2_contrib=0.000107 | x_1_contrib=0.000013
+[MSE Weights] Iter 3000 | f1=0.6693 | f2=0.1386 | f3=0.1922
+[MSE Raw Loss] Iter 3000 | f1_raw=0.000004 | f2_raw=0.000107 | f3_raw=0.000038
+[MSE Contribution] Iter 3000 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 3000 | SADM:x_m_ratio=0.9735 | SADM:x_2_ratio=0.0234 | SADM:x_1_ratio=0.0029 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 3000 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[ 75.25%] Iter 3010/4000 | loss = 0.0036
+[ 75.50%] Iter 3020/4000 | loss = 0.0036
+[ 75.75%] Iter 3030/4000 | loss = 0.0039
+[ 76.00%] Iter 3040/4000 | loss = 0.0039
+[ 76.25%] Iter 3050/4000 | loss = 0.0038
+[ 76.50%] Iter 3060/4000 | loss = 0.0039
+[ 76.75%] Iter 3070/4000 | loss = 0.0036
+[ 77.00%] Iter 3080/4000 | loss = 0.0034
+[ 77.25%] Iter 3090/4000 | loss = 0.0034
+[ 77.50%] Iter 3100/4000 | loss = 0.0042
+2026-06-02 11:13:43: [SADM Weights] Iter 3100 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:13:43: [SADM Raw Loss] Iter 3100 | x_m_raw=0.010947 | x_2_raw=0.003854 | x_1_raw=0.012467
+2026-06-02 11:13:43: [SADM Contribution] Iter 3100 | x_m_contrib=0.004926 | x_2_contrib=0.000116 | x_1_contrib=0.000019
+2026-06-02 11:13:43: [MSE Weights] Iter 3100 | f1=0.6673 | f2=0.1406 | f3=0.1921
+2026-06-02 11:13:43: [MSE Raw Loss] Iter 3100 | f1_raw=0.000003 | f2_raw=0.000107 | f3_raw=0.000034
+2026-06-02 11:13:43: [MSE Contribution] Iter 3100 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:13:43: [Combined Contribution Ratio: SADM+MSE] Iter 3100 | SADM:x_m_ratio=0.9733 | SADM:x_2_ratio=0.0228 | SADM:x_1_ratio=0.0037 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:13:43: [Branch Contribution Ratio: SADM vs MSE] Iter 3100 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 3100 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 3100 | x_m_raw=0.010947 | x_2_raw=0.003854 | x_1_raw=0.012467
+[SADM Contribution] Iter 3100 | x_m_contrib=0.004926 | x_2_contrib=0.000116 | x_1_contrib=0.000019
+[MSE Weights] Iter 3100 | f1=0.6673 | f2=0.1406 | f3=0.1921
+[MSE Raw Loss] Iter 3100 | f1_raw=0.000003 | f2_raw=0.000107 | f3_raw=0.000034
+[MSE Contribution] Iter 3100 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 3100 | SADM:x_m_ratio=0.9733 | SADM:x_2_ratio=0.0228 | SADM:x_1_ratio=0.0037 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 3100 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 77.75%] Iter 3110/4000 | loss = 0.0037
+[ 78.00%] Iter 3120/4000 | loss = 0.0038
+[ 78.25%] Iter 3130/4000 | loss = 0.0038
+[ 78.50%] Iter 3140/4000 | loss = 0.0037
+[ 78.75%] Iter 3150/4000 | loss = 0.0040
+[ 79.00%] Iter 3160/4000 | loss = 0.0037
+[ 79.25%] Iter 3170/4000 | loss = 0.0039
+[ 79.50%] Iter 3180/4000 | loss = 0.0039
+[ 79.75%] Iter 3190/4000 | loss = 0.0047
+[ 80.00%] Iter 3200/4000 | loss = 0.0039
+2026-06-02 11:14:20: [SADM Weights] Iter 3200 | x_m=0.7498 | x_2=0.2001 | x_1=0.0500
+2026-06-02 11:14:20: [SADM Raw Loss] Iter 3200 | x_m_raw=0.010704 | x_2_raw=0.004031 | x_1_raw=0.011191
+2026-06-02 11:14:20: [SADM Contribution] Iter 3200 | x_m_contrib=0.004818 | x_2_contrib=0.000121 | x_1_contrib=0.000017
+2026-06-02 11:14:20: [MSE Weights] Iter 3200 | f1=0.6688 | f2=0.1389 | f3=0.1923
+2026-06-02 11:14:20: [MSE Raw Loss] Iter 3200 | f1_raw=0.000004 | f2_raw=0.000104 | f3_raw=0.000034
+2026-06-02 11:14:20: [MSE Contribution] Iter 3200 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:14:20: [Combined Contribution Ratio: SADM+MSE] Iter 3200 | SADM:x_m_ratio=0.9721 | SADM:x_2_ratio=0.0244 | SADM:x_1_ratio=0.0034 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:14:20: [Branch Contribution Ratio: SADM vs MSE] Iter 3200 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 3200 | x_m=0.7498 | x_2=0.2001 | x_1=0.0500
+[SADM Raw Loss] Iter 3200 | x_m_raw=0.010704 | x_2_raw=0.004031 | x_1_raw=0.011191
+[SADM Contribution] Iter 3200 | x_m_contrib=0.004818 | x_2_contrib=0.000121 | x_1_contrib=0.000017
+[MSE Weights] Iter 3200 | f1=0.6688 | f2=0.1389 | f3=0.1923
+[MSE Raw Loss] Iter 3200 | f1_raw=0.000004 | f2_raw=0.000104 | f3_raw=0.000034
+[MSE Contribution] Iter 3200 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 3200 | SADM:x_m_ratio=0.9721 | SADM:x_2_ratio=0.0244 | SADM:x_1_ratio=0.0034 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 3200 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 80.25%] Iter 3210/4000 | loss = 0.0042
+[ 80.50%] Iter 3220/4000 | loss = 0.0040
+[ 80.75%] Iter 3230/4000 | loss = 0.0042
+[ 81.00%] Iter 3240/4000 | loss = 0.0039
+[ 81.25%] Iter 3250/4000 | loss = 0.0039
+[ 81.50%] Iter 3260/4000 | loss = 0.0039
+[ 81.75%] Iter 3270/4000 | loss = 0.0038
+[ 82.00%] Iter 3280/4000 | loss = 0.0035
+[ 82.25%] Iter 3290/4000 | loss = 0.0037
+[ 82.50%] Iter 3300/4000 | loss = 0.0036
+2026-06-02 11:15:00: [SADM Weights] Iter 3300 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:15:00: [SADM Raw Loss] Iter 3300 | x_m_raw=0.011281 | x_2_raw=0.003881 | x_1_raw=0.009866
+2026-06-02 11:15:00: [SADM Contribution] Iter 3300 | x_m_contrib=0.005076 | x_2_contrib=0.000116 | x_1_contrib=0.000015
+2026-06-02 11:15:00: [MSE Weights] Iter 3300 | f1=0.6695 | f2=0.1394 | f3=0.1911
+2026-06-02 11:15:00: [MSE Raw Loss] Iter 3300 | f1_raw=0.000003 | f2_raw=0.000101 | f3_raw=0.000035
+2026-06-02 11:15:00: [MSE Contribution] Iter 3300 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:15:00: [Combined Contribution Ratio: SADM+MSE] Iter 3300 | SADM:x_m_ratio=0.9747 | SADM:x_2_ratio=0.0224 | SADM:x_1_ratio=0.0028 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:15:00: [Branch Contribution Ratio: SADM vs MSE] Iter 3300 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 3300 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 3300 | x_m_raw=0.011281 | x_2_raw=0.003881 | x_1_raw=0.009866
+[SADM Contribution] Iter 3300 | x_m_contrib=0.005076 | x_2_contrib=0.000116 | x_1_contrib=0.000015
+[MSE Weights] Iter 3300 | f1=0.6695 | f2=0.1394 | f3=0.1911
+[MSE Raw Loss] Iter 3300 | f1_raw=0.000003 | f2_raw=0.000101 | f3_raw=0.000035
+[MSE Contribution] Iter 3300 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 3300 | SADM:x_m_ratio=0.9747 | SADM:x_2_ratio=0.0224 | SADM:x_1_ratio=0.0028 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 3300 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 82.75%] Iter 3310/4000 | loss = 0.0040
+[ 83.00%] Iter 3320/4000 | loss = 0.0033
+[ 83.25%] Iter 3330/4000 | loss = 0.0040
+[ 83.50%] Iter 3340/4000 | loss = 0.0036
+[ 83.75%] Iter 3350/4000 | loss = 0.0042
+[ 84.00%] Iter 3360/4000 | loss = 0.0035
+[ 84.25%] Iter 3370/4000 | loss = 0.0041
+[ 84.50%] Iter 3380/4000 | loss = 0.0038
+[ 84.75%] Iter 3390/4000 | loss = 0.0039
+[ 85.00%] Iter 3400/4000 | loss = 0.0035
+2026-06-02 11:15:39: [SADM Weights] Iter 3400 | x_m=0.7501 | x_2=0.1999 | x_1=0.0500
+2026-06-02 11:15:39: [SADM Raw Loss] Iter 3400 | x_m_raw=0.006062 | x_2_raw=0.002256 | x_1_raw=0.006578
+2026-06-02 11:15:39: [SADM Contribution] Iter 3400 | x_m_contrib=0.002728 | x_2_contrib=0.000068 | x_1_contrib=0.000010
+2026-06-02 11:15:39: [MSE Weights] Iter 3400 | f1=0.6522 | f2=0.1487 | f3=0.1990
+2026-06-02 11:15:39: [MSE Raw Loss] Iter 3400 | f1_raw=0.000002 | f2_raw=0.000076 | f3_raw=0.000025
+2026-06-02 11:15:39: [MSE Contribution] Iter 3400 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:15:39: [Combined Contribution Ratio: SADM+MSE] Iter 3400 | SADM:x_m_ratio=0.9722 | SADM:x_2_ratio=0.0241 | SADM:x_1_ratio=0.0035 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0001
+2026-06-02 11:15:39: [Branch Contribution Ratio: SADM vs MSE] Iter 3400 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[SADM Weights] Iter 3400 | x_m=0.7501 | x_2=0.1999 | x_1=0.0500
+[SADM Raw Loss] Iter 3400 | x_m_raw=0.006062 | x_2_raw=0.002256 | x_1_raw=0.006578
+[SADM Contribution] Iter 3400 | x_m_contrib=0.002728 | x_2_contrib=0.000068 | x_1_contrib=0.000010
+[MSE Weights] Iter 3400 | f1=0.6522 | f2=0.1487 | f3=0.1990
+[MSE Raw Loss] Iter 3400 | f1_raw=0.000002 | f2_raw=0.000076 | f3_raw=0.000025
+[MSE Contribution] Iter 3400 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 3400 | SADM:x_m_ratio=0.9722 | SADM:x_2_ratio=0.0241 | SADM:x_1_ratio=0.0035 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0001
+[Branch Contribution Ratio: SADM vs MSE] Iter 3400 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[ 85.25%] Iter 3410/4000 | loss = 0.0042
+[ 85.50%] Iter 3420/4000 | loss = 0.0038
+[ 85.75%] Iter 3430/4000 | loss = 0.0038
+[ 86.00%] Iter 3440/4000 | loss = 0.0038
+[ 86.25%] Iter 3450/4000 | loss = 0.0038
+[ 86.50%] Iter 3460/4000 | loss = 0.0037
+[ 86.75%] Iter 3470/4000 | loss = 0.0036
+[ 87.00%] Iter 3480/4000 | loss = 0.0044
+[ 87.25%] Iter 3490/4000 | loss = 0.0040
+[ 87.50%] Iter 3500/4000 | loss = 0.0038
+2026-06-02 11:16:18: [SADM Weights] Iter 3500 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:16:18: [SADM Raw Loss] Iter 3500 | x_m_raw=0.010703 | x_2_raw=0.003973 | x_1_raw=0.009287
+2026-06-02 11:16:18: [SADM Contribution] Iter 3500 | x_m_contrib=0.004816 | x_2_contrib=0.000119 | x_1_contrib=0.000014
+2026-06-02 11:16:18: [MSE Weights] Iter 3500 | f1=0.6603 | f2=0.1460 | f3=0.1937
+2026-06-02 11:16:18: [MSE Raw Loss] Iter 3500 | f1_raw=0.000003 | f2_raw=0.000087 | f3_raw=0.000030
+2026-06-02 11:16:18: [MSE Contribution] Iter 3500 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:16:18: [Combined Contribution Ratio: SADM+MSE] Iter 3500 | SADM:x_m_ratio=0.9730 | SADM:x_2_ratio=0.0241 | SADM:x_1_ratio=0.0028 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:16:18: [Branch Contribution Ratio: SADM vs MSE] Iter 3500 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 3500 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 3500 | x_m_raw=0.010703 | x_2_raw=0.003973 | x_1_raw=0.009287
+[SADM Contribution] Iter 3500 | x_m_contrib=0.004816 | x_2_contrib=0.000119 | x_1_contrib=0.000014
+[MSE Weights] Iter 3500 | f1=0.6603 | f2=0.1460 | f3=0.1937
+[MSE Raw Loss] Iter 3500 | f1_raw=0.000003 | f2_raw=0.000087 | f3_raw=0.000030
+[MSE Contribution] Iter 3500 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 3500 | SADM:x_m_ratio=0.9730 | SADM:x_2_ratio=0.0241 | SADM:x_1_ratio=0.0028 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 3500 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 87.75%] Iter 3510/4000 | loss = 0.0038
+[ 88.00%] Iter 3520/4000 | loss = 0.0039
+[ 88.25%] Iter 3530/4000 | loss = 0.0035
+[ 88.50%] Iter 3540/4000 | loss = 0.0041
+[ 88.75%] Iter 3550/4000 | loss = 0.0038
+[ 89.00%] Iter 3560/4000 | loss = 0.0040
+[ 89.25%] Iter 3570/4000 | loss = 0.0041
+[ 89.50%] Iter 3580/4000 | loss = 0.0037
+[ 89.75%] Iter 3590/4000 | loss = 0.0038
+[ 90.00%] Iter 3600/4000 | loss = 0.0044
+2026-06-02 11:16:58: [SADM Weights] Iter 3600 | x_m=0.7499 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:16:58: [SADM Raw Loss] Iter 3600 | x_m_raw=0.010046 | x_2_raw=0.003935 | x_1_raw=0.008419
+2026-06-02 11:16:58: [SADM Contribution] Iter 3600 | x_m_contrib=0.004521 | x_2_contrib=0.000118 | x_1_contrib=0.000013
+2026-06-02 11:16:58: [MSE Weights] Iter 3600 | f1=0.6542 | f2=0.1426 | f3=0.2032
+2026-06-02 11:16:58: [MSE Raw Loss] Iter 3600 | f1_raw=0.000004 | f2_raw=0.000087 | f3_raw=0.000030
+2026-06-02 11:16:58: [MSE Contribution] Iter 3600 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:16:58: [Combined Contribution Ratio: SADM+MSE] Iter 3600 | SADM:x_m_ratio=0.9718 | SADM:x_2_ratio=0.0254 | SADM:x_1_ratio=0.0027 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:16:58: [Branch Contribution Ratio: SADM vs MSE] Iter 3600 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 3600 | x_m=0.7499 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 3600 | x_m_raw=0.010046 | x_2_raw=0.003935 | x_1_raw=0.008419
+[SADM Contribution] Iter 3600 | x_m_contrib=0.004521 | x_2_contrib=0.000118 | x_1_contrib=0.000013
+[MSE Weights] Iter 3600 | f1=0.6542 | f2=0.1426 | f3=0.2032
+[MSE Raw Loss] Iter 3600 | f1_raw=0.000004 | f2_raw=0.000087 | f3_raw=0.000030
+[MSE Contribution] Iter 3600 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 3600 | SADM:x_m_ratio=0.9718 | SADM:x_2_ratio=0.0254 | SADM:x_1_ratio=0.0027 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 3600 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 90.25%] Iter 3610/4000 | loss = 0.0043
+[ 90.50%] Iter 3620/4000 | loss = 0.0040
+[ 90.75%] Iter 3630/4000 | loss = 0.0038
+[ 91.00%] Iter 3640/4000 | loss = 0.0042
+[ 91.25%] Iter 3650/4000 | loss = 0.0039
+[ 91.50%] Iter 3660/4000 | loss = 0.0038
+[ 91.75%] Iter 3670/4000 | loss = 0.0036
+[ 92.00%] Iter 3680/4000 | loss = 0.0038
+[ 92.25%] Iter 3690/4000 | loss = 0.0036
+[ 92.50%] Iter 3700/4000 | loss = 0.0038
+2026-06-02 11:17:37: [SADM Weights] Iter 3700 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:17:37: [SADM Raw Loss] Iter 3700 | x_m_raw=0.009896 | x_2_raw=0.003503 | x_1_raw=0.008591
+2026-06-02 11:17:37: [SADM Contribution] Iter 3700 | x_m_contrib=0.004453 | x_2_contrib=0.000105 | x_1_contrib=0.000013
+2026-06-02 11:17:37: [MSE Weights] Iter 3700 | f1=0.6529 | f2=0.1501 | f3=0.1969
+2026-06-02 11:17:37: [MSE Raw Loss] Iter 3700 | f1_raw=0.000003 | f2_raw=0.000092 | f3_raw=0.000029
+2026-06-02 11:17:37: [MSE Contribution] Iter 3700 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:17:37: [Combined Contribution Ratio: SADM+MSE] Iter 3700 | SADM:x_m_ratio=0.9741 | SADM:x_2_ratio=0.0230 | SADM:x_1_ratio=0.0028 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:17:37: [Branch Contribution Ratio: SADM vs MSE] Iter 3700 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 3700 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 3700 | x_m_raw=0.009896 | x_2_raw=0.003503 | x_1_raw=0.008591
+[SADM Contribution] Iter 3700 | x_m_contrib=0.004453 | x_2_contrib=0.000105 | x_1_contrib=0.000013
+[MSE Weights] Iter 3700 | f1=0.6529 | f2=0.1501 | f3=0.1969
+[MSE Raw Loss] Iter 3700 | f1_raw=0.000003 | f2_raw=0.000092 | f3_raw=0.000029
+[MSE Contribution] Iter 3700 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 3700 | SADM:x_m_ratio=0.9741 | SADM:x_2_ratio=0.0230 | SADM:x_1_ratio=0.0028 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 3700 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 92.75%] Iter 3710/4000 | loss = 0.0041
+[ 93.00%] Iter 3720/4000 | loss = 0.0038
+[ 93.25%] Iter 3730/4000 | loss = 0.0040
+[ 93.50%] Iter 3740/4000 | loss = 0.0037
+[ 93.75%] Iter 3750/4000 | loss = 0.0038
+[ 94.00%] Iter 3760/4000 | loss = 0.0039
+[ 94.25%] Iter 3770/4000 | loss = 0.0036
+[ 94.50%] Iter 3780/4000 | loss = 0.0034
+[ 94.75%] Iter 3790/4000 | loss = 0.0036
+[ 95.00%] Iter 3800/4000 | loss = 0.0037
+2026-06-02 11:18:17: [SADM Weights] Iter 3800 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:18:17: [SADM Raw Loss] Iter 3800 | x_m_raw=0.008394 | x_2_raw=0.003191 | x_1_raw=0.008198
+2026-06-02 11:18:17: [SADM Contribution] Iter 3800 | x_m_contrib=0.003777 | x_2_contrib=0.000096 | x_1_contrib=0.000012
+2026-06-02 11:18:17: [MSE Weights] Iter 3800 | f1=0.6583 | f2=0.1470 | f3=0.1947
+2026-06-02 11:18:17: [MSE Raw Loss] Iter 3800 | f1_raw=0.000003 | f2_raw=0.000078 | f3_raw=0.000027
+2026-06-02 11:18:17: [MSE Contribution] Iter 3800 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:18:17: [Combined Contribution Ratio: SADM+MSE] Iter 3800 | SADM:x_m_ratio=0.9721 | SADM:x_2_ratio=0.0246 | SADM:x_1_ratio=0.0032 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:18:17: [Branch Contribution Ratio: SADM vs MSE] Iter 3800 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 3800 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 3800 | x_m_raw=0.008394 | x_2_raw=0.003191 | x_1_raw=0.008198
+[SADM Contribution] Iter 3800 | x_m_contrib=0.003777 | x_2_contrib=0.000096 | x_1_contrib=0.000012
+[MSE Weights] Iter 3800 | f1=0.6583 | f2=0.1470 | f3=0.1947
+[MSE Raw Loss] Iter 3800 | f1_raw=0.000003 | f2_raw=0.000078 | f3_raw=0.000027
+[MSE Contribution] Iter 3800 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 3800 | SADM:x_m_ratio=0.9721 | SADM:x_2_ratio=0.0246 | SADM:x_1_ratio=0.0032 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 3800 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 95.25%] Iter 3810/4000 | loss = 0.0036
+[ 95.50%] Iter 3820/4000 | loss = 0.0040
+[ 95.75%] Iter 3830/4000 | loss = 0.0035
+[ 96.00%] Iter 3840/4000 | loss = 0.0039
+[ 96.25%] Iter 3850/4000 | loss = 0.0037
+[ 96.50%] Iter 3860/4000 | loss = 0.0035
+[ 96.75%] Iter 3870/4000 | loss = 0.0038
+[ 97.00%] Iter 3880/4000 | loss = 0.0036
+[ 97.25%] Iter 3890/4000 | loss = 0.0040
+[ 97.50%] Iter 3900/4000 | loss = 0.0038
+2026-06-02 11:19:11: [SADM Weights] Iter 3900 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 11:19:11: [SADM Raw Loss] Iter 3900 | x_m_raw=0.011672 | x_2_raw=0.004258 | x_1_raw=0.009642
+2026-06-02 11:19:11: [SADM Contribution] Iter 3900 | x_m_contrib=0.005252 | x_2_contrib=0.000128 | x_1_contrib=0.000014
+2026-06-02 11:19:11: [MSE Weights] Iter 3900 | f1=0.6705 | f2=0.1400 | f3=0.1895
+2026-06-02 11:19:11: [MSE Raw Loss] Iter 3900 | f1_raw=0.000004 | f2_raw=0.000098 | f3_raw=0.000033
+2026-06-02 11:19:11: [MSE Contribution] Iter 3900 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 11:19:11: [Combined Contribution Ratio: SADM+MSE] Iter 3900 | SADM:x_m_ratio=0.9735 | SADM:x_2_ratio=0.0237 | SADM:x_1_ratio=0.0027 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+2026-06-02 11:19:11: [Branch Contribution Ratio: SADM vs MSE] Iter 3900 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[SADM Weights] Iter 3900 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 3900 | x_m_raw=0.011672 | x_2_raw=0.004258 | x_1_raw=0.009642
+[SADM Contribution] Iter 3900 | x_m_contrib=0.005252 | x_2_contrib=0.000128 | x_1_contrib=0.000014
+[MSE Weights] Iter 3900 | f1=0.6705 | f2=0.1400 | f3=0.1895
+[MSE Raw Loss] Iter 3900 | f1_raw=0.000004 | f2_raw=0.000098 | f3_raw=0.000033
+[MSE Contribution] Iter 3900 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 3900 | SADM:x_m_ratio=0.9735 | SADM:x_2_ratio=0.0237 | SADM:x_1_ratio=0.0027 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0000
+[Branch Contribution Ratio: SADM vs MSE] Iter 3900 | SADM_total_ratio=0.9999 | MSE_total_ratio=0.0001
+[ 97.75%] Iter 3910/4000 | loss = 0.0036
+[ 98.00%] Iter 3920/4000 | loss = 0.0037
+[ 98.25%] Iter 3930/4000 | loss = 0.0036
+[ 98.50%] Iter 3940/4000 | loss = 0.0039
+[ 98.75%] Iter 3950/4000 | loss = 0.0038
+[ 99.00%] Iter 3960/4000 | loss = 0.0039
+[ 99.25%] Iter 3970/4000 | loss = 0.0038
+[ 99.50%] Iter 3980/4000 | loss = 0.0041
+[ 99.75%] Iter 3990/4000 | loss = 0.0041
+2026-06-02 11:20:04: Evaluate at iteration 4000
+[Eval] model=PointNet | round 1/10
+[2026-06-02 11:25:02] Evaluate_00: epoch = 0500 train time = 298 s train loss = 0.010430 train acc = 0.9975, test acc = 0.7694
+[Eval] model=PointNet | round 2/10
+[2026-06-02 11:29:44] Evaluate_01: epoch = 0500 train time = 281 s train loss = 0.008117 train acc = 1.0000, test acc = 0.7678
+[Eval] model=PointNet | round 3/10
+[2026-06-02 11:34:40] Evaluate_02: epoch = 0500 train time = 296 s train loss = 0.009400 train acc = 1.0000, test acc = 0.7715
+[Eval] model=PointNet | round 4/10
+[2026-06-02 11:39:38] Evaluate_03: epoch = 0500 train time = 298 s train loss = 0.012729 train acc = 0.9975, test acc = 0.7755
+[Eval] model=PointNet | round 5/10
+[2026-06-02 11:44:38] Evaluate_04: epoch = 0500 train time = 299 s train loss = 0.008420 train acc = 1.0000, test acc = 0.7747
+[Eval] model=PointNet | round 6/10
+[2026-06-02 11:49:38] Evaluate_05: epoch = 0500 train time = 300 s train loss = 0.043614 train acc = 0.9850, test acc = 0.7755
+[Eval] model=PointNet | round 7/10
+[2026-06-02 11:54:34] Evaluate_06: epoch = 0500 train time = 295 s train loss = 0.008317 train acc = 1.0000, test acc = 0.7808
+[Eval] model=PointNet | round 8/10
+[2026-06-02 11:59:34] Evaluate_07: epoch = 0500 train time = 300 s train loss = 0.012456 train acc = 1.0000, test acc = 0.7780
+[Eval] model=PointNet | round 9/10
+[2026-06-02 12:04:12] Evaluate_08: epoch = 0500 train time = 278 s train loss = 0.010531 train acc = 1.0000, test acc = 0.7678
+[Eval] model=PointNet | round 10/10
+[2026-06-02 12:08:26] Evaluate_09: epoch = 0500 train time = 253 s train loss = 0.008626 train acc = 1.0000, test acc = 0.7711
+2026-06-02 12:08:26: Model PointNet | mean acc = 0.7732 | std = 0.0042
+[100.00%] Iter 4000/4000 | loss = 0.0041
+2026-06-02 12:08:27: [SADM Weights] Iter 4000 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+2026-06-02 12:08:27: [SADM Raw Loss] Iter 4000 | x_m_raw=0.006872 | x_2_raw=0.002523 | x_1_raw=0.006965
+2026-06-02 12:08:27: [SADM Contribution] Iter 4000 | x_m_contrib=0.003092 | x_2_contrib=0.000076 | x_1_contrib=0.000010
+2026-06-02 12:08:27: [MSE Weights] Iter 4000 | f1=0.6543 | f2=0.1462 | f3=0.1995
+2026-06-02 12:08:27: [MSE Raw Loss] Iter 4000 | f1_raw=0.000003 | f2_raw=0.000107 | f3_raw=0.000035
+2026-06-02 12:08:27: [MSE Contribution] Iter 4000 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+2026-06-02 12:08:27: [Combined Contribution Ratio: SADM+MSE] Iter 4000 | SADM:x_m_ratio=0.9727 | SADM:x_2_ratio=0.0238 | SADM:x_1_ratio=0.0033 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0001
+2026-06-02 12:08:27: [Branch Contribution Ratio: SADM vs MSE] Iter 4000 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+[SADM Weights] Iter 4000 | x_m=0.7500 | x_2=0.2000 | x_1=0.0500
+[SADM Raw Loss] Iter 4000 | x_m_raw=0.006872 | x_2_raw=0.002523 | x_1_raw=0.006965
+[SADM Contribution] Iter 4000 | x_m_contrib=0.003092 | x_2_contrib=0.000076 | x_1_contrib=0.000010
+[MSE Weights] Iter 4000 | f1=0.6543 | f2=0.1462 | f3=0.1995
+[MSE Raw Loss] Iter 4000 | f1_raw=0.000003 | f2_raw=0.000107 | f3_raw=0.000035
+[MSE Contribution] Iter 4000 | f1_contrib=0.000000 | f2_contrib=0.000000 | f3_contrib=0.000000
+[Combined Contribution Ratio: SADM+MSE] Iter 4000 | SADM:x_m_ratio=0.9727 | SADM:x_2_ratio=0.0238 | SADM:x_1_ratio=0.0033 | MSE:f1_ratio=0.0000 | MSE:f2_ratio=0.0001 | MSE:f3_ratio=0.0001
+[Branch Contribution Ratio: SADM vs MSE] Iter 4000 | SADM_total_ratio=0.9998 | MSE_total_ratio=0.0002
+2026-06-02 12:08:27: Saved result to result_h5/res_DC_MODELNET40_H5_PointNet_10ppc_AdaptiveMultiSADM_with_MSE_contribution_log.pt
+2026-06-02 12:08:27: 
+==================== Final Results ====================
+
+2026-06-02 12:08:27: Run 1 exp | train on PointNet | eval 10 random PointNet | mean=77.32% std=0.42%
+
+==================== Final Results ====================
+
+[0.77321718]
